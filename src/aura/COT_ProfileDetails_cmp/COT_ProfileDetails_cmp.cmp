@@ -1,0 +1,184 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+		<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+			<thead>
+				<tr class="slds-text-title--caps">
+					<th scope="col">
+						<div class="slds-truncate" title="Nombre">Consecutivo</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Nombre del Perfil</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Cantidad</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Plan Tarifario</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Renta sin IVA</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Renta con IVA</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Plazo</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Renta Mensual Total sin IVA</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Renta Mensual Total con IVA</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Renta Total Plazo sin IVA</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Renta total plazo con IVA</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Descuento</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Total con descuento con IVA incluido</div>
+					</th>
+					<th scope="col">
+						<div class="slds-truncate" title="Teléfono">Comentarios</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="slds-text-title--caps">
+					<td scope="col">
+						<div class="slds-truncate" title="Nombre">1</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">Perfil A</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">20</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">11</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">15</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">13</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">12</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">11</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">50</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">15</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">13</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">12</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">11</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">TEST</div>
+					</td>
+				</tr>
+				<tr class="slds-text-title--caps">
+					<td scope="col">
+						<div class="slds-truncate" title="Nombre">2</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">Perfil B</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">14</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">1</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">10</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">7</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">4</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">3</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">20</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">10</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">7</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">4</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">3</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">Prueba</div>
+					</td>
+				</tr>
+				<tr class="slds-text-title--caps">
+					<td scope="col">
+						<div class="slds-truncate" title="Nombre">3</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">Perfil C</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">20</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">11</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">15</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">13</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">12</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">11</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">50</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">15</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">13</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">12</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">11</div>
+					</td>
+					<td scope="col">
+						<div class="slds-truncate" title="Teléfono">Prueba</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</aura:component>

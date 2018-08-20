@@ -1,0 +1,2465 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="options" type="List" />
+	<aura:attribute name="searchFor" type="List" />
+	<aura:attribute name="searchType" type="List" />
+	<aura:attribute name="searchMode" type="List" />
+	<aura:attribute name="searchConsumo" type="List" />
+	<aura:attribute name="GroupPlan" type="List" />
+	<aura:attribute name="Plan" type="List" />
+	<aura:attribute name="Quantity" type="List" />
+	<aura:attribute name="Platform" type="List"/>
+	<aura:attribute name="Brand" type="List" />
+	<aura:attribute name="Model" type="List"/>
+	<aura:attribute name="Categoria" type="List" />
+	<aura:attribute name="Rango" type="List"/>
+
+	<aura:attribute name="Tecnologia" type="List"/>
+	<aura:attribute name="SO" type="List" />
+	<aura:attribute name="Memoria" type="List"/>
+	<aura:attribute name="CamaraPrimaria" type="List" />
+	<aura:attribute name="Pantalla" type="List"/>
+	<aura:attribute name="CriterioExt" type="List" />
+	<aura:attribute name="ValueCrit" type="List"/>
+
+	<aura:attribute name="selectedValueBrand" type="String" default="Plan"/>
+	<aura:attribute name="selectedValue" type="String" default="Plan"/>
+	<aura:attribute name="selectedValueSearchFor" type="String" default="Plan"/>
+	<aura:attribute name="selectedValueSearchType" type="String" default="Voz"/>
+	<aura:attribute name="selectedValueSearchMode" type="String" default="CPP"/>
+	<aura:attribute name="selectedValueSearchConsumo" type="String" default="Abierto"/>
+	<aura:attribute name="selectedValueSearchGroupPlan" type="String" default="Voz"/>
+	<aura:attribute name="selectedValueSearchPlan" type="String" default="CPP"/>
+	<aura:attribute name="selectedValueSearchQuantity" type="String" default="Abierto"/>
+	<aura:attribute name="selectedValuePlatform" type="String" default="Abierto"/>
+	<aura:attribute name="Equipos" type="List" default="[
+		{'label': 'Equipo sin costo', 'value': 'Equipo sin costo'},
+		{'label': 'Mostrar todos los equipos', 'value': 'Mostrar todos los equipos'}
+	]"/>
+	<aura:attribute name="value" type="String" default="Grupo"/>
+	<aura:attribute name="blnSelectMobile" type="Boolean" default="false"/>
+	<aura:attribute name="myBool" type="Boolean" default="false"/>
+	<aura:attribute name="blnOtherCara" type="Boolean" default="false"/>
+	<aura:attribute name="color" type="Boolean" default="false"/>
+	<aura:attribute name="smart" type="Boolean" default="false"/>
+	<aura:attribute name="saveProfile" type="Boolean" default="false"/>
+	<aura:attribute name="generarCotizacion" type="Boolean" default="false"/>
+	<aura:attribute name="generarCotizacionDetails" type="Boolean" default="false"/>
+	<aura:attribute name="generarCotizacionDetails2" type="Boolean" default="false"/>
+	<aura:attribute name="blnsendQuoting" type="Boolean" default="false"/>
+	<aura:attribute name="blnConFinanciamiento" type="Boolean" default="false"/>
+	<aura:attribute name="myText" type="String" default="Resultado de la operación :60%"/>
+	<aura:attribute name="myURL" type="String" default="http://www.google.com"/>
+						
+	<aura:handler name="init" value="{!this}" action="{!c.loadOptions}" />
+	<aura:handler name="change" value="{!v.myBool}" action="{!c.handleValueChange}"/>
+
+	<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+		<div class="slds-media slds-no-space slds-grow">
+			<lightning:select name="mySelect" label="Genera perfiles de:" aura:id="mySelect"
+				value="{!v.selectedValue}">
+				<aura:iteration items="{!v.options}" var="item">
+					<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+				</aura:iteration>
+			</lightning:select>
+			<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+		</div>
+	</div>
+	<br/>
+	<aura:if isTrue="{!v.selectedValue == 'Plan, equipo, productos, SVA’s y servicios adicionales'}">
+		<div class="slds-grid slds-gutters">
+			<div class="slds-col">
+				<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+					<div class="slds-scrollable" style="height:500px;">
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="text" label="Nombre del perfil" name="name" />
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:select name="mySelect" label="Buscar por:" aura:id="mySelect"
+									value="{!v.selectedValueSearchFor}">
+									<aura:iteration items="{!v.searchFor}" var="item">
+										<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+									</aura:iteration>
+								</lightning:select>
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+										<lightning:icon iconName="action:close" title="Eliminar perfil" class="slds-icon-action-close" />
+									</div>
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+										<lightning:icon iconName="action:clone" title="Duplicar Perfil" class="slds-icon-action-clone" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:select name="mySelect" label="Tipo:" aura:id="mySelect"
+									value="{!v.selectedValueSearchType}">
+									<aura:iteration items="{!v.searchType}" var="item">
+										<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+									</aura:iteration>
+								</lightning:select>
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:select name="mySelect" label="Modalidad:" aura:id="mySelect"
+									value="{!v.selectedValueSearchMode}">
+									<aura:iteration items="{!v.searchMode}" var="item">
+										<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+									</aura:iteration>
+								</lightning:select>
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:select name="mySelect" label="Consumo:" aura:id="mySelect"
+									value="{!v.selectedValueSearchConsumo}">
+									<aura:iteration items="{!v.searchConsumo}" var="item">
+										<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+									</aura:iteration>
+								</lightning:select>
+							</div>
+						</div>
+						<div class="slds-box slds-m-top--x-small">
+							<div class="slds-grid slds-gutters">
+								<div class="slds-col slds-has-flexi-truncate">
+									<lightning:select name="mySelect" label="Grupo de Plan:" aura:id="mySelect"
+										value="{!v.selectedValueSearchGroupPlan}">
+										<aura:iteration items="{!v.GroupPlan}" var="item">
+											<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+										</aura:iteration>
+									</lightning:select>
+								</div>
+								<div class="slds-col slds-has-flexi-truncate">
+									<lightning:select name="mySelect" label="Plan:" aura:id="mySelect"
+										value="{!v.selectedValueSearchPlan}">
+										<aura:iteration items="{!v.Plan}" var="item">
+											<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+										</aura:iteration>
+									</lightning:select>
+								</div>
+								<div class="slds-col slds-has-flexi-truncate">
+									<lightning:input type="text" label="Cantidad:" name="name" />
+								</div>
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<!-- <lightning:input type="checkbox" label="Nombre del perfil" name="name" value="{!v.blnSelectMobile}" checked="false"/>
+									{!v.blnSelectMobile} -->
+
+								<!-- Handles the aura:valueChange event -->
+								<ui:button label="Seleccionar equipo" press="{!c.changeValue}"/>
+								</div>
+							</div>
+							<aura:if isTrue="{!v.myBool}">
+								<div class="slds-box slds-m-top--x-small">
+									<div class="slds-grid slds-gutters">
+										<div class="slds-col slds-has-flexi-truncate">
+											<lightning:radioGroup aura:id="mygroup"
+												name="radioButtonGroup"
+												label="Selecciona una opción"
+												options="{! v.Equipos }"
+												value="{! v.value }"
+												required="true" />
+										</div>
+										<div class="slds-col slds-has-flexi-truncate">
+											<lightning:select name="mySelect" label="Marca" aura:id="mySelect" value="{!v.selectedValueBrand}">
+												<aura:iteration items="{!v.Brand}" var="item">
+													<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+												</aura:iteration>
+											</lightning:select>
+										</div>
+										<div class="slds-col slds-has-flexi-truncate">
+											<lightning:select name="mySelect" label="Modelo" aura:id="mySelect" value="{!v.selectedValue}">
+												<aura:iteration items="{!v.Model}" var="item">
+													<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+												</aura:iteration>
+											</lightning:select>
+										</div>
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<ui:button label="Con Financiamiento" press="{!c.blnConFinanciamientoChange}"/>
+										</div>
+									</div>
+									<br/>
+									<aura:if isTrue="{!v.blnConFinanciamiento}">
+										<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+											<thead>
+												<tr class="slds-text-title--caps">
+													<th scope="col">
+														<div class="slds-truncate" title="Nombre">Diferencia a pagar por el equipo</div>
+													</th>
+													<th scope="col">
+														<div class="slds-truncate" title="Teléfono">Porcentaje de sobreprecio</div>
+													</th>
+													<th scope="col">
+														<div class="slds-truncate" title="Teléfono">Costo por financiamiento</div>
+													</th>
+													<th scope="col">
+														<div class="slds-truncate" title="Teléfono">Importe Total a Financiar</div>
+													</th>
+													<th scope="col">
+														<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Cargo mensual del financiamiento</div>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td scope="col">
+														<div class="slds-truncate" title="Nombre">$9600.00</div>
+													</td>
+													<td scope="col">
+														<div class="slds-truncate" title="Nombre">3%</div>
+													</td>
+													<td scope="col">
+														<div class="slds-truncate" title="Teléfono">$1920.00</div>
+													</td>
+													<td scope="col">
+														<div class="slds-truncate" title="Teléfono">$11520.00</div>
+													</td>
+													<td scope="col" class="slds-align_absolute-center">
+														<div class="slds-truncate" title="Teléfono">$480.00</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</aura:if>
+									<br/>
+									<div class="slds-grid slds-gutters">
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<ui:button label="Busqueda inteligente del equipo" press="{!c.smartSearch}"/>
+										</div>
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<ui:button label="Selecciona color" press="{!c.SelectColor}"/>
+										</div>
+									</div>
+									<br/>
+									<aura:if isTrue="{!v.color}">
+										<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+											<thead>
+												<tr class="slds-text-title--caps">
+													<th scope="col">
+														<div class="slds-truncate" title="Nombre">Color</div>
+													</th>
+													<th scope="col">
+														<div class="slds-truncate" title="Teléfono">Modelo especifico</div>
+													</th>
+													<th scope="col">
+														<div class="slds-truncate" title="Teléfono">Existencia almacen</div>
+													</th>
+													<th scope="col">
+														<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Resurtible</div>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td scope="col">
+														<div class="slds-truncate" title="Nombre">Blanco</div>
+													</td>
+													<td scope="col">
+														<div class="slds-truncate" title="Teléfono">32 GB</div>
+													</td>
+													<td scope="col">
+														<div class="slds-truncate" title="Teléfono">20</div>
+													</td>
+													<td scope="col" class="slds-align_absolute-center">
+														<div class="slds-truncate" title="Teléfono">Si</div>
+													</td>
+												</tr>
+												<tr>
+													<td scope="col">
+														<div class="slds-truncate" title="Nombre">Rosa</div>
+													</td>
+													<td scope="col">
+														<div class="slds-truncate" title="Teléfono">32 GB</div>
+													</td>
+													<td scope="col">
+														<div class="slds-truncate" title="Teléfono">20</div>
+													</td>
+													<td scope="col" class="slds-align_absolute-center">
+														<div class="slds-truncate" title="Teléfono">Si</div>
+													</td>
+												</tr>
+												<tr>
+													<td scope="col">
+														<div class="slds-truncate" title="Nombre">Azul</div>
+													</td>
+													<td scope="col">
+														<div class="slds-truncate" title="Teléfono">32 GB</div>
+													</td>
+													<td scope="col">
+														<div class="slds-truncate" title="Teléfono">20</div>
+													</td>
+													<td scope="col" class="slds-align_absolute-center">
+														<div class="slds-truncate" title="Teléfono">Si</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</aura:if>
+									<aura:if isTrue="{!v.smart}">
+										<div class="slds-box slds-m-top--x-small">
+											<div class="slds-grid slds-gutters">
+												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<lightning:select name="mySelect" label="Categoria de equipos" aura:id="mySelect" value="{!v.selectedValueBrand}">
+														<aura:iteration items="{!v.Categoria}" var="item">
+															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+														</aura:iteration>
+													</lightning:select>
+													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+												</div>
+												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<lightning:select name="mySelect" label="Rango de precios" aura:id="mySelect" value="{!v.selectedValue}">
+														<aura:iteration items="{!v.Rango}" var="item">
+															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+														</aura:iteration>
+													</lightning:select>
+													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+												</div>
+												<div class="slds-align_absolute-center slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<lightning:select name="mySelect" label="Marca" aura:id="mySelect" value="{!v.value}"  >
+														<aura:iteration items="{!v.Brand}" var="item">
+															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+														</aura:iteration>
+													</lightning:select>
+													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+												</div>
+												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<lightning:select name="mySelect" label="Tecnologia" aura:id="mySelect" value="{!v.selectedValue}">
+														<aura:iteration items="{!v.Tecnologia}" var="item">
+															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+														</aura:iteration>
+													</lightning:select>
+													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+												</div>
+											</div>
+											<br/>
+											<div class="slds-grid slds-gutters">
+												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<lightning:select name="mySelect" label="Sistema Operativo" aura:id="mySelect" value="{!v.selectedValue}">
+														<aura:iteration items="{!v.SO}" var="item">
+															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+														</aura:iteration>
+													</lightning:select>
+													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+												</div>
+												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<lightning:select name="mySelect" label="Memoria" aura:id="mySelect" value="{!v.selectedValue}">
+														<aura:iteration items="{!v.Memoria}" var="item">
+															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+														</aura:iteration>
+													</lightning:select>
+													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+												</div>
+												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<lightning:select name="mySelect" label="Camara Trasera" aura:id="mySelect" value="{!v.selectedValue}">
+														<aura:iteration items="{!v.CamaraPrimaria}" var="item">
+															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+														</aura:iteration>
+													</lightning:select>
+													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+												</div>
+												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<lightning:select name="mySelect" label="Pantalla" aura:id="mySelect" value="{!v.selectedValue}">
+														<aura:iteration items="{!v.Pantalla}" var="item">
+															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+														</aura:iteration>
+													</lightning:select>
+													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+												</div>
+											</div>
+											<aura:if isTrue="{!v.blnOtherCara}">
+												<br/>
+												<div class="slds-grid slds-gutters">
+													<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+														<lightning:select name="mySelect" label="Criterio" aura:id="mySelect" value="{!v.selectedValue}">
+															<aura:iteration items="{!v.CriterioExt}" var="item">
+																<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+															</aura:iteration>
+														</lightning:select>
+														<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+														<br/>
+														<br/>
+														<lightning:select name="mySelect" label="Valor" aura:id="mySelect" value="{!v.selectedValue}">
+															<aura:iteration items="{!v.ValueCrit}" var="item">
+																<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+															</aura:iteration>
+														</lightning:select>
+														<lightning:helptext content="Texto de ayuda de Ejemplo"/>
+													</div>
+													<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+														
+													</div>
+													<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+														
+													</div>
+													<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+														
+													</div>
+												</div>
+											</aura:if>
+											<br/>
+											<div class="slds-grid slds-gutters">
+												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<ui:button label="Agregar criterio de busqueda" press="{!c.otherCarac}"/>
+												</div>
+												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+													<ui:button label="Buscar Equipo" press="{!c.changeValue}"/>
+												</div>
+											</div>
+										</div> 
+									</aura:if>
+								</div> 
+							</aura:if>
+							<br/>
+							<div class="slds-grid slds-gutters">
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<!-- <lightning:input type="checkbox" label="Nombre del perfil" name="name" value="{!v.blnSelectMobile}" checked="false"/>
+									{!v.blnSelectMobile} -->
+
+								<!-- Handles the aura:valueChange event -->
+								<ui:button label="Agregar Productos, SVA’s y servicios adicionales" press="{!c.changeValue}"/>
+								</div>
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<!-- <lightning:input type="checkbox" label="Nombre del perfil" name="name" value="{!v.blnSelectMobile}" checked="false"/>
+									{!v.blnSelectMobile} -->
+
+								<!-- Handles the aura:valueChange event -->
+								<ui:button label="Guardar Perfil" press="{!c.smartSave}"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aura:if>
+	<aura:if isTrue="{!v.selectedValue == 'Productos, SVA’s y servicios adicionales'}">
+		<div class="slds-grid slds-gutters">
+			<div class="slds-col">
+				<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+					<div class="slds-scrollable" style="height:400px;">
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="text" label="Nombre del perfil" name="name" />
+							</div>
+						</div>
+						<br/>
+						<div class="slds-box slds-m-top--x-small">
+							<div class="slds-grid slds-gutters">
+								<div class="slds-col slds-has-flexi-truncate">
+									<lightning:select name="mySelect" label="Plataforma:" aura:id="mySelect"
+									value="{!v.selectedValuePlatform}">
+										<aura:iteration items="{!v.Platform}" var="item">
+											<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+										</aura:iteration>
+									</lightning:select>
+									<div class="slds-grid slds-gutters">
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<h3 class="slds-section-title--divider slds-m-top--medium">Productos o Servicios a agregar</h3>											
+										</div>
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<h3 class="slds-section-title--divider slds-m-top--medium">Productos o Servicios agregados</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br/>
+							<div class="slds-grid slds-gutters">
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+										<thead>
+											<tr class="slds-text-title--caps">
+												<th scope="col">
+													<div class="slds-truncate" title="Nombre">Plataforma</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate" title="Teléfono">Producto</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate" title="Teléfono">Unidad</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Agregar</div>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Productividad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">RingBack</div>
+												</td>
+												<td scope="col">
+														<lightning:input class="height: 50px;" type="text" name="name" />
+												</td>
+												<td scope="col" class="slds-truncate slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Seguridad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">Negocio 5</div>
+												</td>
+												<td scope="col">
+													<lightning:input class="height: 50px;" type="text" name="name" />
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Productividad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">Skype</div>
+												</td>
+												<td scope="col">
+													<lightning:input class="height: 50px;" type="text" name="name" />
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+										<thead>
+											<tr class="slds-text-title--caps">
+												<th scope="col">
+													<div class="slds-truncate" title="Nombre">Plataforma</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate" title="Teléfono">Producto</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate" title="Teléfono">Unidad</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Quitar</div>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Productiuvidad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">10</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">20</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:close" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Seguridad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">10</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">20</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:close" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="slds-grid slds-gutters">
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<ui:button label="Guardar Perfil" press="{!c.smartSave}"/>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aura:if>
+	<aura:if isTrue="{!v.selectedValue == 'Soluciones a la medida'}">
+		<div class="slds-grid slds-gutters">
+			<div class="slds-col">
+				<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+					<div class="slds-scrollable" style="height:400px;">
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="text" label="Nombre del perfil" name="name" />
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+										<lightning:icon iconName="action:close" title="Eliminar perfil" class="slds-icon-action-close" />
+									</div>
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+										<lightning:icon iconName="action:clone" title="Duplicar Perfil" class="slds-icon-action-clone" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<br/>
+						<div class="slds-box slds-m-top--x-small">
+							<div class="slds-grid slds-gutters">
+								<div class="slds-col slds-has-flexi-truncate">
+									<lightning:select name="mySelect" label="Soluciones :" aura:id="mySelect"
+									value="{!v.selectedValuePlatform}">
+										<aura:iteration items="{!v.Platform}" var="item">
+											<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+										</aura:iteration>
+									</lightning:select>
+									<div class="slds-grid slds-gutters">
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<h3 class="slds-section-title--divider slds-m-top--medium">Conceptos a agregar</h3>											
+										</div>
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<h3 class="slds-section-title--divider slds-m-top--medium">Conceptos agregados</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br/>
+							<div class="slds-grid slds-gutters">
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+										<thead>
+											<tr class="slds-text-title--caps">
+												<th scope="col">
+													<div class="slds-truncate" title="Nombre">Plataforma</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate" title="Teléfono">Unidad</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Agregar</div>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Productividad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">20</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Seguridad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">20</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Productividad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">20</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+										<thead>
+											<tr class="slds-text-title--caps">
+												<th scope="col">
+													<div class="slds-truncate" title="Nombre">Plataforma</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate" title="Teléfono">Unidad</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Quitar</div>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Productiuvidad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">20</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:close" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Seguridad</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">20</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:close" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="slds-grid slds-gutters">
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<ui:button label="Guardar Perfil" press="{!c.smartSave}"/>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aura:if>
+	<aura:if isTrue="{!v.selectedValue == 'Amigo Kit'}">
+		<div class="slds-grid slds-gutters">
+			<div class="slds-col">
+				<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+					<div class="slds-scrollable" style="height:400px;">
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="text" label="Nombre del perfil" name="name" />
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+										<lightning:icon iconName="action:close" title="Eliminar perfil" class="slds-icon-action-close" />
+									</div>
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+										<lightning:icon iconName="action:clone" title="Duplicar Perfil" class="slds-icon-action-clone" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<br/>
+						<div class="slds-box slds-m-top--x-small">
+							<div class="slds-grid slds-gutters">
+								<div class="slds-col slds-has-flexi-truncate">
+									<div class="slds-grid slds-gutters">
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<lightning:select name="mySelect" label="Marca" aura:id="mySelect" value="{!v.selectedValueBrand}">
+												<aura:iteration items="{!v.Brand}" var="item">
+													<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+												</aura:iteration>
+											</lightning:select>
+										</div>
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											
+										</div>
+									</div>
+									<div class="slds-grid slds-gutters">
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<lightning:select name="mySelect" label="Modelo" aura:id="mySelect" value="{!v.selectedValue}">
+												<aura:iteration items="{!v.Model}" var="item">
+													<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+												</aura:iteration>
+											</lightning:select>
+										</div>
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<ui:button label="Busqueda inteligente de equipo" press="{!c.changeValue}"/>
+										</div>
+									</div>
+									<div class="slds-grid slds-gutters">
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											<lightning:input type="number" label="Cantidad:" name="name" />
+										</div>
+										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							<br/>
+							<div class="slds-grid slds-gutters">
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+								</div>
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+								</div>
+							</div>
+							<div class="slds-grid slds-gutters">
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<ui:button label="Guardar Perfil" press="{!c.smartSave}"/>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aura:if>
+	<aura:if isTrue="{!v.saveProfile}">
+		<div class="slds-grid slds-gutters">
+			<div class="slds-col">
+				<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+					<div class="slds-scrollable" style="height:775px;">
+						<div class="slds-box slds-m-top--x-small">
+							<!-- <div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+										<h3 class="slds-section-title-divider slds-m-top-medium">Oportunidades a relacionar </h3>											
+									</div>
+									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+										<h3 class="slds-section-title-divider slds-m-top-medium">Oportunidades Relacionadas</h3>
+									</div>
+								</div>
+							</div>
+							<div class="slds-grid slds-gutters">
+								<br/>
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<table class="slds-table slds-table-bordered slds-table-cell-buffer">
+										<thead>
+											<tr class="slds-text-title-caps">
+												<th scope="col">
+													<div class="slds-truncate" title="Nombre">Oportunidad</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate" title="Teléfono">Fecha de actualización</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Agregar</div>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Bimbo</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">20-01-2018</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Barcel</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">21-05-2018</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">AB Muebles</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">14-06-2018</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<table class="slds-table slds-table-bordered slds-table-cell-buffer">
+										<thead>
+											<tr class="slds-text-title-caps">
+												<th scope="col">
+													<div class="slds-truncate" title="Nombre">Oportunidad</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate" title="Teléfono">Fecha de actualización</div>
+												</th>
+												<th scope="col">
+													<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Agregar</div>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Grupo AS</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">21-05-2018</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:close" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<div class="slds-truncate" title="Nombre">Seguridad SP</div>
+												</td>
+												<td scope="col">
+													<div class="slds-truncate" title="Teléfono">01-06-2018</div>
+												</td>
+												<td scope="col" class="slds-align_absolute-center">
+													<lightning:buttonIcon iconName="utility:close" variant="bare" alternativeText="add" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div> -->
+							<div class="slds-grid slds-gutters">
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<h3 class="slds-section-title-divider slds-m-top-medium">Planes y equipos</h3>
+								</div>
+							</div>
+							<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+								<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+									<thead>
+										<tr class="slds-text-title--caps">
+											<th scope="col">
+												<div class="slds-truncate" title="Nombre">Consecutivo</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Nombre del Perfil</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Cantidad</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Plan Tarifario</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Plazo</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta Mensual Total sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta Mensual Total con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta Total Plazo sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta total plazo con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Descuento</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Total con descuento con IVA incluido</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Comentarios</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">1</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">2</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">3</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">4</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br/>
+							<div class="slds-grid slds-gutters">
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<h3 class="slds-section-title-divider slds-m-top-medium">SVA´s</h3>
+								</div>
+							</div>
+							<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+								<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+									<thead>
+										<tr class="slds-text-title--caps">
+											<th scope="col">
+												<div class="slds-truncate" title="Nombre">Consecutivo</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Nombre del Perfil</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Cantidad</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Plan Tarifario</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Plazo</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta Mensual Total sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta Mensual Total con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta Total Plazo sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta total plazo con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Descuento</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Total con descuento con IVA incluido</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Comentarios</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">1</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">2</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">3</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">4</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br/>
+							<div class="slds-grid slds-gutters">
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<h3 class="slds-section-title-divider slds-m-top-medium">Soluciones a la medida</h3>
+								</div>
+							</div>
+							<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+								<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+									<thead>
+										<tr class="slds-text-title--caps">
+											<th scope="col">
+												<div class="slds-truncate" title="Nombre">Consecutivo</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Nombre del Perfil</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Cantidad</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Plan Tarifario</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Plazo</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta Mensual Total sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta Mensual Total con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta Total Plazo sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta total plazo con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Descuento</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Total con descuento con IVA incluido</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Comentarios</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">1</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">2</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">3</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">4</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br/>
+							<div class="slds-grid slds-gutters">
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+									<h3 class="slds-section-title-divider slds-m-top-medium">Amigo KIT</h3>
+								</div>
+							</div>
+							<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+								<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+									<thead>
+										<tr class="slds-text-title--caps">
+											<th scope="col">
+												<div class="slds-truncate" title="Nombre">Consecutivo</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Nombre del Perfil</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Cantidad</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Plan Tarifario</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Plazo</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta Mensual Total sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta Mensual Total con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Renta Total Plazo sin IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Renta total plazo con IVA</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Descuento</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate" title="Teléfono">Total con descuento con IVA incluido</div>
+											</th>
+											<th scope="col">
+												<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Comentarios</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">1</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">2</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">3</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+										<tr>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">4</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Prueba</div>
+											</td>
+											<td scope="col" class="slds-align_absolute-center">
+												<lightning:buttonIcon iconName="utility:add" variant="bare" alternativeText="add" />
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Nombre">Productividad</div>
+											</td>
+											<td scope="col">
+												<div class="slds-truncate" title="Teléfono">20</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br/>
+							<div class="slds-grid slds-gutters">
+								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+								<ui:button label="Generar Cotización" press="{!c.cotizacion}"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aura:if>
+	<aura:if isTrue="{!v.generarCotizacion}">
+		<div class="slds-grid slds-gutters">
+			<div class="slds-col">
+				<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+					<div class="slds-scrollable" style="height:235px;">
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Portada" name="name"  checked="true" disabled="true"/>
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+								</div>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Detalle de los perfiles generados" name="name" checked="true" disabled="true"/>
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+								</div>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Anexo I: Ficha técnica de los equipos"  name="name" />
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+								</div>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Anexo II: Descripcion de: Planes, Productos y servicios Adicionales y Soluciones" name="name" />
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+								</div>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Anexo III: Roaming Internacional" name="name" />
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+								</div>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Anexo IV: Oferta de planes empleados corporativo" name="name" />
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+								</div>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Diferenciadores vs. Competencia" name="name" />
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+								</div>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Condiciones legales" name="name" checked="true" disabled="true"/>
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+								</div>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Firma del ejecutivo que presenta la propuesta" name="name" checked="true" disabled="true"/>
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<div class="slds-grid slds-gutters">
+									<ui:button label="Enviar" press="{!c.QuotinDetails}"/>
+								</div>
+							</div>
+							<div class="slds-col slds-has-flexi-truncate">
+								<lightning:input type="checkbox" label="Relacionar embudo" name="name" />
+								<lightning:input type="checkbox" label="Con negociación especial" name="name" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aura:if>
+	<!-- <aura:if isTrue="{!v.generarCotizacionDetails}">
+      <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+        <div class="slds-modal__container">
+          <div class="slds-modal__header">
+            <button class="slds-button slds-modal__close slds-button-icon-inverse" title="Close" onclick="{!c.closeModel}">
+            X
+            <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="header99" class="slds-text-heading-medium"></h2>
+          </div>
+          <div class="slds-modal__content slds-p-around-medium">
+            <p>
+            	<b>
+              	Cotizacion enviada 
+              </b>
+            </p>
+          </div>
+          <div class="slds-modal__footer">
+            <button class="slds-button slds-button-brand" onclick="{!c.likenClose}">Cerrar</button>
+          </div>
+        </div>
+      </div>
+      <div class="slds-backdrop slds-backdrop-open"></div>
+	</aura:if> -->
+	<aura:if isTrue="{!v.generarCotizacionDetails}">
+		<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+		<div class="slds-scrollable" style="height:500px;">
+			<lightning:accordion activeSectionName="A">
+				<lightning:accordionSection label="Negociacion Especial" name="A">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<h3 class="slds-section-title--divider slds-m-top--medium">Descripcion del plan</h3>											
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<h3 class="slds-section-title--divider slds-m-top--medium">Servicios que incluye el plan</h3>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Nombre">TMAX EMP SL 1500 CONTROLADO</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Tarifa</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Importe s/Imptos*</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">TMAX EMP SL 1500 CONTROLADO</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">$20.00</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">$320.00</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Nombre">Min Telcel</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">SMS</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Datos (MB)</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Min Indistintos</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Ilimitado</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">Ilimitado</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">100</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">Ilimitado</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<br/>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<h3 class="slds-section-title--divider slds-m-top--medium">Bolsa de Servicios</h3>											
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<h3 class="slds-section-title--divider slds-m-top--medium">Bolsa de Roaming</h3>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Nombre">Min Telcel</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">SMS</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Datos (MB)</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Ilimitado</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">Ilimitado</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">100</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Nombre">Min Telcel</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">SMS</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Datos (MB)</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Ilimitado</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">Ilimitado</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">100</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</lightning:accordionSection>
+				<lightning:accordionSection label="CAPEX" name="B">
+					<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+						<thead>
+							<tr class="slds-text-title--caps">
+								<th scope="col">
+									<div class="slds-truncate" title="Nombre">Concepto</div>
+								</th>
+								<th scope="col">
+									<div class="slds-truncate" title="Teléfono">Monto</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="col">
+									<div class="slds-truncate" title="Nombre">Productividad</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono">20</div>
+								</td>
+							</tr>
+							<tr>
+								<td scope="col">
+									<div class="slds-truncate" title="Nombre">Seguridad</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono">20</div>
+								</td>
+							</tr>
+							<tr>
+								<td scope="col">
+									<div class="slds-truncate" title="Nombre">Productividad</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono">20</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</lightning:accordionSection>
+				<lightning:accordionSection label="OPEX" name="C">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<h3 class="slds-section-title--divider slds-m-top--medium">Gastos Unicos</h3>											
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<h3 class="slds-section-title--divider slds-m-top--medium">Gastos Recurentes</h3>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Nombre">Concepto</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Monto</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Productividad</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">20</div>
+										</td>
+									</tr>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Seguridad</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">20</div>
+										</td>
+									</tr>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Productividad</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">20</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Nombre">Concepto</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Monto</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Productividad</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">20</div>
+										</td>
+									</tr>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Seguridad</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">20</div>
+										</td>
+									</tr>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Productividad</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">20</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</lightning:accordionSection>
+				<lightning:accordionSection label="Premisa Comercial" name="D">
+					<br/>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<h3 class="slds-section-title--divider slds-m-top--medium">Historico de rentabilidad</h3>											
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Nombre">Vigencia de cotizacion</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Perfil</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Plan</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Teléfono">Plazo</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">22/09/2018</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Teléfono">Jefes A</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">Max sin limite 2000</div>
+										</td>
+										<td scope="col">
+											<div class="slds-truncate" title="Nombre">24 meses</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- <table class="slds-table slds-table-bordered slds-table-cell-buffer">
+						<thead>
+							<tr class="slds-text-title-caps">
+								<th scope="col">
+									<div class="slds-truncate" title="Nombre">Plan</div>
+								</th>
+								<th scope="col">
+									<div class="slds-truncate" title="Teléfono">No de Lineas</div>
+								</th>
+								<th scope="col">
+									<div class="slds-truncate" title="Nombre">Renta</div>
+								</th>
+								<th scope="col">
+									<div class="slds-truncate" title="Teléfono">% nDesc. de rentas</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="col">
+									<div class="slds-truncate" title="Nombre">Productividad</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono">20</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono">$420</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono"></div>
+								</td>
+							</tr>
+							<tr>
+								<td scope="col">
+									<div class="slds-truncate" title="Nombre">Seguridad</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono">40</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono">$320</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono"></div>
+								</td>
+							</tr>
+							<tr>
+								<td scope="col">
+									<div class="slds-truncate" title="Nombre">Productividad</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono">25</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono">$820</div>
+								</td>
+								<td scope="col">
+									<div class="slds-truncate" title="Teléfono"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table> -->
+				</lightning:accordionSection>
+				<lightning:accordionSection label="Resultado de la rentabilidad" name="E">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<img src="{!$Resource.COT_TrafficLightGreen}"/>
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="{!v.myText}" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:button label="Solicitar Autorizacion" press="{!c.QuotinDetails2}"/>
+						</div>
+					</div>
+				</lightning:accordionSection>
+			</lightning:accordion>
+			<!-- <ui:button label="Enviar Propuesta al cliente" press="{!c.sendQuoting}"/> -->
+		</div>
+	</div>
+	</aura:if>
+	<aura:if isTrue="{!v.blnsendQuoting}">
+		<div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+        <div class="slds-modal__container">
+          <div class="slds-modal__header">
+            <button class="slds-button slds-modal__close slds-button-icon-inverse" title="Close" onclick="{!c.closeModel}">
+            X
+            <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="header99" class="slds-text-heading-medium">Enviar a Cliente</h2>
+          </div>
+          <div class="slds-modal__content slds-p-around-medium">
+            <ui:outputURL value="{!v.myURL}" label="Cotizacion"/>
+          </div>
+          <div class="slds-modal__content slds-p-around-medium">
+            <lightning:input type="text" label="Correo 1:" name="name" />
+          </div>
+          <div class="slds-modal__content slds-p-around-medium">
+            <lightning:input type="text" label="Correo 2:" name="name" />
+          </div>
+          <div class="slds-modal__content slds-p-around-medium">
+            <lightning:input type="text" label="Correo 3:" name="name" />
+          </div>
+          <div class="slds-modal__footer">
+            <button class="slds-button slds-button-brand" onclick="{!c.likenClose}">Enviar</button>
+          </div>
+        </div>
+      </div>
+      <div class="slds-backdrop slds-backdrop-open"></div>
+	</aura:if>
+	<aura:if isTrue="{!v.generarCotizacionDetails2}">
+		<div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+        <div class="slds-modal__container">
+          <div class="slds-modal__header">
+            <button class="slds-button slds-modal__close slds-button-icon-inverse" title="Close" onclick="{!c.closeModel}">
+            X
+            <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="header99" class="slds-text-heading-medium">Enviar a aprobación</h2>
+          </div>
+          <div class="slds-modal__content slds-p-around-medium">
+            <p>
+            	<b>
+              	Antiguedad del cliente: 2 años<br/>
+              	Grupo: Bimbo<br/>
+              	Renovacion: Si<br/>
+              	ARPU:<br/>
+              	Facturacion mensual Promedio: $2'500,000<br/>
+              	Numero de lineas activas: 400<br/>
+              	Costo de captacion: $300<br/>
+              </b>
+            </p>
+          </div>
+          <div class="slds-modal__footer">
+            <button class="slds-button slds-button-brand" onclick="{!c.likenClose}">Enviar</button>
+          </div>
+        </div>
+      </div>
+      <div class="slds-backdrop slds-backdrop-open"></div>
+	</aura:if>
+</aura:component>

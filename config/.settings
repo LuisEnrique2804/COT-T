@@ -12,6 +12,8 @@
         "ApexComponent",
         "ApexPage",
         "ApexTrigger",
+        "AuraDefinitionBundle",
+        "CustomLabels",
         "StaticResource"
     ]
 }

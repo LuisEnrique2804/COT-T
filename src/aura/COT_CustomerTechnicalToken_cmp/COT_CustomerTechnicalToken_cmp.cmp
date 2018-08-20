@@ -1,0 +1,207 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+		<div class="slds-grid slds-gutters">
+			<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+				
+			</div>
+			<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+				<ui:outputText value="HUAWEI ALP-L09 4G LTE MATE 10" />
+				<img src="{!$Resource.COT_Mate10}"/>
+			</div>
+			<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+				<ui:outputText value="Xperia" />
+				<img src="{!$Resource.COT_xperia}"/>
+			</div>
+			<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+				<ui:outputText value="Alcatel" />
+				<img src="{!$Resource.COT_alcatel}"/>
+			</div>
+		</div>
+	</div>
+	<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+		<div class="slds-scrollable" style="height:800px;">
+			<lightning:accordion activeSectionName="A">
+				<lightning:accordionSection label="Pantalla" name="A">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Resolución: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="1334 x 750 pixeles" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="1334 x 750 pixeles" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="1334 x 750 pixeles" />
+						</div>
+					</div>
+					<br/>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Pulgadas: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="4.7 pulgadas" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="4.7 pulgadas" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="4.7 pulgadas" />
+						</div>
+					</div>
+					<br/>
+				</lightning:accordionSection>
+				<lightning:accordionSection label="Procesador" name="B">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Chip: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Chip A9 con arquitectura de 64 bits " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Chip A9 con arquitectura de 64 bits " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Chip A9 con arquitectura de 64 bits " />
+						</div>
+					</div>
+					<br/>
+				</lightning:accordionSection>
+				<lightning:accordionSection label="Camara" name="C">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Camara trasera " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="12 Megapixeles" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="12 Megapixeles" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="12 Megapixeles" />
+						</div>
+					</div>
+					<br/>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Camara Frontal: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="5 Megapixeles" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="5 Megapixeles" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="5 Megapixeles" />
+						</div>
+					</div>
+					<br/>
+				</lightning:accordionSection>
+				<lightning:accordionSection label="Tamaño y Peso" name="D">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Tamaño: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="138.3 x 67.1 x 7.1 mm" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="138.3 x 67.1 x 7.1 mm" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="138.3 x 67.1 x 7.1 mm" />
+						</div>
+					</div>
+					<br/>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Peso: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="143 g" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="143 g" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="143 g" />
+						</div>
+					</div>
+					<br/>
+				</lightning:accordionSection>
+				<lightning:accordionSection label="Sistema Operativo" name="E">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Versión: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Android 5.1.1 Lollipop" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Android 5.1.1 Lollipop" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Android 5.1.1 Lollipop" />
+						</div>
+					</div>
+					<br/>
+				</lightning:accordionSection>
+				<lightning:accordionSection label="Capacidad" name="F">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Memoria RAM: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="2 GB" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="2 GB" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="2 GB" />
+						</div>
+					</div>
+					<br/>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Memoria externa: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="AMicro SD, expandible hasta 128 GB" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="AMicro SD, expandible hasta 128 GB" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="AMicro SD, expandible hasta 128 GB" />
+						</div>
+					</div>
+					<br/>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="Memoria interna: " />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="32 GB de memoria total, 24.6 GB de memoria
+disponible para usuario" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="32 GB de memoria total, 24.6 GB de memoria
+disponible para usuario" />
+						</div>
+						<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+							<ui:outputText value="32 GB de memoria total, 24.6 GB de memoria
+disponible para usuario" />
+						</div>
+					</div>
+					<br/>
+				</lightning:accordionSection>
+			</lightning:accordion>
+		</div>
+	</div>
+</aura:component>
