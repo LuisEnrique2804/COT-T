@@ -1,0 +1,17 @@
+{
+    "projectName": "COT-T",
+    "username": "admavx@telcel.com.dc",
+    "id": "c15d35b0-a48f-11e8-92a9-1bb8f370e64f",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://telcel-dev--DC.cs18.my.salesforce.com",
+    "workspace": "C:\\Users\\ToshAvanxo\\Documents\\Workspace\\Avanxo\\Desarrollo",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}
