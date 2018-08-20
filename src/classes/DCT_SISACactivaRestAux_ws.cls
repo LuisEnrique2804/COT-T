@@ -337,7 +337,7 @@ public class DCT_SISACactivaRestAux_ws {
 						info.UsuarioXO = clienteIterator.XO__c;
 						info.PuedeActivarVPN = clienteIterator.DCTVPNActivation__c ? true : false;
 						info.FuerzadeVentaActivarVPN = mapService1.containsKey('Activación VPN')?mapService1.get('Activación VPN'):null;
-						
+						info.Estatus =clienteIterator.DCTStatus__c;
 						
 						lstInfo17.add(info);
 						response.resultadoMetodo17 = lstInfo17;/////Ok///OK
@@ -369,6 +369,7 @@ public class DCT_SISACactivaRestAux_ws {
 						info.UsuarioXO = clienteIterator.XO__c;
 						info.PuedeActivarVPN = clienteIterator.DCTVPNActivation__c ? true : false;
 						info.FuerzadeVentaActivarVPN = mapService1.containsKey('Activación VPN')?mapService1.get('Activación VPN'):null;
+						info.Estatus =clienteIterator.DCTStatus__c;
 						
 						lstInfo28.add(info);
 						response.resultadoMetodo28 = lstInfo28;////OK
@@ -397,7 +398,7 @@ public class DCT_SISACactivaRestAux_ws {
 						info.UsuarioXO = clienteIterator.XO__c;
 						info.PuedeActivarVPN = clienteIterator.DCTVPNActivation__c ? true : false;
 						info.FuerzadeVentaActivarVPN = mapService1.containsKey('Activación VPN')?mapService1.get('Activación VPN'):null;
-						
+						info.Estatus =clienteIterator.DCTStatus__c;
 						
 						lstInfo69.add(info);
 						response.resultadoMetodo69 = lstInfo69;
@@ -408,6 +409,7 @@ public class DCT_SISACactivaRestAux_ws {
 						info.DireccionFiscal = clienteIterator.DCTFiscalAddress__c;
 						info.DireccionCorrespondencia = clienteIterator.DCTCorrespondenceAddress__c	;
 						info.Id = clienteIterator.DTCCustomerID__c;// DTCCustomerID__c
+						info.Estatus =clienteIterator.DCTStatus__c;
 						lstInfo3.add(info);
 						response.resultadoMetodo3 = lstInfo3;
 					}
@@ -415,6 +417,7 @@ public class DCT_SISACactivaRestAux_ws {
 						DCT_ResponseSISACactiva_cls.Info4 info = new DCT_ResponseSISACactiva_cls.Info4();
 						info.RazonSocial = clienteIterator.Name; 
 						info.UsuarioXO = clienteIterator.XO__c; 
+						info.Estatus =clienteIterator.DCTStatus__c;
 						lstInfo4.add(info);
 						response.resultadoMetodo4 = lstInfo4;
 					}
@@ -422,6 +425,7 @@ public class DCT_SISACactivaRestAux_ws {
 						DCT_ResponseSISACactiva_cls.Info5 info = new DCT_ResponseSISACactiva_cls.Info5();
 						info.RazonSocial = clienteIterator.Name; 
 						info.Rfc = clienteIterator.RFC__c != null ? clienteIterator.RFC__c : null;
+						info.Estatus =clienteIterator.DCTStatus__c;
 						lstInfo5.add(info);
 						response.resultadoMetodo5 = lstInfo5;
 					}
@@ -429,12 +433,14 @@ public class DCT_SISACactivaRestAux_ws {
 						DCT_ResponseSISACactiva_cls.Info10 info = new DCT_ResponseSISACactiva_cls.Info10();
 						info.FuerzaVentaEjecutivo = clienteIterator.VT__c != null ? clienteIterator.VT__c : null; //DCTVT
 						info.UsuarioXO = clienteIterator.XO__c;
+						info.Estatus =clienteIterator.DCTStatus__c;
 						lstInfo10.add(info);
 						response.resultadoMetodo10 = lstInfo10;
 					}
 					if(method == '11') {//////OK
 						DCT_ResponseSISACactiva_cls.Info11 info = new DCT_ResponseSISACactiva_cls.Info11();
 						info.UsuarioXO = clienteIterator.XO__c;
+						info.Estatus =clienteIterator.DCTStatus__c;
 						lstInfo11.add(info);
 						response.resultadoMetodo11 = lstInfo11;
 					}
@@ -443,6 +449,7 @@ public class DCT_SISACactivaRestAux_ws {
 						info.RazonSocial = clienteIterator.Name; 
 						info.UsuarioXO = clienteIterator.XO__c;
 						info.Id = clienteIterator.DTCCustomerID__c;// DTCCustomerID__c
+						info.Estatus =clienteIterator.DCTStatus__c;
 						lstInfo12.add(info);
 						response.resultadoMetodo12 = lstInfo12;
 					}

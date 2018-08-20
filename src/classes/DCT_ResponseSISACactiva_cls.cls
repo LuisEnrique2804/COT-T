@@ -38,6 +38,7 @@ global class DCT_ResponseSISACactiva_cls {
 		global String UsuarioXO;
 		global Boolean PuedeActivarVPN;
 		global String FuerzadeVentaActivarVPN;
+		global String Estatus;
 		//global String Integrador;
 	}
 	global class Info1y7 {
@@ -62,6 +63,7 @@ global class DCT_ResponseSISACactiva_cls {
 		global String UsuarioXO;
 		global Boolean PuedeActivarVPN;
 		global String FuerzadeVentaActivarVPN;
+		global String Estatus;
 		//global String Integrador;
 	}
 	global class Info6y9 {
@@ -84,34 +86,41 @@ global class DCT_ResponseSISACactiva_cls {
 		global String UsuarioXO;
 		global Boolean PuedeActivarVPN;
 		global String FuerzadeVentaActivarVPN;
+		global String Estatus;
 	}
 	global class Info3 {
 		global String RazonSocial; 
 		global String DireccionFiscal;
 		global String DireccionCorrespondencia;
 		global String Id;
+		global String Estatus;
 	}
 	global class Info4 {
 		global String RazonSocial; 
 		global String UsuarioXO; 
+		global String Estatus;
 	}
 	global class Info5 {
 		global String RazonSocial; 
 		global String Rfc; 
+		global String Estatus;
 	}
 	global class Info10 {
 		global String FuerzaVentaEjecutivo;
 		global String UsuarioXO; 
+		global String Estatus;
 	}
 
 	global class Info11 {
 		global String UsuarioXO; 
+		global String Estatus;
 	}
 
 	global class Info12{
 		global String RazonSocial;
 		global String UsuarioXO;  
 		global String Id;
+		global String Estatus;
 	}
 
 	global class Info1314y15{

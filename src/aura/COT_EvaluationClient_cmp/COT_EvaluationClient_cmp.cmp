@@ -1,303 +1,57 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
-	<aura:attribute name="options" type="List" default="[
-		{'label': 'Grupo', 'value': 'Grupo'},
-		{'label': 'Razón Social', 'value': 'Razón Social'},
-		{'label': 'Cuenta Nacional', 'value': 'Cuenta Nacional'},
-		{'label': 'Cuenta Padre', 'value': 'Cuenta Padre'}
-	]"/>
+	<aura:attribute name="options" type="List" />
 	<aura:attribute name="value" type="String" default="Grupo"/>
 	<aura:attribute name="myBool" type="Boolean" default="false"/>
-	<div class="slds-page-header">
-		<div class="slds-grid slds-gutters">
-			<div class="slds-col slds-has-flexi-truncate">
-				<div class="slds-media slds-no-space slds-grow">
-					<lightning:radioGroup aura:id="mygroup"
-						name="radioButtonGroup"
-						label="Selecciona al cliente para Evaluar Comportamiento"
-						options="{! v.options }"
-						value="{! v.value }"
-						required="true" />         
-				</div>
+	<aura:handler name="init" value="{!this}" action="{!c.loadOptions}" />
+	<lightning:tabset>
+        <lightning:tab label="Enviar Evaluación">
+            <div class="slds-m-top--x-small slds-grid slds-wrap slds-grid_pull-padded slds-m-horizontal--small slds-grid_vertical-align-center" >
+				<!-- <div class="slds-box slds-grid slds-gutters"> -->
+					<div class=" slds-col">
+						<div class="slds-media slds-no-space slds-grow">
+							<lightning:radioGroup aura:id="mygroup"
+								name="radioButtonGroup"
+								label="Selecciona al cliente para Evaluar Comportamiento"
+								options="{! v.options }"
+								value="{! v.value }"
+								required="true" 
+							/>         
+						</div>
+					</div>
+					<div class="slds-box slds-col">		
+						<aura:if isTrue="{!v.value == 'Grupo'}">
+							<lightning:input type="search" label="{! v.value }" name="SearchGroup" />
+						</aura:if>
+						<aura:if isTrue="{!v.value == 'Razón Social'}">
+							<lightning:input type="search" label="{! v.value }" name="SearchRS" />
+							<lightning:input type="search" label="RFC" name="SearchRFC" />
+						</aura:if>
+						<aura:if isTrue="{!v.value == 'Cuenta Nacional'}">
+							<lightning:input type="search" label="{! v.value }" name="SearchCN" />
+						</aura:if>
+						<aura:if isTrue="{!v.value == 'Cuenta Padre'}">
+							<lightning:input type="search" label="{! v.value }" name="SearchCP" />
+						</aura:if>
+					</div>
+					<div class="slds-box slds-col slds-align_absolute-center">
+						<ui:button buttonType="submit" label="Generar reporte de la evaluación" press="{!c.changeValue}"/>
+					</div>
+				<!-- </div> -->
 			</div>
-			<div class="slds-col slds-has-flexi-truncate">
-				<lightning:input type="search" label="{! v.value }" name="Search" />
-				<aura:if isTrue="{!v.value == 'Razón Social'}">
-					<lightning:input type="search" label="RFC" name="RFC" />
-				</aura:if>
-			</div>
-			<div class="slds-col slds-has-flexi-truncate">
-				<ui:button buttonType="submit" label="Generar reporte de la evaluación" press="{!c.changeValue}"/>
-
-			</div>
-		</div>
-	</div>
-	<aura:if isTrue="{!v.myBool}">
-		<h3 class="slds-section-title--divider slds-m-top--medium">Resultado de la evaluación</h3>
-		<table class="slds-table slds-table--bordered slds-table--cell-buffer">
-			<thead>
-				<tr class="slds-text-title--caps">
-					<th scope="col">
-						<div class="slds-truncate" title="Nombre">Campo</div>
-					</th>
-					<th scope="col">
-						<div class="slds-truncate" title="Teléfono">Razón Social A</div>
-					</th>
-					<th scope="col">
-						<div class="slds-truncate" title="Teléfono">Razón Social B</div>
-					</th>
-					<th scope="col">
-						<div class="slds-truncate" title="Teléfono">Razón Social C</div>
-					</th>
-					<th scope="col">
-						<div class="slds-truncate" title="Teléfono">Razón Social D</div>
-					</th>
-					<th scope="col">
-						<div class="slds-truncate" title="Teléfono">Razón Social E</div>
-					</th>
-					<th scope="col">
-						<div class="slds-truncate" title="Teléfono">Razón Social F</div>
-					</th>
-					<th scope="col">
-						<div class="slds-truncate" title="Teléfono">Razón Social G</div>
-					</th>
-					<th scope="col">
-						<div class="slds-truncate" title="Teléfono">Razón Social H</div>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="slds-text-title--caps">
-					<td scope="col">
-						<div class="slds-truncate" title="Nombre">Activas</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">10</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">20</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">11</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">15</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">13</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">12</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">11</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">50</div>
-					</td>
-				</tr>
-				<tr class="slds-text-title--caps">
-					<td scope="col">
-						<div class="slds-truncate" title="Nombre">PORT IN</div>
-					</td>
-									<td scope="col">
-						<div class="slds-truncate" title="Teléfono">5</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">14</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">1</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">10</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">7</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">4</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">3</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">20</div>
-					</td>
-				</tr>
-				<tr class="slds-text-title--caps">
-					<td scope="col">
-						<div class="slds-truncate" title="Nombre">PORT OUT</div>
-					</td>
-									<td scope="col">
-						<div class="slds-truncate" title="Teléfono">10</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">20</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">11</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">15</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">13</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">12</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">11</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">50</div>
-					</td>
-				</tr>
-				<tr class="slds-text-title--caps">
-					<td scope="col">
-						<div class="slds-truncate" title="Nombre">ARPU</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">5.5</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">12.5</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">17.25</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">2.69</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">4.25</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">12.55</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">6.66</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">3.14</div>
-					</td>
-				</tr>
-				<tr class="slds-text-title--caps">
-					<td scope="col">
-						<div class="slds-truncate" title="Nombre">Canceladas</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">1</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">2</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">1</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">5</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">3</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">9</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">19</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">54</div>
-					</td>			</tr>
-				<tr class="slds-text-title--caps">
-					<td scope="col">
-						<div class="slds-truncate" title="Nombre">Lineas Suspendidas</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">5</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">10</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">5</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">7</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">1</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">5</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">1</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">25</div>
-					</td>
-				</tr>
-				<tr class="slds-text-title--caps">
-					<td scope="col">
-						<div class="slds-truncate" title="Nombre">% de Lineas vencidas</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">10%</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">20%</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">11%</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">15%</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">13%</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">12%</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">11%</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">50%</div>
-					</td>
-				</tr>
-				<tr class="slds-text-title--caps">
-					<td scope="col">
-						<div class="slds-truncate" title="Nombre">Lineas Vencidas</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">10</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">20</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">11</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">15</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">13</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">12</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">11</div>
-					</td>
-					<td scope="col">
-						<div class="slds-truncate" title="Teléfono">50</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</aura:if>
+        </lightning:tab>
+        <lightning:tab label="Obtener Evaluación">
+			<!-- <aura:if isTrue="{!v.myBool}">
+				<h3 class="slds-section-title-divider slds-m-top-medium">Resultado de la evaluación</h3>
+				<c:COT_TableGeneric_cmp  
+		  			sObjectName="Opportunity" 
+		  			fieldSetName="opportunitytable" 
+		  			parentFieldName="AccountId" 
+		 			parentRecordId="00141000009jb4BAAQ"/>	
+		 		<c:COT_TableGeneric_cmp  
+		  			sObjectName="COT_EvaluaciondelCliente__c" 
+		  			fieldSetName="COT_ResultadoEvaluacion" 
+		  		/>	
+			</aura:if> -->
+        </lightning:tab>
+    </lightning:tabset>
 </aura:component>
