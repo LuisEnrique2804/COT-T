@@ -315,7 +315,7 @@ public class DCT_SISACactivaRestAux_ws {
 						DCT_ResponseSISACactiva_cls.Info1y7 info = new DCT_ResponseSISACactiva_cls.Info1y7();
 						
 						info.RazonSocial = clienteIterator.Name; 
-						info.FuerzaVentaAtiendenCliente = clienteIterator.DCT_CatalogoFuerzaVenta__r.Name +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.Name;
+						info.DATFuerzaVenta = clienteIterator.DCT_CatalogoFuerzaVenta__r.Name +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.Name;
 						info.FuerzaVentaEjecutivo = clienteIterator.VT__c != null ? clienteIterator.VT__c : null; //DCTVT
 						info.FuerzaVentaServicioVoz = mapService1.containsKey('Para Voz - Datos')?mapService1.get('Para Voz - Datos'):null;
 						info.FuerzaVentaServicioDatos = mapService1.containsKey('Para Voz - Datos')?mapService1.get('Para Voz - Datos'):null;
@@ -347,7 +347,7 @@ public class DCT_SISACactivaRestAux_ws {
 						DCT_ResponseSISACactiva_cls.Info2y8 info = new DCT_ResponseSISACactiva_cls.Info2y8();
 						
 						info.RazonSocial = clienteIterator.Name; 
-						info.FuerzaVentaAtiendenCliente = clienteIterator.DCT_CatalogoFuerzaVenta__r.Name +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.Name;
+						info.DATFuerzaVenta = clienteIterator.DCT_CatalogoFuerzaVenta__r.Name +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.Name;
 						info.FuerzaVentaEjecutivo = clienteIterator.VT__c != null ? clienteIterator.VT__c : null; //DCTVT
 						info.FuerzaVentaServicioVoz = mapService1.containsKey('Para Voz - Datos')?mapService1.get('Para Voz - Datos'):null;
 						info.FuerzaVentaServicioDatos = mapService1.containsKey('Para Voz - Datos')?mapService1.get('Para Voz - Datos'):null;
@@ -378,7 +378,7 @@ public class DCT_SISACactivaRestAux_ws {
 
 						DCT_ResponseSISACactiva_cls.Info6y9 info = new DCT_ResponseSISACactiva_cls.Info6y9();
 						
-						info.FuerzaVentaAtiendenCliente = clienteIterator.DCT_CatalogoFuerzaVenta__r.Name +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.Name;
+						info.DATFuerzaVenta = clienteIterator.DCT_CatalogoFuerzaVenta__r.Name +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.Name;
 						info.FuerzaVentaEjecutivo = clienteIterator.VT__c != null ? clienteIterator.VT__c : null; //DCTVT
 						info.FuerzaVentaServicioVoz = mapService1.containsKey('Para Voz - Datos')?mapService1.get('Para Voz - Datos'):null;
 						info.FuerzaVentaServicioDatos = mapService1.containsKey('Para Voz - Datos')?mapService1.get('Para Voz - Datos'):null;
@@ -477,57 +477,57 @@ public class DCT_SISACactivaRestAux_ws {
 						info.Estatus =clienteIterator.DCTStatus__c;
 						info.PersonaJuridica =clienteIterator.DCT_LegalPerson__c;
 						info.RazonSocialModificadaPor =clienteIterator.DCTSocialReasonModified__c;
-						info.FechaModificacionRS =clienteIterator.DCTDateRegistrationAdjudication__c;
-						info.EstaBuro =clienteIterator.DCTCreditBureau__c; 
+						info.RazonSocialFechaModificacion =clienteIterator.DCTDateRegistrationAdjudication__c;
+						info.EstaEnBuro =clienteIterator.DCTCreditBureau__c; 
 						info.EsVIP =clienteIterator.DCTVIP__c; 
 						info.TieneAVL =clienteIterator.DCTAVL__c; 
 						info.RepersentanteLegal =clienteIterator.DCTLegalRepresentative__c;
 						info.Beneficios =clienteIterator.DCTBenefits__c;
-						info.FechaRegistro =clienteIterator.DCTRegistrationDate__c;
+						info.ClienteFechaRegistro =clienteIterator.DCTRegistrationDate__c;
 						info.FechaModificacion =Date.valueOf(clienteIterator.LastModifiedDate);
-						info.UltimoUsuarioModificar =clienteIterator.LastModifiedBy.Name;
-						info.XOUltimoUsuarioModificar =clienteIterator.LastModifiedBy.DCTXO__c;
+						info.UsuarioModificaNombre =clienteIterator.LastModifiedBy.Name;
+						info.UsuarioModificaXO =clienteIterator.LastModifiedBy.DCTXO__c;
 						info.FechaBaja =clienteIterator.DCTLowDate__c; 
 						info.PuedeActivarVPN =clienteIterator.DCTVPNActivation__c ? true : false;
 						info.CicloFacturacion =clienteIterator.DCTBillingCycle__c != null ? clienteIterator.DCTBillingCycle__c : null;
 						info.ClaseCredito =clienteIterator.DCTCreditClass__c != null ? clienteIterator.DCTCreditClass__c : null;
 						info.TipoCuenta =clienteIterator.DCTAccountType__c != null ? clienteIterator.DCTAccountType__c : null;
 						info.ExcentaFianza =clienteIterator.DCTExemptBail__c; 
-						info.Comentario =clienteIterator.DCTComments__c;
+						info.ComentarioGeneral =clienteIterator.DCTComments__c;
 						
 						info.GrupoPlan =strGroup != ''?strGroup:null;
 						info.TarifasAutorizada =strTarifas != ''?strTarifas:null;
 						info.ClavePlan =strClavePlan != ''?strClavePlan:null;
-						info.NombrePlan =strNombrePlan != ''?strNombrePlan:null;
-						info.Plazo =strPlazo != ''?strPlazo:null;
-						info.Gerente =strGerente != ''?strGerente:null;
-						info.FechaAutorizacion =strFechaAutorizacion != ''?strFechaAutorizacion:null;
-						info.TratoCompartido =clienteIterator.DCTSharedTreatment__c;
+						info.PlanNombre =strNombrePlan != ''?strNombrePlan:null;
+						info.PlanPlazo =strPlazo != ''?strPlazo:null;
+						info.GerenteAutorizo =strGerente != ''?strGerente:null;
+						info.PlanFechaAutorizacion =strFechaAutorizacion != ''?strFechaAutorizacion:null;
+						info.TieneTratoCompartido =clienteIterator.DCTSharedTreatment__c;
 
-						info.IdentificadorDistribuidor =clienteIterator.DCT_CatalogoFuerzaVenta__r.DCT_PrepagoSiapID__c +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.DCT_PrepagoSiapID__c;
-						info.FuerzaVentaAtiendenCliente =clienteIterator.DCT_CatalogoFuerzaVenta__r.Name +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.Name;
-						info.NombreDAT =clienteIterator.DCTDistribuidorPrincipal__c + ','+ clienteIterator.DCTDistribuidorSecundario__c;
+						info.DATId =clienteIterator.DCT_CatalogoFuerzaVenta__r.DCT_PrepagoSiapID__c +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.DCT_PrepagoSiapID__c;
+						info.DATFuerzaVenta =clienteIterator.DCT_CatalogoFuerzaVenta__r.Name +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.Name;
+						info.DATNombre =clienteIterator.DCTDistribuidorPrincipal__c + ','+ clienteIterator.DCTDistribuidorSecundario__c;
 						info.Servicios =clienteIterator.DCTServices1__c+';'+clienteIterator.DCTServices2__c;
-						info.NombreImplant =clienteIterator.DCTInplantName1__c +','+clienteIterator.DCTInplantName2__c;
-						info.TelefonoImplant =clienteIterator.DCTInplantPhone1__c +','+clienteIterator.DCTInplantPhone2__c;
-						info.ExtensionImplant =clienteIterator.DCTExt1__c +','+clienteIterator.DCTExt2__c;
-						info.CelularImplant =clienteIterator.DCTInplantmobile1__c +','+clienteIterator.DCTInplantmobile2__c;
-						info.CorreoElectronicoImplant =clienteIterator.DCTInplantEmail1__c +','+clienteIterator.DCTInplantEmail2__c;
-						info.DistribuidorImplant =clienteIterator.DCTDistributor1__c +','+clienteIterator.DCTDistributor2__c;
-						info.FechaRegistroImplant =String.valueOf(Date.valueOf(clienteIterator.DCTInplantDate1__c))+','+String.valueOf(Date.valueOf(clienteIterator.DCTInplantDate2__c));
+						info.InplantNombre =clienteIterator.DCTInplantName1__c +','+clienteIterator.DCTInplantName2__c;
+						info.InplantTelefono =clienteIterator.DCTInplantPhone1__c +','+clienteIterator.DCTInplantPhone2__c;
+						info.InplantExtension =clienteIterator.DCTExt1__c +','+clienteIterator.DCTExt2__c;
+						info.InplantCelular =clienteIterator.DCTInplantmobile1__c +','+clienteIterator.DCTInplantmobile2__c;
+						info.InplantCorreoElectronico =clienteIterator.DCTInplantEmail1__c +','+clienteIterator.DCTInplantEmail2__c;
+						info.InplantDAT =clienteIterator.DCTDistributor1__c +','+clienteIterator.DCTDistributor2__c;
+						info.InplantFechaRegistro =String.valueOf(Date.valueOf(clienteIterator.DCTInplantDate1__c))+','+String.valueOf(Date.valueOf(clienteIterator.DCTInplantDate2__c));
 						info.LeyendaInvestigacion = clienteIterator.DCTResearchLegend__c;
 						info.ResultadoVerificacion =clienteIterator.DCTResultVerification__c;
 						info.Investigacion =clienteIterator.DCTInvestigation__c;
-						info.Comentarios =clienteIterator.DCTCommentsInvestigation__c;
+						info.InvestigacionComentarios =clienteIterator.DCTCommentsInvestigation__c;
 						info.TotalLineasActivas =clienteIterator.DCTTotalAuthorizedLines__c;
 						info.TipoAutorizacion =clienteIterator.DCTTypeAuthorization__c;
-						info.FechaAutorizacionLineas =clienteIterator.DCTAuthorizationDateVoBoManagement__c;
+						info.LineasFechaAutorizacion =clienteIterator.DCTAuthorizationDateVoBoManagement__c;
 						
 						info.LineasActivas =strLineasActivas != ''?strLineasActivas:null;
 						info.LineasSolicitadas =strLineasSolicitadas != ''?strLineasSolicitadas:null;
-						info.EstatusLineasSolicitadas =strEstatusLineasSolicitadas != ''?strEstatusLineasSolicitadas:null;
-						info.FechaSolicitud =strFechaSolicitud != ''?strFechaSolicitud:null;
-						info.AutorizadoPor =strAutorizadoPor != ''?strAutorizadoPor:null;
+						info.LineasSolicitadasEstatus =strEstatusLineasSolicitadas != ''?strEstatusLineasSolicitadas:null;
+						info.LineasFechaSolicitud =strFechaSolicitud != ''?strFechaSolicitud:null;
+						info.LineasAutorizadaPor =strAutorizadoPor != ''?strAutorizadoPor:null;
 						info.LineasAutorizadas =strLineasAutorizadas != ''?strLineasAutorizadas:null;
 						info.TotalLineasAutorizadas =intTotalLieasAutorizadas;
 						
@@ -537,13 +537,13 @@ public class DCT_SISACactivaRestAux_ws {
 						info.JefeDatos =strJefeDatos != ''?strJefeDatos:null;
 						info.FuerzaVentaJefeDatos =strXODatos != ''?strXODatos:null;
 						
-						info.NombreContacto =strNombreContacto != ''?strNombreContacto:null;
-						info.PuestoContacto =strPuestoContacto != ''?strPuestoContacto:null;
+						info.ContactoNombre =strNombreContacto != ''?strNombreContacto:null;
+						info.ContactoPuesto =strPuestoContacto != ''?strPuestoContacto:null;
 						info.TipoContacto =strTipoContacto != ''?strTipoContacto:null;
-						info.TelefonoContacto =strTelefonoContacto != ''?strTelefonoContacto:null;
-						info.NipContacto =strNipContacto != ''?strNipContacto:null;
-						info.CorreoElectronicoContacto =strCorreoElectronicoContacto != ''?strCorreoElectronicoContacto:null;
-						info.AutorizaRecibirInfo =strAutorizaRecibirInfo != ''?strAutorizaRecibirInfo:null;
+						info.ContactoTelefono =strTelefonoContacto != ''?strTelefonoContacto:null;
+						info.ContactoNip =strNipContacto != ''?strNipContacto:null;
+						info.ContactoCorreoElectronico =strCorreoElectronicoContacto != ''?strCorreoElectronicoContacto:null;
+						info.AutorizaRecibirInformacion =strAutorizaRecibirInfo != ''?strAutorizaRecibirInfo:null;
 						info.Notas =strNotas != ''?strNotas:null;
 						
 						lstInfo131415.add(info);

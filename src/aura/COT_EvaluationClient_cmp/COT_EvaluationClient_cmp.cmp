@@ -1,12 +1,34 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:component controller="COT_EvaluationClient_ctr" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
 	<aura:attribute name="options" type="List" />
 	<aura:attribute name="value" type="String" default="Grupo"/>
 	<aura:attribute name="myBool" type="Boolean" default="false"/>
+	<aura:attribute name="SearchGroup" type="LIST"/>
+	<aura:attribute name="SearchName" type="LIST"/>
+	<aura:attribute name="SearchNational" type="LIST"/>
+	<aura:attribute name="SearchFather" type="LIST"/>
+	<aura:attribute name="selectedValue" type="String"/>
+	<aura:attribute name="selectedValue2" type="String"/>
+	<aura:attribute name="selectedValue3" type="String"/>
+	<aura:attribute name="selectedValue4" type="String"/>
+
 	<aura:handler name="init" value="{!this}" action="{!c.loadOptions}" />
 	<lightning:tabset>
         <lightning:tab label="Enviar Evaluación">
+        	<!-- <aura:attribute name="ListOfAccount" type="Account[]" description="store accounts with there child contacts"/>
+   			<ul>
+      <aura:iteration items="{!v.ListOfAccount}" var="acc">
+         <li type="dice">AccountName : {!acc.Name}</li>
+         <ul>
+            <aura:iteration items="{!acc.Contacts}" var="con" indexVar="index">
+               <li>contact {!index + 1} Name : {!con.LastName}</li>
+            </aura:iteration>
+         </ul>
+         <hr/>
+      </aura:iteration>
+   </ul> -->
             <div class="slds-m-top--x-small slds-grid slds-wrap slds-grid_pull-padded slds-m-horizontal--small slds-grid_vertical-align-center" >
-				<!-- <div class="slds-box slds-grid slds-gutters"> -->
+				
 					<div class=" slds-col">
 						<div class="slds-media slds-no-space slds-grow">
 							<lightning:radioGroup aura:id="mygroup"
@@ -18,40 +40,58 @@
 							/>         
 						</div>
 					</div>
-					<div class="slds-box slds-col">		
+					<div class="slds-col">		
 						<aura:if isTrue="{!v.value == 'Grupo'}">
-							<lightning:input type="search" label="{! v.value }" name="SearchGroup" />
+							<c:COT_customLookup_cmp/>
+							<!-- <lightning:select name="mySelect" label="{! v.value }" aura:id="SearchGroup" value="{!v.selectedValue}">
+								<aura:iteration items="{!v.SearchGroup}" var="item">
+									<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+								</aura:iteration>
+							</lightning:select> -->
 						</aura:if>
 						<aura:if isTrue="{!v.value == 'Razón Social'}">
-							<lightning:input type="search" label="{! v.value }" name="SearchRS" />
-							<lightning:input type="search" label="RFC" name="SearchRFC" />
+							<lightning:select name="mySelect" label="{! v.value }" aura:id="SearchName" value="{!v.selectedValue2}">
+								<aura:iteration items="{!v.SearchName}" var="item">
+									<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+								</aura:iteration>
+							</lightning:select>
+							
+							<lightning:input type="text" label="RFC" value="{!v.selectedValue2}" name="SearchRS" />
 						</aura:if>
 						<aura:if isTrue="{!v.value == 'Cuenta Nacional'}">
-							<lightning:input type="search" label="{! v.value }" name="SearchCN" />
+							<lightning:select name="mySelect" label="{! v.value }" aura:id="SearchGroup" value="{!v.selectedValue3}">
+								<aura:iteration items="{!v.SearchNational}" var="item">
+									<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+								</aura:iteration>
+							</lightning:select>
 						</aura:if>
 						<aura:if isTrue="{!v.value == 'Cuenta Padre'}">
-							<lightning:input type="search" label="{! v.value }" name="SearchCP" />
+							<lightning:select name="mySelect" label="{! v.value }" aura:id="SearchGroup" value="{!v.selectedValue4}">
+								<aura:iteration items="{!v.SearchFather}" var="item">
+									<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+								</aura:iteration>
+							</lightning:select>
 						</aura:if>
 					</div>
-					<div class="slds-box slds-col slds-align_absolute-center">
+					<div class="slds-col slds-align_absolute-center">
 						<ui:button buttonType="submit" label="Generar reporte de la evaluación" press="{!c.changeValue}"/>
 					</div>
-				<!-- </div> -->
+				
 			</div>
         </lightning:tab>
         <lightning:tab label="Obtener Evaluación">
-			<!-- <aura:if isTrue="{!v.myBool}">
-				<h3 class="slds-section-title-divider slds-m-top-medium">Resultado de la evaluación</h3>
-				<c:COT_TableGeneric_cmp  
+			<aura:if isTrue="{!v.myBool}">
+				<h3 class="slds-section-title--divider slds-m-top--medium">Resultado de la evaluación</h3>
+				<!-- <c:COT_TableGeneric_cmp  
 		  			sObjectName="Opportunity" 
 		  			fieldSetName="opportunitytable" 
 		  			parentFieldName="AccountId" 
-		 			parentRecordId="00141000009jb4BAAQ"/>	
+		 			parentRecordId="00141000009jb4BAAQ"/>	 -->
 		 		<c:COT_TableGeneric_cmp  
 		  			sObjectName="COT_EvaluaciondelCliente__c" 
 		  			fieldSetName="COT_ResultadoEvaluacion" 
 		  		/>	
-			</aura:if> -->
+			</aura:if>
         </lightning:tab>
     </lightning:tabset>
 </aura:component>

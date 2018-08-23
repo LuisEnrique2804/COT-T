@@ -1,1 +1,1749 @@
-{}
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"th",
+				"thead"
+			],
+			[
+				"cotizacion",
+				"Cotizacion"
+			],
+			[
+				"i",
+				"if"
+			],
+			[
+				"a",
+				"aura"
+			],
+			[
+				"Se",
+				"servicios"
+			],
+			[
+				"l",
+				"lightning"
+			],
+			[
+				"Json",
+				"JSON\t[Standard Apex Class]"
+			],
+			[
+				"on",
+				"oncomplete\t(String)"
+			],
+			[
+				"out",
+				"apex:outputPanel"
+			],
+			[
+				"sav",
+				"SaveResult"
+			],
+			[
+				"R",
+				"Responsable__c"
+			],
+			[
+				"data",
+				"Database"
+			],
+			[
+				"newC",
+				"newContact_lst"
+			],
+			[
+				"dat",
+				"Database"
+			],
+			[
+				"usr",
+				"userIterator"
+			],
+			[
+				"use",
+				"userIterator"
+			],
+			[
+				"user",
+				"userId_set"
+			],
+			[
+				"WE",
+				"WHERE"
+			],
+			[
+				"new",
+				"newList\tInstantiate a new List"
+			],
+			[
+				"acc",
+				"accountIterator"
+			],
+			[
+				"con",
+				"contResponsable"
+			],
+			[
+				"contact",
+				"Contact"
+			],
+			[
+				"g",
+				"get"
+			],
+			[
+				"str",
+				"strResponseString"
+			],
+			[
+				"res",
+				"response2"
+			],
+			[
+				"re",
+				"response2"
+			],
+			[
+				"else",
+				"else\tElse clause"
+			],
+			[
+				"meth",
+				"method"
+			],
+			[
+				"if",
+				"if\tSimple IF Condition"
+			],
+			[
+				"r",
+				"response"
+			],
+			[
+				"lst",
+				"lstClientRequest"
+			],
+			[
+				"met",
+				"method"
+			],
+			[
+				"me",
+				"method"
+			],
+			[
+				"Rest",
+				"RestContext\t[Standard Apex Class]"
+			],
+			[
+				"St",
+				"String\t[Standard Apex Class]"
+			],
+			[
+				"S",
+				"String\t[Standard Apex Class]"
+			],
+			[
+				"Stat",
+				"static"
+			],
+			[
+				"L",
+				"LIMIT"
+			],
+			[
+				"dct",
+				"dctNewLine"
+			],
+			[
+				"el",
+				"elseif\tElse If clause"
+			],
+			[
+				"ou",
+				"apex:outputPanel"
+			],
+			[
+				"onc",
+				"onclick\t(String)"
+			],
+			[
+				"bln",
+				"blnIsMoralEntity"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"Account",
+				"AccountId"
+			],
+			[
+				"s",
+				"SaveResult"
+			],
+			[
+				"t",
+				"true"
+			],
+			[
+				"Hi",
+				"HistoryMovement__c"
+			],
+			[
+				"id",
+				"idDC"
+			],
+			[
+				"ol",
+				"oldMap"
+			],
+			[
+				"n",
+				"newMap"
+			],
+			[
+				"Ma",
+				"Map\t[Standard Apex Class]"
+			],
+			[
+				"isu",
+				"isUpdate"
+			],
+			[
+				"inpu",
+				"InputEmail"
+			],
+			[
+				"B",
+				"Boolean\t[Standard Apex Class]"
+			],
+			[
+				"v",
+				"PUBLIC valueOf(Object o) \tString"
+			],
+			[
+				"string",
+				"String"
+			],
+			[
+				"de",
+				"debug\tSystem debug with log level Error"
+			],
+			[
+				"Ap",
+				"Approval__c"
+			],
+			[
+				"Co",
+				"Component"
+			],
+			[
+				"f",
+				"apex:form"
+			],
+			[
+				"c",
+				"controller\t(String)"
+			],
+			[
+				"si",
+				"PUBLIC size() \tInteger"
+			],
+			[
+				"map",
+				"mapAccNewOwnerProcess"
+			],
+			[
+				"sidNvo",
+				"sIdNvoPropPaso"
+			],
+			[
+				"ite",
+				"iterator"
+			],
+			[
+				"get",
+				"PUBLIC get(ANY key) \tString"
+			],
+			[
+				"ma",
+				"mapAccNewOwnerProcess"
+			],
+			[
+				"se",
+				"PUBLIC keySet() \tSET<String>"
+			],
+			[
+				"fo",
+				"fore\tIterator-based FOR loop"
+			],
+			[
+				"it",
+				"iterator"
+			],
+			[
+				"lstC",
+				"lstClientDateOk"
+			],
+			[
+				"for",
+				"fore\tIterator-based FOR loop"
+			],
+			[
+				"List",
+				"List\t[Standard Apex Class]"
+			],
+			[
+				"d",
+				"PUBLIC day() \tInteger"
+			],
+			[
+				"m",
+				"PUBLIC month() \tInteger"
+			],
+			[
+				"strin",
+				"String"
+			],
+			[
+				"ne",
+				"newList\tInstantiate a new List"
+			],
+			[
+				"lstA",
+				"lstAccsRFC"
+			],
+			[
+				"comman",
+				"apex:commandLink"
+			],
+			[
+				"accion",
+				"apex:actionFunction"
+			],
+			[
+				"test",
+				"Test"
+			],
+			[
+				"Case",
+				"caseComment"
+			],
+			[
+				"sta",
+				"static"
+			],
+			[
+				"whe",
+				"WHERE"
+			],
+			[
+				"al",
+				"alert"
+			],
+			[
+				"pa",
+				"apex:param"
+			],
+			[
+				"com",
+				"apex:commandButton"
+			],
+			[
+				"blnApprovalOrRejectionWasCo",
+				"blnApprovalOrRejectionWasCommited"
+			],
+			[
+				"blnA",
+				"blnApprovalOrRejectionWasCommited"
+			],
+			[
+				"bo",
+				"Boolean"
+			],
+			[
+				"Sa",
+				"SaveResult"
+			],
+			[
+				"lstRequire",
+				"lstRequiredDocumentWrappers"
+			],
+			[
+				"isEm",
+				"PUBLIC isEmpty(String str) \tBoolean"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"page",
+				"PageReference"
+			],
+			[
+				"retur",
+				"return"
+			],
+			[
+				"try",
+				"tryc\tSimple TRY CATCH Condition"
+			],
+			[
+				"Sta",
+				"status"
+			],
+			[
+				"D",
+				"DeleteResult"
+			],
+			[
+				"savr",
+				"SaveResult"
+			],
+			[
+				"Paren",
+				"ParentIdBeneficiary__c"
+			],
+			[
+				"REcord",
+				"RecordTypeId"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"o",
+				"apex:outputPanel"
+			],
+			[
+				"la",
+				"apex:outputLabel"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"int",
+				"integer"
+			],
+			[
+				"strC",
+				"strCurrentOrder"
+			],
+			[
+				"lstS",
+				"lstStringMapKey"
+			],
+			[
+				"lstP",
+				"lstPivotOrder"
+			],
+			[
+				"lstUser",
+				"lstUserQuery"
+			],
+			[
+				"Da",
+				"Database\t[Standard Apex Class]"
+			],
+			[
+				"De",
+				"Decimal\t[Standard Apex Class]"
+			],
+			[
+				"st",
+				"string"
+			],
+			[
+				"curr",
+				"currentDocumentData"
+			],
+			[
+				"http",
+				"httpReqInstance"
+			],
+			[
+				"font-",
+				"font-weight"
+			],
+			[
+				"Dat",
+				"Date\t[Standard Apex Class]"
+			],
+			[
+				"Li",
+				"Limit"
+			],
+			[
+				"wi",
+				"window"
+			],
+			[
+				"Cas",
+				"CaseComment"
+			],
+			[
+				"tr",
+				"tryc\tSimple TRY CATCH Condition"
+			],
+			[
+				"lstD",
+				"lstDocumentOrderPage"
+			],
+			[
+				"Docu",
+				"Document__c"
+			],
+			[
+				"mapD",
+				"mapDocumentOrder"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/aura/COT_EvaluationClient_cmp/COT_EvaluationClient_cmp.cmp",
+			"settings":
+			{
+				"buffer_size": 2624,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/pages/DCT_CustomerTechnicalToken_pag.page",
+			"settings":
+			{
+				"buffer_size": 77970,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/DCT_CustomerTechnicalToken_ext.cls",
+			"settings":
+			{
+				"buffer_size": 64907,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/COT_EvaluationClient_cmp/COT_EvaluationClient_cmpController.js",
+			"settings":
+			{
+				"buffer_size": 422,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/COT_Quoting_cmp/COT_Quoting_cmp.cmp",
+			"settings":
+			{
+				"buffer_size": 102611,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/COT_Quoting_cmp/COT_Quoting_cmpController.js",
+			"settings":
+			{
+				"buffer_size": 6415,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/COT_TableGeneric_cmp/COT_TableGeneric_cmp.cmp",
+			"settings":
+			{
+				"buffer_size": 1878,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/aura/COT_TableGeneric_cmp/COT_TableGeneric_cmpController.js",
+			"settings":
+			{
+				"buffer_size": 98,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/aura/COT_TableGeneric_cmp/COT_TableGeneric_cmpHelper.js",
+			"settings":
+			{
+				"buffer_size": 2614,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/COT_TableGeneric_ctr.cls",
+			"settings":
+			{
+				"buffer_size": 2305,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"new",
+				"MavensMate: New Visualforce Page"
+			],
+			[
+				"package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"syntax: Visu",
+				"Set Syntax: Visualforce"
+			],
+			[
+				"syntax: ",
+				"Set Syntax: Visualforce"
+			],
+			[
+				"syntax: Apex",
+				"Set Syntax: Apex"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 119.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T/src",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T/src/aura",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T/src/aura/COT_EvaluationClient_cmp",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T/src/aura/COT_Quoting_cmp",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T/src/aura/COT_TableGeneric_cmp"
+	],
+	"file_history":
+	[
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T/src/classes/DCT_ResponseSISACactiva_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T/src/classes/DCT_SISACactivaRest_ws.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T/src/classes/DCT_SISACactivaRestAux_ws.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/COT-T/src/pages/DCT_CustomerTechnicalToken_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-Cotizador/src/aura/COT_EvaluationClient_cmp/COT_EvaluationClient_cmpController.js",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-Cotizador/src/aura/COT_CustomerTechnicalToken_cmp/COT_CustomerTechnicalToken_cmp.cmp",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-Cotizador/src/aura/COT_EvaluationClient_cmp/COT_EvaluationClient_cmp.cmp",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-Cotizador/src/aura/COT_Quoting_cmp/COT_Quoting_cmpController.js",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-Cotizador/src/aura/COT_Quoting_cmp/COT_Quoting_cmp.cmp",
+		"/C/Users/ToshAvanxo/Downloads/apache/lib/salesforce_ant_41.0/sample/build.xml",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-Cotizador/src/pages/DCT_NewCustomLead_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-Cotizador/src/aura/COT_EvaluateClient_cmp/COT_EvaluateClient_cmp.cmp",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/AccountTriggerHandler.cls",
+		"/C/Users/ToshAvanxo/Desktop/SISAC-WS.txt",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_Utils_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_SecurityServices_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_WebServiceException.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/TLCL_Utils_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_UserResponseWrapper_wpr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_ReferenciaRAP_ws.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_ServiceTokenResponse_wpr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/batchCrearOportunidades.cls-meta.xml",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/pages/DCT_AccountOwnerAssignment_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/labels/CustomLabels.labels",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/triggers/InvServiciosTicFact.trigger",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/triggers/DCT_AssignmentMain_tgr.trigger",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/triggers/PlanCliente.trigger",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_AccountAprovedCtrl.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/pages/DCT_AccountAproved_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_AssignmentMethods_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_AccountAssingmentMethods_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/triggers/DCT_AccountAssingmentMain_tgr.trigger",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/pages/DCT_NewLeadRedirect_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_NewLeadFromCustomAccount_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/pages/DCT_NewCustomLead_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/pages/DCT_Product_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/pages/DCT_AccountAprovedEtRejected_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_AccountAproved_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_AccountRejectedCtrl.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/pages/DCT_AccountRejected_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_NewCustomLead_ext.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/OpportunityTriggerHandler.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_assignmentNewOwner_bch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_assignmentNewOwner_sch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_AccountOwnerAssignment_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/ActualizarOportunidad_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_SISAC_Activa_ws.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_SIAC_XoVt_ws.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/SOExtension.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/ServiciosTradicionalesTriggerHandler.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_CommitDebtAccount_ws.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Telcel-DirectorioComercial/src/classes/DCT_CustomerTechnicalToken_ext.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Calidra/Calidra/src/classes/ConsultaDetalleFacturasCtrl.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Calidra/Calidra/src/pages/ConsultaDetalleFacturas_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Calidra/Calidra/src/pages/DetalleCliente_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Calidra/Calidra/src/classes/ActAccContRelCpSch_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Calidra/Calidra/src/classes/ActAccContRelCpBch_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Calidra/Calidra/src/classes/ConsultaEmpresasDetalleFacturasCtrl.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Calidra/Calidra/src/classes/ActualizaPagosCtrl_rst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Calidra/Calidra/src/pages/ConsultaDetalleFacturas.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Calidra/Calidra/src/pages/ConsultaEmpresasDetalleFacturas.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-02032018/src/classes/AAZ_UpdateCase_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-02032018/src/classes/AAZ_UpdateBulkCase_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-02032018/src/classes/AAZ_UpdateBulkCase_bch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-02032018/src/classes/AAZ_DeleteLogIntegration_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-02032018/src/classes/AAZ_DeleteLogIntegration_bch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-02032018/src/classes/AAZ_DeleteLogIntegration_sch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-02032018/src/classes/AAZ_UpdateBulkCase_sch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-02032018/src/classes/AAZ_DataReceptionService_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-02032018/src/buildtest.py",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_DocumentValidate_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_CallOutFuture_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_QualitySamples_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_AgentQuery_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_HomePage_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/pages/AAZ_QualitySamples_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_DocumentValidate_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/pages/AAZ_InsertComplaint_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_InsertComplaint_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_DocumentQueryWS_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_Utils_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_UpdateCase_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_CallOutFuture_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/labels/CustomLabels.labels",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_AccountDetailsFromProcedure_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/pages/AAZ_DocumentValidate_pag.page",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_NewProcedure_ws.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/triggers/AAZ_CaseMainTrigger_tgr.trigger",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/AFORE-26022017/src/classes/AAZ_Afore_QueryReference_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/TriggerManager.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/Delete_Historial_ctr_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/DeleteHistoricalProcess_sch_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/DeleteHistoricalProcess_sch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/DeleteHistoricalProcess_bch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/Delete_Historial_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_UserResponseWrapper_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_UpdateCase_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_SubsidiaryQuery_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_SendDocumentsWizardCase_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_SendDocumentsWizardBlkHst_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_SendDocumentsWizardAP_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_RiskLevel_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_ReturnToQueue_sch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_ReturnToQueue_bch.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_ReturnToQueue_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_SearchHistoricalProcess_callout.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_SecurityServices_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_SearchHistoricalProcess_ctr_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_SearchHistoricalProcess_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_SearchHistoricalProcess_callout_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_ResponseNewProcedure_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_RelatedRejectionsCmpTest_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_QualitySamples_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_PromoterDocumentsService_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_PromoterDocumentsService_cls.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_PersonalReferencesClient_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_NewPromoterAgentAux_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_NewAPDocument_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_NewAPDocument_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_LockUnlockAP_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_LockUnlockAP_ctr.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_LockUnLockAgent_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_GenericCallOutMock_mck.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_DocumentIdentification_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_DeleteUserAsync_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_DataReceptionService_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_CreateUserAsync_tst.cls",
+		"/C/Users/ToshAvanxo/Documents/Workspace/Avanxo/Desarrollo/Afore-16022018/src/classes/AAZ_CaseQueryWS_tst.cls"
+	],
+	"find":
+	{
+		"height": 41.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"lstRegion",
+			"loadOptions",
+			"options",
+			"opts",
+			"getTableRows",
+			"createTableRows",
+			"getRecords",
+			"parentFieldName",
+			"field"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/aura/COT_EvaluationClient_cmp/COT_EvaluationClient_cmp.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2624,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								462,
+								462
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/pages/DCT_CustomerTechnicalToken_pag.page",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 77970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								27548,
+								27548
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MavensMate/sublime/lang/Visualforce.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 8415.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/classes/DCT_CustomerTechnicalToken_ext.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 64907,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43036,
+								43036
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 11528.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/aura/COT_EvaluationClient_cmp/COT_EvaluationClient_cmpController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 422,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								181,
+								186
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/aura/COT_Quoting_cmp/COT_Quoting_cmp.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 102611,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3195,
+								3265
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 465.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/aura/COT_Quoting_cmp/COT_Quoting_cmpController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6415,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4488,
+								3
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/aura/COT_TableGeneric_cmp/COT_TableGeneric_cmp.cmp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								723,
+								723
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/aura/COT_TableGeneric_cmp/COT_TableGeneric_cmpController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 98,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								98,
+								98
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/aura/COT_TableGeneric_cmp/COT_TableGeneric_cmpHelper.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								738,
+								2548
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/classes/COT_TableGeneric_ctr.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1303,
+								1313
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.MavensMate-OutputPanel":
+	{
+		"height": 109.0
+	},
+	"output.exec":
+	{
+		"height": 109.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "COT-T.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"DCT_ResponseSISACactiva_cls",
+				"src\\classes\\DCT_ResponseSISACactiva_cls.cls"
+			],
+			[
+				"DCT_SISACactivaRestAux_ws",
+				"src\\classes\\DCT_SISACactivaRestAux_ws.cls"
+			],
+			[
+				"sisact",
+				"src\\classes\\DCT_SISACactivaRest_ws.cls"
+			],
+			[
+				"token",
+				"src\\classes\\DCT_CustomerTechnicalToken_ext.cls"
+			],
+			[
+				"DCT_InvestigacionesCtrl",
+				"src\\classes\\DCT_InvestigacionesCtrl.cls"
+			],
+			[
+				"dct_in",
+				"src\\pages\\DCT_Investigaciones_pag.page"
+			],
+			[
+				"qu",
+				"src\\aura\\COT_Quoting_cmp\\COT_Quoting_cmp.cmp"
+			],
+			[
+				"newcustomlead",
+				"src\\pages\\DCT_NewCustomLead_pag.page"
+			],
+			[
+				"acc",
+				"src\\classes\\AccountTriggerHandler.cls"
+			],
+			[
+				"t",
+				"src\\classes\\TLCL_Utils_cls.cls"
+			],
+			[
+				"util",
+				"src\\classes\\DCT_Utils_cls.cls"
+			],
+			[
+				"sisa",
+				"src\\classes\\DCT_SISAC_Activa_ws.cls"
+			],
+			[
+				"dct_servicetokenresponse_wpr",
+				"src\\classes\\DCT_ServiceTokenResponse_wpr.cls"
+			],
+			[
+				"tlcl_utils_cls",
+				"src\\classes\\TLCL_Utils_cls.cls"
+			],
+			[
+				"dct_securityservices_cls",
+				"src\\classes\\DCT_SecurityServices_cls.cls"
+			],
+			[
+				"rap",
+				"src\\classes\\DCT_ReferenciaRAP_ws.cls"
+			],
+			[
+				"bearer",
+				"src\\classes\\batchCrearOportunidades.cls-meta.xml"
+			],
+			[
+				"refere",
+				"src\\classes\\DCT_ReferenciaRAP_ws.cls"
+			],
+			[
+				"utils",
+				"src\\classes\\TLCL_Utils_cls.cls"
+			],
+			[
+				"dct_g",
+				"src\\classes\\DCT_GenericCallOut_cls.cls"
+			],
+			[
+				"dct_product_ctr",
+				"src\\classes\\DCT_Product_ctr.cls"
+			],
+			[
+				"prod",
+				"src\\pages\\DCT_Product_pag.page"
+			],
+			[
+				"dct_newcustomlead_",
+				"src\\pages\\DCT_NewCustomLead_pag.page"
+			],
+			[
+				"accounttriggerhandler",
+				"src\\classes\\AccountTriggerHandler.cls"
+			],
+			[
+				"dct_assignmentmethods_cls",
+				"src\\classes\\DCT_AssignmentMethods_cls.cls"
+			],
+			[
+				"dct_accountassingmentmethods_cls",
+				"src\\classes\\DCT_AccountAssingmentMethods_cls.cls"
+			],
+			[
+				"dct_newcustomlead_ext",
+				"src\\classes\\DCT_NewCustomLead_ext.cls"
+			],
+			[
+				"dct_newcustomlead_pag",
+				"src\\pages\\DCT_NewCustomLead_pag.page"
+			],
+			[
+				"dct_newleadfromcustomaccount_ctr",
+				"src\\classes\\DCT_NewLeadFromCustomAccount_ctr.cls"
+			],
+			[
+				"",
+				"src\\pages\\DCT_NewLeadRedirect_pag.page"
+			],
+			[
+				"leadreg",
+				"src\\pages\\DCT_NewLeadRedirect_pag.page"
+			],
+			[
+				"dct_accountaprovedctrl",
+				"src\\classes\\DCT_AccountAprovedCtrl.cls"
+			],
+			[
+				"productpa",
+				"src\\pages\\DCT_Product_pag.page"
+			],
+			[
+				"dct_accountrejectedctrl",
+				"src\\classes\\DCT_AccountRejectedCtrl.cls"
+			],
+			[
+				"dct_assignmentnewowner_bch",
+				"src\\classes\\DCT_assignmentNewOwner_bch.cls"
+			],
+			[
+				"opportunitytriggerhandler",
+				"src\\classes\\OpportunityTriggerHandler.cls"
+			],
+			[
+				"dct_assignmentnewowner_",
+				"src\\classes\\DCT_assignmentNewOwner_sch.cls"
+			],
+			[
+				"detallecliente_pag",
+				"src\\pages\\DetalleCliente_pag.page"
+			],
+			[
+				"consultadetallefacturasctrl",
+				"src\\classes\\ConsultaDetalleFacturasCtrl.cls"
+			],
+			[
+				"consultadetallefactura_pag",
+				"src\\pages\\ConsultaDetalleFacturas_pag.page"
+			],
+			[
+				"actualizapagosctrl_rst",
+				"src\\classes\\ActualizaPagosCtrl_rst.cls"
+			],
+			[
+				"consultadetall",
+				"src\\pages\\ConsultaDetalleFacturas_pag.page"
+			],
+			[
+				"detallecliente",
+				"src\\pages\\DetalleCliente_pag.page"
+			],
+			[
+				"pdfconsultadetallefacturas_pdf",
+				"src\\pages\\PDFConsultaDetalleFacturas_pdf.page"
+			],
+			[
+				"consultadeta",
+				"src\\pages\\ConsultaDetalleFacturas.page"
+			],
+			[
+				"consultaempresasdetallefacturas",
+				"src\\classes\\ConsultaEmpresasDetalleFacturasCtrl.cls"
+			],
+			[
+				"documentva",
+				"src\\pages\\AAZ_DocumentValidate_pag.page"
+			],
+			[
+				"update",
+				"src\\pages\\AAZ_UpdateCase_pag.page"
+			],
+			[
+				"casetr",
+				"src\\triggers\\AAZ_CaseMainTrigger_tgr.trigger"
+			],
+			[
+				"call",
+				"src\\classes\\AAZ_CallOutFuture_cls.cls"
+			],
+			[
+				"aaz_deletelogintegration_cls",
+				"src\\classes\\AAZ_DeleteLogIntegration_cls.cls"
+			],
+			[
+				"upda",
+				"src\\classes\\AAZ_UpdateCase_ctr.cls"
+			],
+			[
+				"aaz_documentqueryws_cls",
+				"src\\classes\\AAZ_DocumentQueryWS_cls.cls"
+			],
+			[
+				"quality",
+				"src\\pages\\AAZ_QualitySamples_pag.page"
+			],
+			[
+				"aaz_agentquery_cls",
+				"src\\classes\\AAZ_AgentQuery_cls.cls"
+			],
+			[
+				"insertcompl",
+				"src\\pages\\AAZ_InsertComplaint_pag.page"
+			],
+			[
+				"insert",
+				"src\\classes\\AAZ_InsertComplaint_ctr.cls"
+			],
+			[
+				"updatecas",
+				"src\\classes\\AAZ_UpdateCase_ctr.cls"
+			],
+			[
+				"documentvalidate",
+				"src\\pages\\AAZ_DocumentValidate_pag.page"
+			],
+			[
+				"newpr",
+				"src\\classes\\AAZ_NewProcedure_ws.cls"
+			],
+			[
+				"aaz_afore_queryreference_cls",
+				"src\\classes\\AAZ_Afore_QueryReference_cls.cls"
+			],
+			[
+				"documentide",
+				"src\\classes\\AAZ_DocumentIdentification_ctr.cls"
+			],
+			[
+				"aaz_newprocedureaux_cls",
+				"src\\classes\\AAZ_NewProcedureAux_cls.cls"
+			],
+			[
+				"new",
+				"src\\classes\\AAZ_NewProcedure_ws.cls"
+			],
+			[
+				"return",
+				"src\\classes\\AAZ_ReturnToQueue_cls.cls"
+			],
+			[
+				"aaz_utils_cls",
+				"src\\classes\\AAZ_Utils_cls.cls"
+			],
+			[
+				"aaz_updatecase_ctr",
+				"src\\classes\\AAZ_UpdateCase_ctr.cls"
+			],
+			[
+				"aaz_updatecase_pag",
+				"src\\pages\\AAZ_UpdateCase_pag.page"
+			],
+			[
+				"aaz_senddocumentswizardap_ctr",
+				"src\\classes\\AAZ_SendDocumentsWizardAP_ctr.cls"
+			],
+			[
+				"aaz_casedocumentsclient_tst",
+				"src\\classes\\AAZ_CaseDocumentsClient_tst.cls"
+			],
+			[
+				"link",
+				"src\\pages\\AAZ_LinkProcedure_pag.page"
+			],
+			[
+				"updatre",
+				"src\\classes\\AAZ_UpdateCase_ctr.cls"
+			],
+			[
+				"aaz_securityservices_cls",
+				"src\\classes\\AAZ_SecurityServices_cls.cls"
+			],
+			[
+				"user",
+				"src\\triggers\\AAZ_UserTrigger_tgr.trigger"
+			],
+			[
+				"casetri",
+				"src\\triggers\\AAZ_CaseMainTrigger_tgr.trigger"
+			],
+			[
+				"aaz_utils_tst",
+				"src\\classes\\AAZ_Utils_tst.cls"
+			],
+			[
+				"aaz_requestnewprocedure_wpr",
+				"src\\classes\\AAZ_RequestNewProcedure_wpr.cls"
+			],
+			[
+				"aaz_documentlist_ctr",
+				"src\\classes\\AAZ_DocumentList_ctr.cls"
+			],
+			[
+				"documentlist",
+				"src\\pages\\AAZ_DocumentList_pag.page"
+			],
+			[
+				"aaz_accountdetailsfromprocedure_ctr",
+				"src\\classes\\AAZ_AccountDetailsFromProcedure_ctr.cls"
+			],
+			[
+				"accountde",
+				"src\\pages\\AAZ_AccountDetailsFromProcedure_pag.page"
+			],
+			[
+				"aaz_documentvalidate_ctr",
+				"src\\classes\\AAZ_DocumentValidate_ctr.cls"
+			],
+			[
+				"documenva",
+				"src\\pages\\AAZ_DocumentValidate_pag.page"
+			],
+			[
+				"accountd",
+				"src\\pages\\AAZ_AccountDetailsFromProcedure_pag.page"
+			],
+			[
+				"accountdeta",
+				"src\\pages\\AAZ_AccountDetailsFromProcedure_pag.page"
+			],
+			[
+				"aaz_responsenewprocedure_wpr",
+				"src\\classes\\AAZ_ResponseNewProcedure_wpr.cls"
+			],
+			[
+				"va",
+				"src\\pages\\AAZ_DocumentValidate_pag.page"
+			],
+			[
+				"aaz_beneficiariesclient_tst",
+				"src\\classes\\AAZ_BeneficiariesClient_tst.cls"
+			],
+			[
+				"aaz_accountcomplaints_tst",
+				"src\\classes\\AAZ_AccountComplaints_tst.cls"
+			],
+			[
+				"aaz_subsidiaryclient_tst",
+				"src\\classes\\AAZ_SubsidiaryClient_tst.cls"
+			],
+			[
+				"accountli",
+				"src\\classes\\AAZ_AccountList_tst.cls"
+			],
+			[
+				"aaz_documentidentification_ctr",
+				"src\\classes\\AAZ_DocumentIdentification_ctr.cls"
+			],
+			[
+				"documenti",
+				"src\\pages\\AAZ_DocumentIdentification_pag.page"
+			],
+			[
+				"aaz_documentvalidate_tst",
+				"src\\classes\\AAZ_DocumentValidate_tst.cls"
+			],
+			[
+				"aaz_documentqueryws_tst",
+				"src\\classes\\AAZ_DocumentQueryWS_tst.cls"
+			],
+			[
+				"aaz_accountlist_tst",
+				"src\\classes\\AAZ_AccountList_tst.cls"
+			],
+			[
+				"aaz_insertcomplaint_ctr",
+				"src\\classes\\AAZ_InsertComplaint_ctr.cls"
+			],
+			[
+				"aaz_insertcomplaint_tst",
+				"src\\classes\\AAZ_InsertComplaint_tst.cls"
+			],
+			[
+				"documentqu",
+				"src\\classes\\AAZ_DocumentQueryWS_tst.cls"
+			],
+			[
+				"document",
+				"src\\classes\\AAZ_DocumentQueryWS_tst.cls-meta.xml"
+			],
+			[
+				"quer",
+				"src\\classes\\AAZ_Afore_QueryReference_tst.cls"
+			],
+			[
+				"home",
+				"src\\pages\\AAZ_HomePage_pag.page"
+			],
+			[
+				"documentw",
+				"src\\classes\\AAZ_DocumentQueryWS_cls.cls"
+			],
+			[
+				"aaz_newapdocument_tst",
+				"src\\classes\\AAZ_NewAPDocument_tst.cls"
+			],
+			[
+				"lockunlockap",
+				"src\\classes\\AAZ_LockUnlockAP_tst.cls"
+			],
+			[
+				"aaz_documentidentification_tst",
+				"src\\classes\\AAZ_DocumentIdentification_tst.cls"
+			],
+			[
+				"aaz_datareceptionservice_tst",
+				"src\\classes\\AAZ_DataReceptionService_tst.cls"
+			],
+			[
+				"aaz_datamodify_tst",
+				"src\\classes\\AAZ_DataModify_tst.cls"
+			],
+			[
+				"aaz_callout_tst",
+				"src\\classes\\AAZ_CallOut_tst.cls"
+			],
+			[
+				"aaz_calloutfuture_tst",
+				"src\\classes\\AAZ_CallOutFuture_tst.cls"
+			],
+			[
+				"benefi",
+				"src\\classes\\AAZ_BeneficiariesClient_tst.cls"
+			],
+			[
+				"aaz_accountdetailsfromprocedure_tst",
+				"src\\classes\\AAZ_AccountDetailsFromProcedure_tst.cls"
+			],
+			[
+				"searc",
+				"src\\classes\\AAZ_SearchHistoricalProcess_callout.cls"
+			],
+			[
+				"search",
+				"src\\pages\\AAZ_SearchHistoricalProcess_pag.page"
+			],
+			[
+				"historical",
+				"src\\classes\\AAZ_SearchHistoricalProcess_ctr.cls"
+			],
+			[
+				"agentq",
+				"src\\classes\\AAZ_AgentQuery_cls.cls"
+			],
+			[
+				"subs",
+				"src\\classes\\AAZ_SubsidiaryQuery_cls.cls"
+			],
+			[
+				"bene",
+				"src\\classes\\AAZ_BeneficiaryQuery_cls.cls"
+			],
+			[
+				"benef",
+				"src\\classes\\AAZ_BeneficiaryQuery_cls.cls"
+			],
+			[
+				"aaz_searchhistoricalprocess_callout",
+				"src\\classes\\AAZ_SearchHistoricalProcess_callout.cls"
+			],
+			[
+				"sear",
+				"src\\classes\\AAZ_SearchHistoricalProcess_ctr.cls"
+			],
+			[
+				"aaz_servicetokenresponse_wpr",
+				"src\\classes\\AAZ_ServiceTokenResponse_wpr.cls"
+			],
+			[
+				"aaz_genericcallout_cls",
+				"src\\classes\\AAZ_GenericCallout_cls.cls"
+			],
+			[
+				"histori",
+				"src\\classes\\AAZ_SearchHistoricalProcess_ctr.cls"
+			],
+			[
+				"qual",
+				"src\\classes\\AAZ_QualitySamples_ctr.cls"
+			],
+			[
+				"contact",
+				"src\\classes\\AAZ_ContactList_tst.cls"
+			],
+			[
+				"test",
+				"src\\classes\\AAZ_TestUtils_tst.cls"
+			],
+			[
+				"newp",
+				"src\\classes\\AAZ_NewProcedure_ws.cls"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 203.0,
+		"last_filter": "documentv",
+		"selected_items":
+		[
+			[
+				"documentv",
+				"AAZ_DocumentValidate_ctr"
+			]
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 406.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
