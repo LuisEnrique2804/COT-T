@@ -7,26 +7,17 @@
 	<aura:attribute name="SearchName" type="LIST"/>
 	<aura:attribute name="SearchNational" type="LIST"/>
 	<aura:attribute name="SearchFather" type="LIST"/>
-	<aura:attribute name="selectedValue" type="String"/>
-	<aura:attribute name="selectedValue2" type="String"/>
+	<aura:attribute name="selectedValue" type="DCTGruop__c"/>
+	<aura:attribute name="selectedValue2" type="Cliente__c"/>
 	<aura:attribute name="selectedValue3" type="String"/>
 	<aura:attribute name="selectedValue4" type="String"/>
 
-	<aura:handler name="init" value="{!this}" action="{!c.loadOptions}" />
+	<aura:handler name="oSelectedAccountEvent" event="c:COT_selectedDirComEvent_evt" action="{!c.handleComponentEvent}"/>
+    <aura:handler name="oSelectedAccountEvent" event="c:COT_SelectedEvaluation_evt" action="{!c.handleComponentEvaluationEvent}"/>
+   	<aura:handler name="oSelectedAccountEvent" event="c:COT_selectedNationalAcc_evt" action="{!c.handleComponentNationalAccEvent}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.loadOptions}" />
 	<lightning:tabset>
         <lightning:tab label="Enviar Evaluación">
-        	<!-- <aura:attribute name="ListOfAccount" type="Account[]" description="store accounts with there child contacts"/>
-   			<ul>
-      <aura:iteration items="{!v.ListOfAccount}" var="acc">
-         <li type="dice">AccountName : {!acc.Name}</li>
-         <ul>
-            <aura:iteration items="{!acc.Contacts}" var="con" indexVar="index">
-               <li>contact {!index + 1} Name : {!con.LastName}</li>
-            </aura:iteration>
-         </ul>
-         <hr/>
-      </aura:iteration>
-   </ul> -->
             <div class="slds-m-top--x-small slds-grid slds-wrap slds-grid_pull-padded slds-m-horizontal--small slds-grid_vertical-align-center" >
 				
 					<div class=" slds-col">
@@ -50,31 +41,41 @@
 							</lightning:select> -->
 						</aura:if>
 						<aura:if isTrue="{!v.value == 'Razón Social'}">
-							<lightning:select name="mySelect" label="{! v.value }" aura:id="SearchName" value="{!v.selectedValue2}">
+                            <c:COT_customLookupRFC_cmp/>
+							<!--lightning:select name="mySelect" label="{! v.value }" aura:id="SearchName" value="{!v.selectedValue2}">
 								<aura:iteration items="{!v.SearchName}" var="item">
 									<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
 								</aura:iteration>
-							</lightning:select>
+							</lightning:select-->
 							
-							<lightning:input type="text" label="RFC" value="{!v.selectedValue2}" name="SearchRS" />
+							<lightning:input type="text" label="RFC" value="{!v.selectedValue2.RFC__c}" name="SearchRS" />
 						</aura:if>
 						<aura:if isTrue="{!v.value == 'Cuenta Nacional'}">
-							<lightning:select name="mySelect" label="{! v.value }" aura:id="SearchGroup" value="{!v.selectedValue3}">
+							<c:COT_customLookupNationalAcc_cmp TypeAccount ="{!v.value}"/>
+                            <!--lightning:select name="mySelect" label="{! v.value }" aura:id="SearchGroup" value="{!v.selectedValue3}">
 								<aura:iteration items="{!v.SearchNational}" var="item">
 									<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
 								</aura:iteration>
-							</lightning:select>
+							</lightning:select-->
 						</aura:if>
 						<aura:if isTrue="{!v.value == 'Cuenta Padre'}">
-							<lightning:select name="mySelect" label="{! v.value }" aura:id="SearchGroup" value="{!v.selectedValue4}">
+                            <c:COT_customLookupNationalAcc_cmp TypeAccount ="{!v.value}"/>
+							<!--lightning:select name="mySelect" label="{! v.value }" aura:id="SearchGroup" value="{!v.selectedValue4}">
 								<aura:iteration items="{!v.SearchFather}" var="item">
 									<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
 								</aura:iteration>
-							</lightning:select>
+							</lightning:select-->
 						</aura:if>
 					</div>
 					<div class="slds-col slds-align_absolute-center">
-						<ui:button buttonType="submit" label="Generar reporte de la evaluación" press="{!c.changeValue}"/>
+						<!-- <ui:button buttonType="submit" label="Generar reporte de la evaluación" press="{!c.changeValue}"/> -->
+						Hola: {!v.selectedValue.Name}
+                        <br/>
+                        Hola2: {!v.selectedValue2.Name}
+                        <br/>
+                        Hola3: {!v.selectedValue3.NationalAccount__c}
+                        <br/>
+                        Hola4: {!v.selectedValue4.FatherAccount__c}
 					</div>
 				
 			</div>

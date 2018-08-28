@@ -9,11 +9,11 @@
     <body class="slds-scope">
       <apex:outputPanel id="main">
 		<div style="width: max-content; margin: 0 auto;">
-		  <apex:variable value="{!0}" var="lines"/>
+<!-- 		  <apex:variable value="{!0}" var="lines"/>
           <apex:repeat value="{!lstResponsable}" var="iterator">              
            	<apex:variable value="{!lines+1}" var="lines"/>
-          </apex:repeat>
-          <apex:outputPanel rendered="{!lines == 0}">
+          </apex:repeat> -->
+          <apex:outputPanel rendered="{!lstResponsable.size == 0}">
             No hay Fuerza de Venta para esta cuenta
 		  </apex:outputPanel>
           <apex:outputPanel rendered="{!lstResponsable.size <> 0}">

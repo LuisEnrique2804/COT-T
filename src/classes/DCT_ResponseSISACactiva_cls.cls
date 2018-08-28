@@ -150,12 +150,12 @@ global class DCT_ResponseSISACactiva_cls {
 		global Boolean EstaEnBuro; 
 		global Boolean EsVIP; 
 		global Boolean TieneAVL; 
-		global String  RepersentanteLegal;
+		global String  RepresentanteLegal;
 		global String  Beneficios;
 		global Date    ClienteFechaRegistro;
 		global Date    FechaModificacion;
-		global String  UsuarioModificaNombre;
-		global String  UsuarioModificaXO;
+		global String  UsuarioModificoNombre;
+		global String  UsuarioModificoXO;
 		global Date    FechaBaja;
 	 	global Boolean PuedeActivarVPN;
 		global String  CicloFacturacion;
@@ -193,7 +193,7 @@ global class DCT_ResponseSISACactiva_cls {
 		global String  LineasSolicitadas;
 		global String  LineasSolicitadasEstatus;
 		global String  LineasFechaSolicitud;
-		global String  LineasAutorizadaPor;
+		global String  LineasAutorizadasPor;
 		global String  LineasAutorizadas;
 		global Decimal TotalLineasAutorizadas;
 		global String  NombrePropietario;

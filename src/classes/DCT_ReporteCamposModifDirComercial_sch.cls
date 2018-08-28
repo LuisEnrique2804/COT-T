@@ -18,13 +18,13 @@ global class DCT_ReporteCamposModifDirComercial_sch implements Schedulable{
 		this.sQuery +=' DCTCommentsInvestigation__c,	DCTAuthorizationDateVoBoManagement__c,	DCTTotLineasAutorInvest__c,	OwnerId, DCTServices1__c, DCTServices2__c, ';
 		this.sQuery +=' DCT_NombreComercial__c,	DCTMethodOfPayment__c, DCTCreditBureau__c, LastModifiedDate, LastModifiedById, LastModifiedBy.Name, LastModifiedBy.DCTXO__c, ';
 		this.sQuery +=' DCTAccountType__c, DCT_CatalogoFuerzaVenta__r.DCT_PrepagoSiapID__c, DCTCatalogoFuerzaVenta2__r.DCT_PrepagoSiapID__c, DCTTypeAuthorization__c, ';		
-		this.sQuery +=' DCT_JefeVoz__c, DCT_FuerzaVentaSmd__c, ';
+		this.sQuery +=' DCT_JefeVoz__c, DCT_FuerzaVentaSmd__c, DTCCustomerID__c, ';
 		
 		this.sQuery +=' (Select Plan__r.DescripcionGrupoPlan__c, Plan__r.ClaveTarifa__c, Plan__r.ClaveGrupoPlan__c,   Plan__r.DescripcionPlan__c, Plan__r.DCTTerm__c, ';
 		this.sQuery +=' DCTSubdirector__r.Name, DCTAuthorizationDate__c, DCTActiveLines__c, DCTAuthorizedLines__c, Status__c, RecordType.Name, Plan__r.ClavePlan__c, ';
 		this.sQuery +=' Aprobador__r.Name, DCTTotalAuthorizedLines__c From Lineas_Autorizadas__r ORDER BY DCT_ConsecutivoLineasAutorizadas__c), '; //Where RecordType.Name = \'Plan\'
-		this.sQuery +=' (Select Name, Posicion__c, DCTTypeContact__c, MobilePhone, DCTNIP__c, Email, DCTReceiveInformation__c ';
-		this.sQuery +=' From DirectorioComercial_Contactos__r, Description Where DCT_ContactoDirectorio__c = true) ';
+		this.sQuery +=' (Select Name, Posicion__c, DCTTypeContact__c, MobilePhone, DCTNIP__c, Email, DCTReceiveInformation__c, Description ';
+		this.sQuery +=' From DirectorioComercial_Contactos__r Where DCT_ContactoDirectorio__c = true) ';
 		
 		//No es una prueba
 		if (!Test.isRunningTest()){

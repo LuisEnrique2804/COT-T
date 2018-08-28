@@ -71,28 +71,35 @@
 			}
         });
 
-		var action_02 = component.get('c.getRegion');
-		console.log( '***action_02: '+action_02);
-		action_02.setCallback(this, function(response) {
-			var state = response.getState();
-   			if (state === "SUCCESS") {
-   				var regiones = response.getReturnValue();
-   				for (var i = 0; i < regiones.length; i++) {
-   					var reg = regiones[i];
-   					if (reg.FatherAccount__c) {
-   						listNational.push( 
-							{ value: reg.Name, label: reg.FatherAccount__c }
-						);
-						listFather.push( 
-							{ value: reg.Name, label: reg.NationalAccount__c }
-						);
-   					}
-   				}
-   				component.set("v.SearchNational", listNational);
-				component.set("v.SearchFather", listFather);
-   			}
-		});
+		
         $A.enqueueAction(action);
-        $A.enqueueAction(action_02);
+	},
+
+	handleComponentEvent : function(component, event, helper) {
+     
+    // get the selected Account record from the COMPONETN event 	 
+       var selectedAccountGetFromEvent = event.getParam("DirComercialByEvent");
+	   
+	   component.set("v.selectedValue" , selectedAccountGetFromEvent); 
+        //$A.enqueueAction(update);
+	},
+    
+    handleComponentEvaluationEvent : function(component, event, helper) {
+     
+    // get the selected Account record from the COMPONETN event 	 
+       var selectedAccountGetFromEvent = event.getParam("NameByEvent");
+	   
+	   component.set("v.selectedValue2" , selectedAccountGetFromEvent); 
+        //$A.enqueueAction(update);
+	},
+    
+    handleComponentNationalAccEvent : function(component, event, helper) {
+     
+    // get the selected Account record from the COMPONETN event 	 
+       var selectedAccountGetFromEvent = event.getParam("NationalAccByEvent");
+	   
+	   component.set("v.selectedValue3" , selectedAccountGetFromEvent); 
+       component.set("v.selectedValue4" , selectedAccountGetFromEvent); 
+        //$A.enqueueAction(update);
 	},
 })

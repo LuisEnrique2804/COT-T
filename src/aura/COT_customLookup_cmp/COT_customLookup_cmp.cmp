@@ -7,7 +7,6 @@
    <aura:attribute name="listOfSearchRecords" type="DCTGruop__c[]" description="Use,for store the list of search records which returns from apex class"/>
    <aura:attribute name="SearchKeyWord" type="string"/>
    <aura:attribute name="Message" type="String" default="Search Result.."/>
-    
    <!--declare events hendlers-->  
    <aura:handler name="oSelectedAccountEvent" event="c:COT_selectedDirComEvent_evt" action="{!c.handleComponentEvent}"/>
    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
@@ -25,7 +24,7 @@
                <div aura:id="lookup-pill" class="slds-pill-container slds-hide">
                   <span class="slds-pill">
                      <span class="slds-pill__label">
-                       {!v.selectedRecord.Name}  
+                       {!v.selectedRecord.Name}
                      </span>
                      <button class="slds-button slds-button--icon slds-pill__remove" onclick="{!c.clear}">
                         <c:COT_SVG_cmp class="slds-button__icon" xlinkHref="{!$Resource.SLDS + '/icons/utility-sprite/svg/symbols.svg#close'}" />
@@ -44,9 +43,7 @@
             <center> <ui:spinner aura:id="spinner"/> </center>
             <ul class="slds-lookup__list" role="listbox">
                <aura:iteration items="{!v.listOfSearchRecords}" var="singleRec">
-               	{!singleRec}
                   <c:COT_customLookupResult_cmp oAccount="{!singleRec}" />
-               	}
                </aura:iteration>
             </ul>
          </div>

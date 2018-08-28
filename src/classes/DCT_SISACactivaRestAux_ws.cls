@@ -71,6 +71,7 @@ public class DCT_SISACactivaRestAux_ws {
 		List<Cliente__c>                              lstClientRequest = new List<Cliente__c>();
 		List<DCTAuthorizedLines__c>                   lstPlan          = new List<DCTAuthorizedLines__c>();
 		List<DCTAuthorizedLines__c>                   lstLinea         = new List<DCTAuthorizedLines__c>();
+		List<DCTAuthorizedLines__c>                   lstLineaFirst    = new List<DCTAuthorizedLines__c>();
 		List<DCT_ResponseSISACactiva_cls>             lstResponse      = new List<DCT_ResponseSISACactiva_cls>();
 		List<DCT_ResponseSISACactiva_cls.Info1y7>     lstInfo17        = new List<DCT_ResponseSISACactiva_cls.Info1y7>();
 		List<DCT_ResponseSISACactiva_cls.Info2y8>     lstInfo28        = new List<DCT_ResponseSISACactiva_cls.Info2y8>();
@@ -88,6 +89,7 @@ public class DCT_SISACactivaRestAux_ws {
 		Map<String, String> mapService1     = new Map<String, String>();
 
 		Integer intLineasActivas = 0;
+		Integer intTotalLineasActivas = 0;
 		Decimal intTotalLieasAutorizadas = 0;
 
 		if(entityLegal == '1') {
@@ -121,6 +123,9 @@ public class DCT_SISACactivaRestAux_ws {
 								}
 							}	
 								if(iterator.RecordType.Name == 'Lineas Autorizadas') {
+									if(iterator.DCTActiveLines__c != null) {
+										lstLineaFirst.add(iterator);
+									}
 									lstLinea.add(iterator);
 								}	
 						}
@@ -162,20 +167,26 @@ public class DCT_SISACactivaRestAux_ws {
 						if(!lstAutorizaRecibirInfo.isEmpty()) {
 							strAutorizaRecibirInfo = String.join(lstAutorizaRecibirInfo, ',');
 						}
+						System.debug(loggingLevel.Error, '*** lstNotas: ' + lstNotas);
 						if(!lstNotas.isEmpty()) {
-							strNotas = String.join(lstNotas, ',');
+							strNotas = String.join(lstNotas, ';');
 						}
-						if(!lstNotas.isEmpty()) {
+						if(!lstJefeDatos.isEmpty()) {
 							strJefeDatos = String.join(lstJefeDatos, ',');
 						}
-						if(!lstNotas.isEmpty()) {
+						if(!lstXODatos.isEmpty()) {
 							strXODatos = String.join(lstXODatos, ',');
 						}
 					}
 					response.esExitoso = true;
 					
-					lstDCTServices1 = clienteIterator.DCTServices1__c != null?clienteIterator.DCTServices1__c.split(';'): new List<String>();
-					lstDCTServices2 = clienteIterator.DCTServices2__c != null?clienteIterator.DCTServices2__c.split(';') : new List<String>();
+					lstDCTServices1 = clienteIterator.DCTServices1__c != null ? clienteIterator.DCTServices1__c.split(';') : new List<String>();
+					lstDCTServices2 = clienteIterator.DCTServices2__c != null ? clienteIterator.DCTServices2__c.split(';') : new List<String>();
+
+	       			String sServiciosImplant = '';
+		        	sServiciosImplant += clienteIterator.DCTServices1__c != null ? String.valueOf(clienteIterator.DCTServices1__c) + ',' : ',';
+		        	sServiciosImplant += clienteIterator.DCTServices2__c != null ? String.valueOf(clienteIterator.DCTServices2__c) : '';
+					
 					System.debug(loggingLevel.Error, '*** lstPlan: ' + lstPlan);
 					System.debug(loggingLevel.Error, '*** lstLinea: ' + lstLinea);
 					if(!lstPlan.isEmpty()) {
@@ -198,7 +209,7 @@ public class DCT_SISACactivaRestAux_ws {
 								lstPlazo.add(planIterator.Plan__r.DCTTerm__c );
 							}
 							if(planIterator.Plan__r.DCTTerm__c == '12' && planIterator.DCTAuthorizationDate__c != null) {
-								lstGerente.add(planIterator.CreatedBy.Manager.Name);
+								lstGerente.add(planIterator.Aprobador__r.Name); //CreatedBy.Manager.Name
 							} else {
 								lstGerente.add('');
 							}
@@ -228,7 +239,7 @@ public class DCT_SISACactivaRestAux_ws {
 						}
 					}
 					if(!lstLinea.isEmpty()) {
-						for(DCTAuthorizedLines__c lineaIterator: lstLinea) {
+						for(DCTAuthorizedLines__c lineaIterator: lstLineaFirst) {
 							//lineaIterator.DCTActiveLines__c = intLineasActivas;
 							if (lineaIterator.Status__c == 'AUTORIZADO'){
 								intLineasActivas = (lineaIterator.DCTActiveLines__c != null ? Integer.valueOf(lineaIterator.DCTActiveLines__c) : intLineasActivas) + (lineaIterator.DCTAuthorizedLines__c != null ? Integer.valueOf(lineaIterator.DCTAuthorizedLines__c) : 0);
@@ -238,7 +249,17 @@ public class DCT_SISACactivaRestAux_ws {
 							}
 							System.debug(loggingLevel.Error, '*** intLineasActivas: ' + intLineasActivas);
 							lstLineasActivas.add(String.valueOf(intLineasActivas));
-
+						}
+						for(DCTAuthorizedLines__c lineaIterator: lstLinea) {
+							lineaIterator.DCTActiveLines__c = intLineasActivas;
+							if (lineaIterator.Status__c == 'AUTORIZADO'){
+								intLineasActivas = (lineaIterator.DCTActiveLines__c != null ? Integer.valueOf(lineaIterator.DCTActiveLines__c) : intLineasActivas) + (lineaIterator.DCTAuthorizedLines__c != null ? Integer.valueOf(lineaIterator.DCTAuthorizedLines__c) : 0);
+							}
+							else{
+								intLineasActivas = (lineaIterator.DCTActiveLines__c != null ? Integer.valueOf(lineaIterator.DCTActiveLines__c) : intLineasActivas);
+							}
+							System.debug(loggingLevel.Error, '*** intLineasActivas: ' + intLineasActivas);
+							lstLineasActivas.add(String.valueOf(intLineasActivas));
 							lstLineasSolicitadas.add(String.valueOf(lineaIterator.DCTAuthorizedLines__c));
 							lstEstatusLineasSolicitadas.add(lineaIterator.Status__c);
 							lstFechaSolicitud.add(String.valueOf(lineaIterator.DCTAuthorizationDate__c));
@@ -247,6 +268,8 @@ public class DCT_SISACactivaRestAux_ws {
 							intTotalLieasAutorizadas += lineaIterator.DCTTotalAuthorizedLines__c;
 							System.debug(loggingLevel.Error, '*** intTotalLieasAutorizadas: ' + intTotalLieasAutorizadas);
 						}
+						intTotalLineasActivas = integer.valueOf(lstLineasActivas.get(lstLineasActivas.size()-1));
+						lstLineasActivas.remove(lstLineasActivas.size()-1);
 						if(!lstLineasActivas.isEmpty()) {
 							strLineasActivas = String.join(lstLineasActivas, ',');
 						}
@@ -309,6 +332,7 @@ public class DCT_SISACactivaRestAux_ws {
 					System.debug(loggingLevel.Error, '*** strNotas: ' + strNotas);
 					System.debug(loggingLevel.Error, '*** strJefeDatos: ' + strJefeDatos);
 					System.debug(loggingLevel.Error, '*** strXODatos: ' + strXODatos);
+					System.debug(loggingLevel.Error, '*** intTotalLineasActivas: ' + intTotalLineasActivas);
 					
 					if(method == '1' || method == '7') {////Ok
 						
@@ -481,12 +505,12 @@ public class DCT_SISACactivaRestAux_ws {
 						info.EstaEnBuro =clienteIterator.DCTCreditBureau__c; 
 						info.EsVIP =clienteIterator.DCTVIP__c; 
 						info.TieneAVL =clienteIterator.DCTAVL__c; 
-						info.RepersentanteLegal =clienteIterator.DCTLegalRepresentative__c;
+						info.RepresentanteLegal =clienteIterator.DCTLegalRepresentative__c;
 						info.Beneficios =clienteIterator.DCTBenefits__c;
 						info.ClienteFechaRegistro =clienteIterator.DCTRegistrationDate__c;
 						info.FechaModificacion =Date.valueOf(clienteIterator.LastModifiedDate);
-						info.UsuarioModificaNombre =clienteIterator.LastModifiedBy.Name;
-						info.UsuarioModificaXO =clienteIterator.LastModifiedBy.DCTXO__c;
+						info.UsuarioModificoNombre =clienteIterator.LastModifiedBy.Name;
+						info.UsuarioModificoXO =clienteIterator.LastModifiedBy.DCTXO__c;
 						info.FechaBaja =clienteIterator.DCTLowDate__c; 
 						info.PuedeActivarVPN =clienteIterator.DCTVPNActivation__c ? true : false;
 						info.CicloFacturacion =clienteIterator.DCTBillingCycle__c != null ? clienteIterator.DCTBillingCycle__c : null;
@@ -507,7 +531,11 @@ public class DCT_SISACactivaRestAux_ws {
 						info.DATId =clienteIterator.DCT_CatalogoFuerzaVenta__r.DCT_PrepagoSiapID__c +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.DCT_PrepagoSiapID__c;
 						info.DATFuerzaVenta =clienteIterator.DCT_CatalogoFuerzaVenta__r.Name +','+clienteIterator.DCTCatalogoFuerzaVenta2__r.Name;
 						info.DATNombre =clienteIterator.DCTDistribuidorPrincipal__c + ','+ clienteIterator.DCTDistribuidorSecundario__c;
-						info.Servicios =clienteIterator.DCTServices1__c+';'+clienteIterator.DCTServices2__c;
+						
+						//Actualiza los servicios a partir de 
+						//info.Servicios = clienteIterator.DCTServices1__c+';'+clienteIterator.DCTServices2__c;
+						info.Servicios = sServiciosImplant;
+						
 						info.InplantNombre =clienteIterator.DCTInplantName1__c +','+clienteIterator.DCTInplantName2__c;
 						info.InplantTelefono =clienteIterator.DCTInplantPhone1__c +','+clienteIterator.DCTInplantPhone2__c;
 						info.InplantExtension =clienteIterator.DCTExt1__c +','+clienteIterator.DCTExt2__c;
@@ -519,7 +547,7 @@ public class DCT_SISACactivaRestAux_ws {
 						info.ResultadoVerificacion =clienteIterator.DCTResultVerification__c;
 						info.Investigacion =clienteIterator.DCTInvestigation__c;
 						info.InvestigacionComentarios =clienteIterator.DCTCommentsInvestigation__c;
-						info.TotalLineasActivas =clienteIterator.DCTTotalAuthorizedLines__c;
+						info.TotalLineasActivas =intTotalLineasActivas;//clienteIterator.DCTTotalAuthorizedLines__c;
 						info.TipoAutorizacion =clienteIterator.DCTTypeAuthorization__c;
 						info.LineasFechaAutorizacion =clienteIterator.DCTAuthorizationDateVoBoManagement__c;
 						
@@ -527,15 +555,16 @@ public class DCT_SISACactivaRestAux_ws {
 						info.LineasSolicitadas =strLineasSolicitadas != ''?strLineasSolicitadas:null;
 						info.LineasSolicitadasEstatus =strEstatusLineasSolicitadas != ''?strEstatusLineasSolicitadas:null;
 						info.LineasFechaSolicitud =strFechaSolicitud != ''?strFechaSolicitud:null;
-						info.LineasAutorizadaPor =strAutorizadoPor != ''?strAutorizadoPor:null;
+						info.LineasAutorizadasPor  = strAutorizadoPor != '' ? strAutorizadoPor : null;
 						info.LineasAutorizadas =strLineasAutorizadas != ''?strLineasAutorizadas:null;
 						info.TotalLineasAutorizadas =intTotalLieasAutorizadas;
 						
 						info.NombrePropietario =clienteIterator.Owner.Name;
 						info.UsuarioXO = clienteIterator.XO__c;
 						info.FuerzaVentaEjecutivo = clienteIterator.VT__c != null ? clienteIterator.VT__c : null; //DCTVT
-						info.JefeDatos =strJefeDatos != ''?strJefeDatos:null;
-						info.FuerzaVentaJefeDatos =strXODatos != ''?strXODatos:null;
+						
+						info.JefeDatos =clienteIterator.DCT_JefeVoz__c;//strJefeDatos != ''?strJefeDatos:null;
+						info.FuerzaVentaJefeDatos = clienteIterator.DCT_FuerzaVentaSmd__c; //strXODatos != ''?strXODatos:null;
 						
 						info.ContactoNombre =strNombreContacto != ''?strNombreContacto:null;
 						info.ContactoPuesto =strPuestoContacto != ''?strPuestoContacto:null;

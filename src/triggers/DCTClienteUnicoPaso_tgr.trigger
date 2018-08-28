@@ -25,40 +25,61 @@ trigger DCTClienteUnicoPaso_tgr on DCTClienteUnicoPaso__c (before insert) {
 				//Si tiene algo el campo Name y DCT_RFC__c
 				if(pct.Name !=  NULL && pct.DCT_RFC__c != null){
 					Boolean bExiste = false;
-					System.debug('EN DCTClienteUnicoPaso__c.beforeInsert Name: ' + pct.Name + ' DCT_RFC__c: ' + pct.DCT_RFC__c);				
-					for (Account pctExis : [Select ID, Name, TipoCliente__c From Account Where RFC__c = :pct.DCT_RFC__c 
-						//AND Name =:pct.Name
-						]){
-						bExiste = true;			
-						mapPctUpd.put(pctExis.id, new Account(
-								id = pctExis.id,
-								TipoCliente__c = 'Cliente Cautivo'
-							)
-						);
-					}
-					if (!bExiste)
-						pct.Name.addError('EL cliente con el nombre: ' + pct.Name + ' y el RFC: ' + pct.DCT_RFC__c + ' no existe en el PCT.');
-					//Ve si existe ese cliente en PCT	
-					if (bExiste){
-						List<Database.Saveresult> lObjDbur = DataBase.update(mapPctUpd.values());
-						for (Database.Saveresult objDbur : lObjDbur){
-							if (!objDbur.isSuccess())
-								pct.Name.addError('Error al actualizar el PCT: ' + pct.Name + ' ERROR: ' + objDbur.getErrors()[0].getMessage());
-						}
-						//Busca el reg del cliente dir comercial
-						for (Cliente__c dircom : [Select id From Cliente__c Where RFC__c =:pct.DCT_RFC__c]){
-							mapDirUpdRt.put(dircom.id, new Cliente__c(
-									id = dircom.id,
-									RecordTypeId = VaRtCteCautivo
+					System.debug('EN DCTClienteUnicoPaso__c.beforeInsert Name: ' + pct.Name + ' DCT_RFC__c: ' + pct.DCT_RFC__c);
+									
+					List<Account> lstCtes = new List<Account>();					
+			        String strConsulta = 'Select ID, Name, TipoCliente__c ' + 
+			        	' FROM Account ' +
+			        	' WHERE RFC__c = \'' + pct.DCT_RFC__c + '\'' +
+			        	' And Name like \'' + pct.Name + '%\'';		        		
+					System.debug('EN DCTClienteUnicoPaso__c.beforeInsert strConsulta: ' + strConsulta);
+
+        			try{
+        				lstCtes = Database.query(strConsulta);
+
+						//for (Account pctExis : [Select ID, Name, TipoCliente__c From Account Where RFC__c = :pct.DCT_RFC__c ]){
+						for (Account pctExis : lstCtes){							
+							bExiste = true;			
+							mapPctUpd.put(pctExis.id, new Account(
+									id = pctExis.id,
+									TipoCliente__c = 'Cliente Cautivo'
 								)
 							);
 						}
-						List<Database.Saveresult> lObjDburDc = DataBase.update(mapDirUpdRt.values());
-						for (Database.Saveresult objDbur : lObjDburDc){
-							if (!objDbur.isSuccess())
-								pct.Name.addError('Error al actualizar el Dir. Com.: ' + pct.Name + ' ERROR: ' + objDbur.getErrors()[0].getMessage());
-						}
-					}//Fin si bExiste
+						
+						if (!bExiste)
+							pct.Name.addError('EL cliente con el nombre: ' + pct.Name + ' y el RFC: ' + pct.DCT_RFC__c + ' no existe en el PCT.');
+						//Ve si existe ese cliente en PCT	
+						if (bExiste){
+							
+							//Bloquea el Trigger antes que hagas la actualización
+							DCT_TriggerExecutionControl_cls.setAlreadyBeenExecuted('PlanCliente');
+							List<Database.Saveresult> lObjDbur = DataBase.update(mapPctUpd.values());
+							for (Database.Saveresult objDbur : lObjDbur){
+								if (!objDbur.isSuccess())
+									pct.Name.addError('Error al actualizar el PCT: ' + pct.Name + ' ERROR: ' + objDbur.getErrors()[0].getMessage());
+							}
+							
+							//Busca el reg del cliente dir comercial
+							for (Cliente__c dircom : [Select id From Cliente__c Where RFC__c =:pct.DCT_RFC__c]){
+								mapDirUpdRt.put(dircom.id, new Cliente__c(
+										id = dircom.id,
+										RecordTypeId = VaRtCteCautivo
+									)
+								);
+							}
+	
+							//Bloquea el Trigger antes que hagas la actualización
+							DCT_TriggerExecutionControl_cls.setAlreadyBeenExecuted('DCT_ComercialDirectory_tgr');
+							List<Database.Saveresult> lObjDburDc = DataBase.update(mapDirUpdRt.values());
+							for (Database.Saveresult objDbur : lObjDburDc){
+								if (!objDbur.isSuccess())
+									pct.Name.addError('Error al actualizar el Dir. Com.: ' + pct.Name + ' ERROR: ' + objDbur.getErrors()[0].getMessage());
+							}
+						}//Fin si bExiste
+
+	        		}catch(QueryException qE){}catch(UnexpectedException uE){}catch(Exception gE){}
+	        		
 				}//Fin si pct.Name !=  NULL && pct.DCT_RFC__c != null
 				System.debug('EN DCTClienteUnicoPaso__c.beforeInsert...');
 	        }//Fin del for para Trigger.new

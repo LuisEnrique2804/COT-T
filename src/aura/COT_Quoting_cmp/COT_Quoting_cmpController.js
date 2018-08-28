@@ -1,4 +1,31 @@
 ({
+    doInit: function(component, event, helper) {
+        // Prepare a new record from template
+        component.find("profileRecordCreator").getNewRecord(
+            "COT_PerfilesCotizacion__c ", // sObject type (objectApiName)
+            null,      // recordTypeId
+            false,     // skip cache?
+            $A.getCallback(function() {
+                var rec = component.get("v.newProfile");
+                var error = component.get("v.newProfileError");
+                if(error || (rec === null)) {
+                    console.log("Error initializing record template: " + error);
+                    return;
+                }
+                console.log("Record template initialized: " + rec.sobjectType);
+            })
+        );
+    },
+    
+    createProfile : function (component, event, helper) {
+        
+      	// handle value change
+      	console.log("recordTypeName: " + component.get("v.selectedValue"));
+        var recordTypeName = component.get("v.selectedValue");
+        var sobject = component.get("v.ProfileQuoting");
+        helper.getRecordType(component,event,recordTypeName, sobject);
+  	},
+    
 	loadOptions: function (component, event, helper) {
 		var opts = [
 			{ value: "---Seleccionar---", label: "---Seleccionar---" },
@@ -182,6 +209,7 @@
       // handle value change
       console.log("old value: " + event.getParam("oldValue"));
       console.log("current value: " + event.getParam("value"));
+      console.log("selected value: " + component.get("v.selectedValue"));
   },
    openModel: function(component, event, helper) {
       // for Display Model,set the "isOpen" attribute to "true"

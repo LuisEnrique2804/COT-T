@@ -69,10 +69,10 @@ global class DCT_ReporteCamposModifDirComercial_bch implements Database.Batchabl
 
 	        //DATOS DEL DIRECTORIO COMERCIAL DTCCustomerID__c       	
 	        //ID
-        	sRegistroPaso += DirMod.DTCCustomerID__c != null ? DirMod.DTCCustomerID__c : DirMod.DTCCustomerID__c + '|'; 
+        	sRegistroPaso += DirMod.DTCCustomerID__c != null ? DirMod.DTCCustomerID__c + '|' : '|'; 
 	        System.debug('EN DCT_ReporteCamposModifDirComercial_bch DirMod.RFC__c: ' + DirMod.RFC__c);
         	//RFC
-        	sRegistroPaso += (DirMod.RFC__c != null ? DirMod.RFC__c.rightPad(13, sSpacios) : sConSpacios.rightPad(13, sSpacios)) + '|'; 
+        	sRegistroPaso += (DirMod.RFC__c != null ? DirMod.RFC__c.rightPad(13, sSpacios) + '|' : sConSpacios.rightPad(13, sSpacios)) + '|'; 
 	        System.debug('EN DCT_ReporteCamposModifDirComercial_bch DirMod.RFC__c: ' + DirMod.RFC__c);
 	        //RAZON SOCIAL
         	sRegistroPaso += DirMod.Name != null ? DirMod.Name + '|' : '|';        	
@@ -156,7 +156,7 @@ global class DCT_ReporteCamposModifDirComercial_bch implements Database.Batchabl
         	sRegistroPaso += DirMod.DCTRegistrationDate__c != null ? formateaFecha(DirMod.DCTRegistrationDate__c) + '|' : '|';
 	        System.debug('EN DCT_ReporteCamposModifDirComercial_bch DirMod.DCTRegistrationDate__c: ' + DirMod.DCTRegistrationDate__c);
 	        //Fecha Modificación LastModifiedDate
-        	sRegistroPaso += DirMod.DCTLowDateAccuont__c != null ? formateaFechaHora(DirMod.LastModifiedDate) + '|' : '|';
+        	sRegistroPaso += DirMod.LastModifiedDate != null ? formateaFechaHora(DirMod.LastModifiedDate) + '|' : '|';
 	        System.debug('EN DCT_ReporteCamposModifDirComercial_bch DirMod.LastModifiedDate: ' + formateaFechaHora(DirMod.LastModifiedDate));	        
 	        //ULTIMO USUARIO MODIFICO
         	sRegistroPaso += DirMod.LastModifiedBy.Name != null ? String.valueOf(DirMod.LastModifiedBy.Name) + '|' : '|';
@@ -362,15 +362,21 @@ global class DCT_ReporteCamposModifDirComercial_bch implements Database.Batchabl
 			//Para la parte de Inplant
 	        String sFzaVtaPrin = ''; 
 	        //Fuerza de venta Principal
-	        if (DirMod.DCT_CatalogoFuerzaVenta__c != null)
-				sFzaVtaPrin += DirMod.DCT_CatalogoFuerzaVenta__r.Name != null ? String.valueOf(DirMod.DCT_CatalogoFuerzaVenta__r.Name) + ',' : ',';
-	        if (DirMod.DCT_CatalogoFuerzaVenta__c == null)
-	        	sFzaVtaPrin += ','; 
+	        if (DirMod.DCT_CatalogoFuerzaVenta__c != null && DirMod.DCTCatalogoFuerzaVenta2__c == null)
+				sFzaVtaPrin += DirMod.DCT_CatalogoFuerzaVenta__r.Name != null ? String.valueOf(DirMod.DCT_CatalogoFuerzaVenta__r.Name) : ',';
+	        else if (DirMod.DCT_CatalogoFuerzaVenta__c != null && DirMod.DCTCatalogoFuerzaVenta2__c != null)
+				sFzaVtaPrin += DirMod.DCT_CatalogoFuerzaVenta__r.Name != null ? String.valueOf(DirMod.DCT_CatalogoFuerzaVenta__r.Name) + ',' : ','; 				
+	        else if (DirMod.DCT_CatalogoFuerzaVenta__c == null && DirMod.DCTCatalogoFuerzaVenta2__c != null)
+	        	sFzaVtaPrin += ',';
+	        	 
 	        //Fuerza de venta Secundaria
 	        if (DirMod.DCTCatalogoFuerzaVenta2__c != null)
 				sFzaVtaPrin += DirMod.DCTCatalogoFuerzaVenta2__r.Name != null ? String.valueOf(DirMod.DCTCatalogoFuerzaVenta2__r.Name) : '';
 	        if (DirMod.DCTCatalogoFuerzaVenta2__c == null)
 				sFzaVtaPrin += ',';
+				
+	        if (DirMod.DCT_CatalogoFuerzaVenta__c == null && DirMod.DCTCatalogoFuerzaVenta2__c == null)
+				sFzaVtaPrin += '';	        				
 			//DISTRIBUIDOR INPLANT	        
 	        System.debug('EN DCT_ReporteCamposModifDirComercial_bch sFzaVtaPrin: ' + sFzaVtaPrin);	        	
         	sRegistroPaso += sFzaVtaPrin + '|';

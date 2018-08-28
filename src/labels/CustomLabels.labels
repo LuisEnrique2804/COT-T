@@ -102,6 +102,14 @@
         <value>Login</value>
     </labels>
     <labels>
+        <fullName>DCT_PrefixClienteObj</fullName>
+        <categories>Etiqueta</categories>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>DCT Prefix Cliente Obj</shortDescription>
+        <value>a0D</value>
+    </labels>
+    <labels>
         <fullName>DCT_ReferenciaRAP</fullName>
         <language>es</language>
         <protected>false</protected>
@@ -142,6 +150,22 @@
         <protected>false</protected>
         <shortDescription>DCT_URLBack_lbl</shortDescription>
         <value>https://telcel-dev--dc.lightning.force.com/lightning/r/DCTAssignment__c/</value>
+    </labels>
+    <labels>
+        <fullName>DCT_UrlLightForce</fullName>
+        <categories>Label</categories>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>DCT UrlLightForce</shortDescription>
+        <value>https://telcel-dev--dc.lightning.force.com/lightning</value>
+    </labels>
+    <labels>
+        <fullName>DCT_UrlPagVF</fullName>
+        <categories>Label</categories>
+        <language>es</language>
+        <protected>false</protected>
+        <shortDescription>DCT_UrlPagVF</shortDescription>
+        <value>https://cs17.salesforce.com/apex/</value>
     </labels>
     <labels>
         <fullName>DCT_stgRecordType_lbl</fullName>

@@ -67,14 +67,14 @@ public with sharing class DCT_HeaderPendingProcess_ctr {
 	    System.debug(loggingLevel.Error, '*** EN changeToReject bTipoCambioCuenta: ' + bTipoCambioCuenta + ' bInvestiga: ' + bInvestiga);
         
         String sIdDirCom = strProcessInstanceWorkitem.ProcessInstance.TargetObjectId;
-       	if (sIdDirCom.startsWith('a0D')){
+       	if (sIdDirCom.startsWith(System.Label.DCT_PrefixClienteObj)){
        		for (Cliente__c DirComCons : [Select Name, DCTExemptBail__c, DCTAskAuthorization__c,
        			DCTComentariosAutorizacion__c, DCTNoLineasSolicitadas__c
        			From Cliente__c Where ID =: sIdDirCom]){
        			DirComInv = DirComCons;
 	    		System.debug(loggingLevel.Error, '*** EN changeStatusToApprove DirComInv: ' + DirComInv);       			
        		}//Fin del for para los datos del cliente
-       	}//Fin si sIdDirCom.startsWith('a0D')
+       	}//Fin si sIdDirCom.startsWith(System.Label.DCT_PrefixClienteObj)
         
         System.debug(loggingLevel.Error, '*** changeStatusToApprove: ' + blnClickBotton);
     }    
@@ -100,8 +100,8 @@ public with sharing class DCT_HeaderPendingProcess_ctr {
                 
 		String sNombProc = strProcessInstanceWorkitem.ProcessInstance.ProcessDefinition.Name;
     	//Ve si se trata de un proceso del tipo DCT Cambio Tipo de Cuenta a CO
-    	if (sNombProc == 'DCT Cambio Tipo de Cuenta a CO')
-    		bTipoCambioCuenta = true;
+    	//if (sNombProc == 'DCT Cambio Tipo de Cuenta a CO')
+    	//	bTipoCambioCuenta = true;
 	    System.debug(loggingLevel.Error, '*** EN changeToReject bTipoCambioCuenta: ' + bTipoCambioCuenta + ' bInvestiga: ' + bInvestiga + ' sNoLinAuto: ' + sNoLinAuto);
          
         //Ve si se trata de una invetigación y no capturo el No de Lineas Autorizadas
@@ -114,14 +114,14 @@ public with sharing class DCT_HeaderPendingProcess_ctr {
 	    		        
         String sIdDirCom = strProcessInstanceWorkitem.ProcessInstance.TargetObjectId;
         Cliente__c DirCom;
-       	if (sIdDirCom.startsWith('a0D')){
+       	if (sIdDirCom.startsWith(System.Label.DCT_PrefixClienteObj)){ //'a0D'
        		DirCom = new Cliente__c();
        		for (Cliente__c DirComCons : [Select Name, DCTExemptBail__c 
        			From Cliente__c Where ID =: sIdDirCom]){
        			DirCom = DirComCons;
 	    		System.debug(loggingLevel.Error, '*** EN changeToApprove DirComCons: ' + DirComCons);       			
        		}
-       	}//Fin si sIdDirCom.startsWith('a0D')
+       	}//Fin si sIdDirCom.startsWith(System.Label.DCT_PrefixClienteObj)
         
         //Si continua el proceso
         if (bContProc){
@@ -207,15 +207,15 @@ public with sharing class DCT_HeaderPendingProcess_ctr {
         
 		String sNombProc = strProcessInstanceWorkitem.ProcessInstance.ProcessDefinition.Name;
     	//Ve si se trata de un proceso del tipo DCT Cambio Tipo de Cuenta a CO
-    	if (sNombProc == 'DCT Cambio Tipo de Cuenta a CO')
-    		bTipoCambioCuenta = true;
+    	//if (sNombProc == 'DCT Cambio Tipo de Cuenta a CO')
+    	//	bTipoCambioCuenta = true;
     	if (sNombProc.startsWith('DCT Res. Invest.'))
     		bInvestiga = true;
 	    System.debug(loggingLevel.Error, '*** EN changeToReject bTipoCambioCuenta: ' + bTipoCambioCuenta + ' bInvestiga: ' + bInvestiga + ' bContProc: ' + bContProc);
 
         String sIdDirCom = strProcessInstanceWorkitem.ProcessInstance.TargetObjectId;	            
         Cliente__c DirCom;
-       	if (sIdDirCom.startsWith('a0D')){
+       	if (sIdDirCom.startsWith(System.Label.DCT_PrefixClienteObj)){
        		DirCom = new Cliente__c();
        		for (Cliente__c DirComCons : [Select id, Name, DCTExemptBail__c From Cliente__c Where ID =: sIdDirCom]){
        			DirCom = DirComCons;
@@ -253,7 +253,7 @@ public with sharing class DCT_HeaderPendingProcess_ctr {
         System.debug(loggingLevel.Error, '*** sIdDirCom: ' + sIdDirCom);
         
 		//Actualiza el dir asociado el cliente y ponle los comentarios
-       	if (sIdDirCom.startsWith('a0D') && !procesoPendiente(sIdDirCom)){	
+       	if (sIdDirCom.startsWith(System.Label.DCT_PrefixClienteObj) && !procesoPendiente(sIdDirCom)){	
             DCT_TriggerExecutionControl_cls.setAlreadyBeenExecuted('DCT_ComercialDirectory_tgr');	
 			Cliente__c ClienteUpd = new Cliente__c(id = sIdDirCom, DCTCommentsInvestigation__c = strComment != null ? strComment : null);
 		    System.debug(loggingLevel.Error, '*** EN changeToReject ClienteUpd1: ' + ClienteUpd);
@@ -285,10 +285,10 @@ public with sharing class DCT_HeaderPendingProcess_ctr {
 		return bProcesoPendiente;
 	}
 
-    public PageReference regresar() {
-        System.debug(loggingLevel.Error, 'https://telcel-dev--dc.lightning.force.com/lightning/page/home');
+    public PageReference regresar() { //'https://telcel-dev--dc.lightning.force.com/lightning/page/home'
+        System.debug(loggingLevel.Error, System.Label.DCT_UrlLightForce + '/page/home');
         //'https://telcel-dev--dc.lightning.force.com/lightning/r/DCTAssignment__c'  https://telcel-dev--dc.lightning.force.com/                
-        PageReference pr = new PageReference('https://telcel-dev--dc.lightning.force.com/lightning/r/ProcessInstanceStep/'+lstProcessInstance.id+'/view');
+        PageReference pr = new PageReference(System.Label.DCT_UrlLightForce + '/r/ProcessInstanceStep/'+lstProcessInstance.id+'/view'); //'https://telcel-dev--dc.lightning.force.com/lightning/r/ProcessInstanceStep/'+lstProcessInstance.id+'/view'
         System.debug(loggingLevel.Error, '*** pr: ' + pr);
         pr.setRedirect(true);
         return pr;

@@ -370,9 +370,11 @@ public class DCT_NewCustomLead_ext {
 		      		blnIsEverythingOk = false;
 				}
 			}
-		}	
+		}
+		System.debug('EN NoExisRazonSocialExisreRFC blnSuccessfulProcedure: ' + blnSuccessfulProcedure + ' blnFirsProcess: ' + blnFirsProcess + ' bCobranza: ' + bCobranza);		
+		System.debug('EN NoExisRazonSocialExisreRFC lstGeneratedCustomers: ' + lstGeneratedCustomers);		
 		if(blnSuccessfulProcedure) {
-		  	if((blnFirsProcess && !bCobranza)|| Test.isRunningTest()) {
+		  	if((blnFirsProcess && !bCobranza) || Test.isRunningTest()) {
 				for(Cliente__c iterator:lstGeneratedCustomers){
 				    System.debug(loggingLevel.Error, '*** Paso1: '+ iterator.id);
 				    approvalClass(iterator.id);
@@ -385,25 +387,26 @@ public class DCT_NewCustomLead_ext {
 
 	@future(callout=true)
   	public static void approvalClass(id idIterator) {
+  		System.debug('EN approvalClass idIterator: ' + idIterator);
+  		 
     	Boolean blnWasThereAnException = false;
 	    String strErrorMsg = '';
-	    System.debug(loggingLevel.Error, '*** idIterator: ' + idIterator);
 	    Approval.ProcessSubmitRequest procSubmReq = new Approval.ProcessSubmitRequest();
 	    procSubmReq.setComments('Favor de revisar registro del prospecto, el RFC ya existe con una Razón Social diferente.');
 	    procSubmReq.setObjectId(idIterator);
 	    procSubmReq.setProcessDefinitionNameOrId('DCTDuplicateRecord');
 	    procSubmReq.setSkipEntryCriteria(true);
 	    //procSubmReq.setNextApproverIds(lstManagerIds);   
-	    System.debug(loggingLevel.Error, '*** procSubmReq: ' + procSubmReq);    
+	    System.debug(loggingLevel.Error, '*** EN approvalClass procSubmReq: ' + procSubmReq);    
 	    Approval.ProcessResult resultAprove = Approval.process(procSubmReq,true);
-	    System.debug(loggingLevel.Error, '*** resultAprove.getInstanceId(): ' + resultAprove.getInstanceId());
-	    System.debug(loggingLevel.Error, '*** resultAprove.getInstanceStatus(): ' + resultAprove.getInstanceStatus());
-	    System.debug(loggingLevel.Error, '*** resultAprove.getEntityId(): ' + resultAprove.getEntityId());
+	    System.debug(loggingLevel.Error, '*** EN approvalClass resultAprove.getInstanceId(): ' + resultAprove.getInstanceId());
+	    System.debug(loggingLevel.Error, '*** EN approvalClass resultAprove.getInstanceStatus(): ' + resultAprove.getInstanceStatus());
+	    System.debug(loggingLevel.Error, '*** EN approvalClass resultAprove.getEntityId(): ' + resultAprove.getEntityId());
 	    if(resultAprove.isSuccess()) {
 
-	        System.debug(loggingLevel.Error, '*** Approvación Enviada exitosamente: ');
+	        System.debug(loggingLevel.Error, '*** EN approvalClass Approvación Enviada exitosamente: ');
 	    }else {
-	        System.debug(loggingLevel.Error, '*** strErrorMsg: ' + strErrorMsg);
+	        System.debug(loggingLevel.Error, '*** EN approvalClass strErrorMsg: ' + strErrorMsg);
 	    }
 	      
 	  }

@@ -181,50 +181,6 @@ public with sharing class DCT_CustomerTechnicalToken_ext {
     		
 	}
 
-	//public PageReference creaConsecutivoWebSer(){
-	//		System.debug('EN creaConsecutivoWebSer....');
-			
-	//		//Crea el consecutivo para el llamado
-	//		//slConsecCons = String.valueOf(DCT_Utils_cls.consectivoPlanesYEquipos());
-
-	//		System.debug('ANTES DE SALIR DE creaConsecutivoWebSer: ' + slConsecCons);
-	//		//Solo null
-	//		return null;
-	//}   
-
-	//public void DespliegaCamposNuevoPlan(){
-	//		System.debug('EN DCT_Product_ctr.DespliegaCamposNuevoPlan slConsecCons: ' + slConsecCons + ' ' + (slTipoMercado.size() > 0));
-	//		blnIsOnclick = true;
-	//		bErrorIns = false;
-	//		String sTipoMercadoPaso = '';
-			
-	//		//Ve si tiene algo la lista de slTipoMercado
-	//		if (slConsecCons != null){
-														
-	//		}//Fin si slTipoMercado.isEmpty()
-
-	//		System.debug('EN DCT_Product_ctr.DespliegaCamposNuevoPlan sTipoMercado: ' + sTipoMercado);        
-	//		if (sTipoMercadoPaso == 'CORPORATIVO'){
-	//			actualizaGrupoPlan();
-	//		}
-			
-	//}
-
-	//public PageReference actualizaGrupoPlan(){
-	//		System.debug('ENTRO A actualizaGrupoPlan...');
-	//		System.debug('EN DCT_Product_ctr.actualizaGrupoPlan slConsecCons: ' + slConsecCons + ' ' + sTipoMercado);       
-	//		bErrorIns = false;
-			
-	//		//Ve si tiene algo la lista de slTipoMercado
-	//		if (slGrupoPlan.size() == 1 && slConsecCons != null && sTipoMercado != null){
-										
-	//		}//Fin si slGrupoPlan.isEmpty() && slConsecCons != null && sTipoMercado != null
-							
-	//		//Solo regresa null
-	//		return null;
-	//}
-
-
 	public PageReference validaTipoServ(){
 		System.debug('EN validaTipoServ: ');
 		bErrorIns = false;		
@@ -1239,8 +1195,8 @@ public with sharing class DCT_CustomerTechnicalToken_ext {
 		}
 	}
 	
-	public PageReference refreshTable(){
-			PageReference pr = new PageReference('https://telcel-dev--dc--c.cs18.visual.force.com/apex/DCT_CustomerTechnicalToken_pag?Id='+cliente_id);
+	public PageReference refreshTable(){ //'https://telcel-dev--dc--c.cs18.visual.force.com/apex/DCT_CustomerTechnicalToken_pag?Id='+cliente_id
+			PageReference pr = new PageReference(System.Label.DCT_UrlPagVF + 'DCT_CustomerTechnicalToken_pag?Id=' + cliente_id);
 			pr.setRedirect(true);
 			return pr;
 	}

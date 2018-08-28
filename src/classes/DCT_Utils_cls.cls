@@ -408,7 +408,7 @@ public with sharing class DCT_Utils_cls {
 		List<String> lIdEmbudosPaso = sIdEambudos.split(',');
 		Set<String> setEmbRefAct = new Set<String>();
 		Set<String> setEmbRefNoAct = new Set<String>();		
-		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI lIdEmbudosPaso: ' + lIdEmbudosPaso);
+		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc1Pos lIdEmbudosPaso: ' + lIdEmbudosPaso);
 
 		//Ve si ya tienen folio los embudos
 		for(Cliente__c DirCom : [Select id, DCTRapReference__c From Cliente__c Where ID IN : lIdEmbudosPaso]){
@@ -422,7 +422,7 @@ public with sharing class DCT_Utils_cls {
 			for (Cliente__c DirCom : [Select id, Name, Cliente__r.RFC__c, DCTInvestigation__c,
 					DCTCommentsInvestigation__c, DCTResultVerification__c, DCTTypeAuthorization__c
 					From Cliente__c Where ID = :sIdDirCom]){
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI DirCom: ' + DirCom);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc1Pos DirCom: ' + DirCom);
 				    DatosDirComercialUps = new Cliente__c(id = DirCom.id);
 				    
 				//Crea el llamado al Ws de referencia rap
@@ -441,7 +441,7 @@ public with sharing class DCT_Utils_cls {
 					//Consulta los datos de la investigación en el catalogo de 
 					DCT_InvestigacionesConfig__c objDCTInvestigacionesConfig = DCT_Utils_cls.consultaDatosInvestiga(DirCom.DCTInvestigation__c, DirCom.DCTTypeAuthorization__c, 
 						DirCom.DCTResultVerification__c);
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc1Pos objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
 					
 					//Ve si tiene algo el obj objDCTInvestigacionesConfig
 					if (objDCTInvestigacionesConfig != null){
@@ -788,7 +788,7 @@ public with sharing class DCT_Utils_cls {
 		List<String> lIdEmbudosPaso = sIdEambudos.split(',');
 		Set<String> setEmbRefAct = new Set<String>();
 		Set<String> setEmbRefNoAct = new Set<String>();		
-		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI lIdEmbudosPaso: ' + lIdEmbudosPaso);
+		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc12Pos lIdEmbudosPaso: ' + lIdEmbudosPaso);
 
 		//Ve si ya tienen folio los embudos
 		for(Cliente__c DirCom : [Select id, DCTRapReference__c From Cliente__c Where ID IN : lIdEmbudosPaso]){
@@ -803,7 +803,7 @@ public with sharing class DCT_Utils_cls {
 					DCTCommentsInvestigation__c, DCTResultVerification__c, DCTTypeAuthorization__c,
 					DCTResultVerificationEsp__c
 					From Cliente__c Where ID = :sIdDirCom]){
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI DirCom: ' + DirCom);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc12Pos DirCom: ' + DirCom);
 				    DatosDirComercialUps = new Cliente__c(id = DirCom.id);
 				    
 				//Crea el llamado al Ws de referencia rap
@@ -818,7 +818,7 @@ public with sharing class DCT_Utils_cls {
 					//Consulta los datos de la investigación en el catalogo de 
 					DCT_InvestigacionesConfig__c objDCTInvestigacionesConfig = DCT_Utils_cls.consultaDatosInvestiga(DirCom.DCTInvestigation__c, DirCom.DCTTypeAuthorization__c, 
 						DirCom.DCTResultVerification__c);
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc12Pos objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
 					
 					//Ve si tiene algo el obj objDCTInvestigacionesConfig
 					if (objDCTInvestigacionesConfig != null){
@@ -980,7 +980,7 @@ public with sharing class DCT_Utils_cls {
 		List<String> lIdEmbudosPaso = sIdEambudos.split(',');
 		Set<String> setEmbRefAct = new Set<String>();
 		Set<String> setEmbRefNoAct = new Set<String>();		
-		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI lIdEmbudosPaso: ' + lIdEmbudosPaso);
+		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc1PosSI lIdEmbudosPaso: ' + lIdEmbudosPaso);
 
 		//Ve si ya tienen folio los embudos
 		for(Cliente__c DirCom : [Select id, DCTRapReference__c From Cliente__c Where ID IN : lIdEmbudosPaso]){
@@ -995,7 +995,7 @@ public with sharing class DCT_Utils_cls {
 					DCTCommentsInvestigation__c, DCTResultVerification__c, DCTTypeAuthorization__c,
 					DCTResultVerificationEsp__c
 					From Cliente__c Where ID = :sIdDirCom]){
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI DirCom: ' + DirCom);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc1PosSI DirCom: ' + DirCom);
 				    DatosDirComercialUps = new Cliente__c(id = DirCom.id);
 				    
 				//Crea el llamado al Ws de referencia rap
@@ -1007,7 +1007,7 @@ public with sharing class DCT_Utils_cls {
 					//Consulta los datos de la investigación en el catalogo de 
 					DCT_InvestigacionesConfig__c objDCTInvestigacionesConfig = DCT_Utils_cls.consultaDatosInvestiga(DirCom.DCTInvestigation__c, DirCom.DCTTypeAuthorization__c, 
 						DirCom.DCTResultVerification__c);
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc1PosSI objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
 					
 					//Ve si tiene algo el obj objDCTInvestigacionesConfig
 					if (objDCTInvestigacionesConfig != null){
@@ -1160,7 +1160,7 @@ public with sharing class DCT_Utils_cls {
 		List<String> lIdEmbudosPaso = sIdEambudos.split(',');
 		Set<String> setEmbRefAct = new Set<String>();
 		Set<String> setEmbRefNoAct = new Set<String>();		
-		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI lIdEmbudosPaso: ' + lIdEmbudosPaso);
+		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc2NegCAprob lIdEmbudosPaso: ' + lIdEmbudosPaso);
 
 		//Ve si ya tienen folio los embudos
 		for(Cliente__c DirCom : [Select id, DCTRapReference__c From Cliente__c Where ID IN : lIdEmbudosPaso]){
@@ -1175,7 +1175,7 @@ public with sharing class DCT_Utils_cls {
 					DCTCommentsInvestigation__c, DCTResultVerification__c, DCTTypeAuthorization__c,
 					DCTResultVerificationEsp__c
 					From Cliente__c Where ID = :sIdDirCom]){
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI DirCom: ' + DirCom);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc2NegCAprob DirCom: ' + DirCom);
 				    DatosDirComercialUps = new Cliente__c(id = DirCom.id);
 				    
 				//Crea el llamado al Ws de referencia rap
@@ -1194,7 +1194,7 @@ public with sharing class DCT_Utils_cls {
 					//Consulta los datos de la investigación en el catalogo de 
 					DCT_InvestigacionesConfig__c objDCTInvestigacionesConfig = DCT_Utils_cls.consultaDatosInvestiga(DirCom.DCTInvestigation__c, DirCom.DCTTypeAuthorization__c, 
 						DirCom.DCTResultVerification__c);
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc2NegCAprob objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
 					
 					//Ve si tiene algo el obj objDCTInvestigacionesConfig
 					if (objDCTInvestigacionesConfig != null){
@@ -1344,7 +1344,7 @@ public with sharing class DCT_Utils_cls {
 		List<String> lIdEmbudosPaso = sIdEambudos.split(',');
 		Set<String> setEmbRefAct = new Set<String>();
 		Set<String> setEmbRefNoAct = new Set<String>();		
-		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI lIdEmbudosPaso: ' + lIdEmbudosPaso);
+		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc3SinInvestiga lIdEmbudosPaso: ' + lIdEmbudosPaso);
 
 		//Ve si ya tienen folio los embudos
 		for(Cliente__c DirCom : [Select id, DCTRapReference__c From Cliente__c Where ID IN : lIdEmbudosPaso]){
@@ -1359,7 +1359,7 @@ public with sharing class DCT_Utils_cls {
 					DCTCommentsInvestigation__c, DCTResultVerification__c, DCTTypeAuthorization__c,
 					DCTResultVerificationEsp__c
 					From Cliente__c Where ID = :sIdDirCom]){
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI DirCom: ' + DirCom);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc3SinInvestiga DirCom: ' + DirCom);
 				    DatosDirComercialUps = new Cliente__c(id = DirCom.id);
 				    
 				//Crea el llamado al Ws de referencia rap
@@ -1369,15 +1369,20 @@ public with sharing class DCT_Utils_cls {
 			    	String sCommInvestigaPaso = '';
 					//Busca los comentarios del proceso de aprobación asociado a este reg			    	
 			    	DirCom.DCTInvestigation__c = 'SI';
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc3SinInvestiga ANTES DE EN TRAR A buscaComentariosProceso...');
 					sComentariosProceso = buscaComentariosProceso(DirCom.id);
 		    		sCommInvestigaPaso = DirCom.DCTTypeAuthorization__c; //'Vo. Bo. Subdirector';
 		    		sCommInvestigaPaso += sComentariosProceso != null ? ' - ' + sComentariosProceso : ' - ';
-					
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc3SinInvestiga ANTES DE EN TRAR A buscaComentariosProceso DirCom: ' + DirCom + ' DCTTypeAuthorization__c: ' + DirCom.DCTTypeAuthorization__c);
+										
+					String sTipoAutoriza = DirCom.DCTTypeAuthorization__c;
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc3SinInvestiga ANTES DE EN TRAR A buscaComentariosProceso sTipoAutoriza: ' + sTipoAutoriza);					
+					sTipoAutoriza = sTipoAutoriza != null ? sTipoAutoriza.replace('.', ' ').replace('  ',' ') : '';
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc3SinInvestiga DirCom.DCTInvestigation__c: ' + DirCom.DCTInvestigation__c + ' sTipoAutoriza: ' + sTipoAutoriza + ' Sin Investigacion');
+										
 					//Consulta los datos de la investigación en el catalogo de 
-					DCT_InvestigacionesConfig__c objDCTInvestigacionesConfig = DCT_Utils_cls.consultaDatosInvestiga(DirCom.DCTInvestigation__c, DirCom.DCTTypeAuthorization__c, 
-						DirCom.DCTResultVerification__c);
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
+					DCT_InvestigacionesConfig__c objDCTInvestigacionesConfig = DCT_Utils_cls.consultaDatosInvestiga(DirCom.DCTInvestigation__c, sTipoAutoriza, 
+						'Sin Investigacion'); //DirCom.DCTResultVerification__c
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc3SinInvestiga objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
 					
 					//Ve si tiene algo el obj objDCTInvestigacionesConfig
 					if (objDCTInvestigacionesConfig != null){
@@ -1527,7 +1532,7 @@ public with sharing class DCT_Utils_cls {
 		List<String> lIdEmbudosPaso = sIdEambudos.split(',');
 		Set<String> setEmbRefAct = new Set<String>();
 		Set<String> setEmbRefNoAct = new Set<String>();		
-		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI lIdEmbudosPaso: ' + lIdEmbudosPaso);
+		System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc4IT lIdEmbudosPaso: ' + lIdEmbudosPaso);
 
 		//Ve si ya tienen folio los embudos
 		for(Cliente__c DirCom : [Select id, DCTRapReference__c From Cliente__c Where ID IN : lIdEmbudosPaso]){
@@ -1542,7 +1547,7 @@ public with sharing class DCT_Utils_cls {
 					DCTCommentsInvestigation__c, DCTResultVerification__c, DCTTypeAuthorization__c,
 					DCTResultVerificationEsp__c
 					From Cliente__c Where ID = :sIdDirCom]){
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI DirCom: ' + DirCom);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc4IT DirCom: ' + DirCom);
 				    DatosDirComercialUps = new Cliente__c(id = DirCom.id);
 				    
 				//Crea el llamado al Ws de referencia rap
@@ -1562,7 +1567,7 @@ public with sharing class DCT_Utils_cls {
 					//Consulta los datos de la investigación en el catalogo de 
 					DCT_InvestigacionesConfig__c objDCTInvestigacionesConfig = DCT_Utils_cls.consultaDatosInvestiga(DirCom.DCTInvestigation__c, DirCom.DCTTypeAuthorization__c, 
 						DirCom.DCTResultVerification__c);
-					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc5VI objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
+					System.debug('ENTRO A Utils.ActualizaInvestigacionesEsc4IT objDCTInvestigacionesConfig: ' + objDCTInvestigacionesConfig);
 					
 					//Ve si tiene algo el obj objDCTInvestigacionesConfig
 					if (objDCTInvestigacionesConfig != null){
@@ -1733,23 +1738,51 @@ public with sharing class DCT_Utils_cls {
 		return sComentarios; 
 	}
 	
-	public static DCT_InvestigacionesConfig__c consultaDatosInvestiga(String sIdTipoInv, String sComInvest, String sEstatusInv ){
+	public static DCT_InvestigacionesConfig__c consultaDatosInvestiga(String sIdTipoInv, String sTipoAutoriza, String sEstatusInv ){
+		System.debug('EN consultaDatosInvestiga sIdTipoInv: ' + sIdTipoInv + ' sTipoAutoriza: ' + sTipoAutoriza + ' sEstatusInv: ' + sEstatusInv);
+		String sIdTipoInvPaso = sIdTipoInv != null ? sIdTipoInv : '';
+		String sTipoAutorizaPaso = sTipoAutoriza != null ? sTipoAutoriza : '';
+		String sEstatusInvPaso = sEstatusInv != null ? sEstatusInv : '';
+		System.debug('EN consultaDatosInvestiga sIdTipoInvPaso: ' + sIdTipoInvPaso + ' sTipoAutorizaPaso: ' + sTipoAutorizaPaso + ' sEstatusInvPaso: ' + sEstatusInvPaso);
 		
 		DCT_InvestigacionesConfig__c objResulInv = new DCT_InvestigacionesConfig__c();
 		
 		for (DCT_InvestigacionesConfig__c objInvConfPaso : [Select d.DCT_LeyendaValidacion__c, d.DCT_IdCombinacion__c, d.DCT_Estatus__c, 
 			d.DCT_EstatusInvespeciales__c, d.DCT_EstatusCorpoemp__c, d.DCT_ComentariosCorpoemp__c 
 			From DCT_InvestigacionesConfig__c d
-			Where DCT_EstatusCorpoemp__c =: sIdTipoInv And
-			DCT_ComentariosCorpoemp__c =:sComInvest And
-			DCT_EstatusInvespeciales__c =: sEstatusInv]){
-			//Inicializa	
+			Where DCT_EstatusCorpoemp__c =: sIdTipoInv And DCT_ComentariosCorpoemp__c =:sTipoAutoriza 
+			And DCT_EstatusInvespeciales__c =: sEstatusInv
+			]){
+			//Inicializa
 			objResulInv = objInvConfPaso;
 		}
-		
+
+		System.debug('ANTES DE SALIR DE consultaDatosInvestiga objResulInv: ' + objResulInv);		
 		//Return
 		return objResulInv;
 		
+	}
+
+	//Función que permite calcular la dedad de una persona
+    @future(callout=true)
+	public static void ProcesaCompetidor(String sIdCompetidor){
+		System.debug('ENTRO A Utils.ProcesaCompetidor: ' + sIdCompetidor);
+		
+		DateTime dtFHac = Datetime.now();
+		DateTime dtProcCom = dtFHac.addMinutes(2);
+		
+        String sch = dtProcCom.second() + ' ' + dtProcCom.minute() + ' ' + dtProcCom.hour() + ' ' + dtProcCom.day() + ' ' + dtProcCom.month() + ' ? ' + dtProcCom.year();
+
+        DCT_ProcesaCompetidores_sch objProcesaCompetidoresSch = new DCT_ProcesaCompetidores_sch();
+        objProcesaCompetidoresSch.sIdReg = sIdCompetidor;
+        
+		String sNombreProc = 'ProcesaCompetidor-' + sIdCompetidor + 'sch-' + sch;
+		System.debug('EN ActivaProcNotif_tgr sNombreProc: ' + sNombreProc + ' sch: ' + sch);
+		
+        //Levanta el proceso solo si no es una prueba
+        if (!Test.isRunningTest())
+			System.schedule(sNombreProc, sch, objProcesaCompetidoresSch);
+
 	}
     
 }

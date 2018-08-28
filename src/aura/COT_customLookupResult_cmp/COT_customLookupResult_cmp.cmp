@@ -1,5 +1,6 @@
 <aura:component >
     <aura:attribute name="oAccount" type="DCTGruop__c" />
+     <aura:attribute name="nombre" type="String" default = "Hola"/>
   <!--Register the component level event-->
     <aura:registerEvent name="oSelectedAccountEvent" type="c:COT_selectedDirComEvent_evt"/>
     

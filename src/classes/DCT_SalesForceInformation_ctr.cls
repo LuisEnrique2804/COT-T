@@ -19,7 +19,8 @@ public class DCT_SalesForceInformation_ctr {
 		System.debug(loggingLevel.Error, '*** idResponsable: ' + idResponsable);
 		//Consulta los daos del OwnerId del objeto de clientes 
 		String sIdOwner = [Select id, OwnerId From Cliente__c Where ID =: idResponsable].OwnerId;
-		
+		DatosOwner = new User();
+				
 		//Consulta los datos de XO y VT para el usuario dueño del reg
 		for(User usuarioPaso : [Select DCTVT__c, DCTXO__c From User Where ID =: sIdOwner]){
 			DatosOwner = usuarioPaso;

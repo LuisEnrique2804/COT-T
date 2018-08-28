@@ -1,5 +1,18 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
-	<aura:attribute name="options" type="List" />
+<aura:component controller="COT_Quoting_ctr" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="selectedValue" type="String" default="Plan"/>
+    <aura:attribute name="ProfileQuoting" type="COT_PerfilesCotizacion__c" default="{ 'sobjectType': 'COT_PerfilesCotizacion__c'}"/>
+    <aura:attribute name="recordId" type="String"  />
+    <!--aura:attribute name="newProfile" type="Object"/>
+    <aura:attribute name="simpleNewProfile" type="Object"/>
+    <aura:attribute name="newProfileError" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <force:recordData aura:id="profileRecordCreator"
+                      layoutType="FULL"
+                      targetRecord="{!v.newProfile}"
+                      targetFields="{!v.simpleNewProfile}"
+                      targetError="{!v.newProfileError}" /-->
+    
+    <aura:attribute name="options" type="List" />
 	<aura:attribute name="searchFor" type="List" />
 	<aura:attribute name="searchType" type="List" />
 	<aura:attribute name="searchMode" type="List" />
@@ -22,7 +35,7 @@
 	<aura:attribute name="ValueCrit" type="List"/>
 
 	<aura:attribute name="selectedValueBrand" type="String" default="Plan"/>
-	<aura:attribute name="selectedValue" type="String" default="Plan"/>
+	
 	<aura:attribute name="selectedValueSearchFor" type="String" default="Plan"/>
 	<aura:attribute name="selectedValueSearchType" type="String" default="Voz"/>
 	<aura:attribute name="selectedValueSearchMode" type="String" default="CPP"/>
@@ -56,380 +69,395 @@
 	<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
 		<div class="slds-media slds-no-space slds-grow">
 			<lightning:select name="mySelect" label="Genera perfiles de:" aura:id="mySelect"
-				value="{!v.selectedValue}">
+				value="{!v.selectedValue}" onchange="{!c.createProfile}"><!---->
 				<aura:iteration items="{!v.options}" var="item">
 					<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
 				</aura:iteration>
 			</lightning:select>
 			<lightning:helptext content="Texto de ayuda de Ejemplo"/>
 		</div>
+        <!--div class="slds-grid slds-gutters">
+        	<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+            	<lightning:icon iconName="action:close" title="Eliminar perfil" class="slds-icon-action-close" />
+            </div>
+            <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+            	<lightning:icon iconName="action:clone" title="Duplicar Perfil" class="slds-icon-action-clone" />
+            </div>
+        </div-->
 	</div>
 	<br/>
 	<aura:if isTrue="{!v.selectedValue == 'Plan, equipo, productos, SVA’s y servicios adicionales'}">
-		<div class="slds-grid slds-gutters">
-			<div class="slds-col">
-				<div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
-					<div class="slds-scrollable" style="height:500px;">
-						<div class="slds-grid slds-gutters">
-							<div class="slds-col slds-has-flexi-truncate">
-								<lightning:input type="text" label="Nombre del perfil" name="name" />
-							</div>
-							<div class="slds-col slds-has-flexi-truncate">
-								<lightning:select name="mySelect" label="Buscar por:" aura:id="mySelect"
-									value="{!v.selectedValueSearchFor}">
-									<aura:iteration items="{!v.searchFor}" var="item">
-										<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-									</aura:iteration>
-								</lightning:select>
-							</div>
-							<div class="slds-col slds-has-flexi-truncate">
-								<div class="slds-grid slds-gutters">
-									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-										<lightning:icon iconName="action:close" title="Eliminar perfil" class="slds-icon-action-close" />
-									</div>
-									<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-										<lightning:icon iconName="action:clone" title="Duplicar Perfil" class="slds-icon-action-clone" />
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="slds-grid slds-gutters">
-							<div class="slds-col slds-has-flexi-truncate">
-								<lightning:select name="mySelect" label="Tipo:" aura:id="mySelect"
-									value="{!v.selectedValueSearchType}">
-									<aura:iteration items="{!v.searchType}" var="item">
-										<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-									</aura:iteration>
-								</lightning:select>
-							</div>
-							<div class="slds-col slds-has-flexi-truncate">
-								<lightning:select name="mySelect" label="Modalidad:" aura:id="mySelect"
-									value="{!v.selectedValueSearchMode}">
-									<aura:iteration items="{!v.searchMode}" var="item">
-										<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-									</aura:iteration>
-								</lightning:select>
-							</div>
-							<div class="slds-col slds-has-flexi-truncate">
-								<lightning:select name="mySelect" label="Consumo:" aura:id="mySelect"
-									value="{!v.selectedValueSearchConsumo}">
-									<aura:iteration items="{!v.searchConsumo}" var="item">
-										<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-									</aura:iteration>
-								</lightning:select>
-							</div>
-						</div>
-						<div class="slds-box slds-m-top--x-small">
-							<div class="slds-grid slds-gutters">
-								<div class="slds-col slds-has-flexi-truncate">
-									<lightning:select name="mySelect" label="Grupo de Plan:" aura:id="mySelect"
-										value="{!v.selectedValueSearchGroupPlan}">
-										<aura:iteration items="{!v.GroupPlan}" var="item">
-											<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-										</aura:iteration>
-									</lightning:select>
-								</div>
-								<div class="slds-col slds-has-flexi-truncate">
-									<lightning:select name="mySelect" label="Plan:" aura:id="mySelect"
-										value="{!v.selectedValueSearchPlan}">
-										<aura:iteration items="{!v.Plan}" var="item">
-											<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-										</aura:iteration>
-									</lightning:select>
-								</div>
-								<div class="slds-col slds-has-flexi-truncate">
-									<lightning:input type="text" label="Cantidad:" name="name" />
-								</div>
-								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-									<!-- <lightning:input type="checkbox" label="Nombre del perfil" name="name" value="{!v.blnSelectMobile}" checked="false"/>
-									{!v.blnSelectMobile} -->
-
-								<!-- Handles the aura:valueChange event -->
-								<ui:button label="Seleccionar equipo" press="{!c.changeValue}"/>
-								</div>
-							</div>
-							<aura:if isTrue="{!v.myBool}">
-								<div class="slds-box slds-m-top--x-small">
-									<div class="slds-grid slds-gutters">
-										<div class="slds-col slds-has-flexi-truncate">
-											<lightning:radioGroup aura:id="mygroup"
-												name="radioButtonGroup"
-												label="Selecciona una opción"
-												options="{! v.Equipos }"
-												value="{! v.value }"
-												required="true" />
-										</div>
-										<div class="slds-col slds-has-flexi-truncate">
-											<lightning:select name="mySelect" label="Marca" aura:id="mySelect" value="{!v.selectedValueBrand}">
-												<aura:iteration items="{!v.Brand}" var="item">
-													<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-												</aura:iteration>
-											</lightning:select>
-										</div>
-										<div class="slds-col slds-has-flexi-truncate">
-											<lightning:select name="mySelect" label="Modelo" aura:id="mySelect" value="{!v.selectedValue}">
-												<aura:iteration items="{!v.Model}" var="item">
-													<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-												</aura:iteration>
-											</lightning:select>
-										</div>
-										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-											<ui:button label="Con Financiamiento" press="{!c.blnConFinanciamientoChange}"/>
-										</div>
-									</div>
-									<br/>
-									<aura:if isTrue="{!v.blnConFinanciamiento}">
-										<table class="slds-table slds-table--bordered slds-table--cell-buffer">
-											<thead>
-												<tr class="slds-text-title--caps">
-													<th scope="col">
-														<div class="slds-truncate" title="Nombre">Diferencia a pagar por el equipo</div>
-													</th>
-													<th scope="col">
-														<div class="slds-truncate" title="Teléfono">Porcentaje de sobreprecio</div>
-													</th>
-													<th scope="col">
-														<div class="slds-truncate" title="Teléfono">Costo por financiamiento</div>
-													</th>
-													<th scope="col">
-														<div class="slds-truncate" title="Teléfono">Importe Total a Financiar</div>
-													</th>
-													<th scope="col">
-														<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Cargo mensual del financiamiento</div>
-													</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td scope="col">
-														<div class="slds-truncate" title="Nombre">$9600.00</div>
-													</td>
-													<td scope="col">
-														<div class="slds-truncate" title="Nombre">3%</div>
-													</td>
-													<td scope="col">
-														<div class="slds-truncate" title="Teléfono">$1920.00</div>
-													</td>
-													<td scope="col">
-														<div class="slds-truncate" title="Teléfono">$11520.00</div>
-													</td>
-													<td scope="col" class="slds-align_absolute-center">
-														<div class="slds-truncate" title="Teléfono">$480.00</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</aura:if>
-									<br/>
-									<div class="slds-grid slds-gutters">
-										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-											<ui:button label="Busqueda inteligente del equipo" press="{!c.smartSearch}"/>
-										</div>
-										<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-											<ui:button label="Selecciona color" press="{!c.SelectColor}"/>
-										</div>
-									</div>
-									<br/>
-									<aura:if isTrue="{!v.color}">
-										<table class="slds-table slds-table--bordered slds-table--cell-buffer">
-											<thead>
-												<tr class="slds-text-title--caps">
-													<th scope="col">
-														<div class="slds-truncate" title="Nombre">Color</div>
-													</th>
-													<th scope="col">
-														<div class="slds-truncate" title="Teléfono">Modelo especifico</div>
-													</th>
-													<th scope="col">
-														<div class="slds-truncate" title="Teléfono">Existencia almacen</div>
-													</th>
-													<th scope="col">
-														<div class="slds-truncate slds-align_absolute-center" title="Teléfono">Resurtible</div>
-													</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td scope="col">
-														<div class="slds-truncate" title="Nombre">Blanco</div>
-													</td>
-													<td scope="col">
-														<div class="slds-truncate" title="Teléfono">32 GB</div>
-													</td>
-													<td scope="col">
-														<div class="slds-truncate" title="Teléfono">20</div>
-													</td>
-													<td scope="col" class="slds-align_absolute-center">
-														<div class="slds-truncate" title="Teléfono">Si</div>
-													</td>
-												</tr>
-												<tr>
-													<td scope="col">
-														<div class="slds-truncate" title="Nombre">Rosa</div>
-													</td>
-													<td scope="col">
-														<div class="slds-truncate" title="Teléfono">32 GB</div>
-													</td>
-													<td scope="col">
-														<div class="slds-truncate" title="Teléfono">20</div>
-													</td>
-													<td scope="col" class="slds-align_absolute-center">
-														<div class="slds-truncate" title="Teléfono">Si</div>
-													</td>
-												</tr>
-												<tr>
-													<td scope="col">
-														<div class="slds-truncate" title="Nombre">Azul</div>
-													</td>
-													<td scope="col">
-														<div class="slds-truncate" title="Teléfono">32 GB</div>
-													</td>
-													<td scope="col">
-														<div class="slds-truncate" title="Teléfono">20</div>
-													</td>
-													<td scope="col" class="slds-align_absolute-center">
-														<div class="slds-truncate" title="Teléfono">Si</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</aura:if>
-									<aura:if isTrue="{!v.smart}">
-										<div class="slds-box slds-m-top--x-small">
-											<div class="slds-grid slds-gutters">
-												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<lightning:select name="mySelect" label="Categoria de equipos" aura:id="mySelect" value="{!v.selectedValueBrand}">
-														<aura:iteration items="{!v.Categoria}" var="item">
-															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-														</aura:iteration>
-													</lightning:select>
-													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-												</div>
-												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<lightning:select name="mySelect" label="Rango de precios" aura:id="mySelect" value="{!v.selectedValue}">
-														<aura:iteration items="{!v.Rango}" var="item">
-															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-														</aura:iteration>
-													</lightning:select>
-													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-												</div>
-												<div class="slds-align_absolute-center slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<lightning:select name="mySelect" label="Marca" aura:id="mySelect" value="{!v.value}"  >
-														<aura:iteration items="{!v.Brand}" var="item">
-															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-														</aura:iteration>
-													</lightning:select>
-													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-												</div>
-												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<lightning:select name="mySelect" label="Tecnologia" aura:id="mySelect" value="{!v.selectedValue}">
-														<aura:iteration items="{!v.Tecnologia}" var="item">
-															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-														</aura:iteration>
-													</lightning:select>
-													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-												</div>
-											</div>
-											<br/>
-											<div class="slds-grid slds-gutters">
-												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<lightning:select name="mySelect" label="Sistema Operativo" aura:id="mySelect" value="{!v.selectedValue}">
-														<aura:iteration items="{!v.SO}" var="item">
-															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-														</aura:iteration>
-													</lightning:select>
-													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-												</div>
-												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<lightning:select name="mySelect" label="Memoria" aura:id="mySelect" value="{!v.selectedValue}">
-														<aura:iteration items="{!v.Memoria}" var="item">
-															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-														</aura:iteration>
-													</lightning:select>
-													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-												</div>
-												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<lightning:select name="mySelect" label="Camara Trasera" aura:id="mySelect" value="{!v.selectedValue}">
-														<aura:iteration items="{!v.CamaraPrimaria}" var="item">
-															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-														</aura:iteration>
-													</lightning:select>
-													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-												</div>
-												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<lightning:select name="mySelect" label="Pantalla" aura:id="mySelect" value="{!v.selectedValue}">
-														<aura:iteration items="{!v.Pantalla}" var="item">
-															<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-														</aura:iteration>
-													</lightning:select>
-													<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-												</div>
-											</div>
-											<aura:if isTrue="{!v.blnOtherCara}">
-												<br/>
-												<div class="slds-grid slds-gutters">
-													<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-														<lightning:select name="mySelect" label="Criterio" aura:id="mySelect" value="{!v.selectedValue}">
-															<aura:iteration items="{!v.CriterioExt}" var="item">
-																<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-															</aura:iteration>
-														</lightning:select>
-														<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-														<br/>
-														<br/>
-														<lightning:select name="mySelect" label="Valor" aura:id="mySelect" value="{!v.selectedValue}">
-															<aura:iteration items="{!v.ValueCrit}" var="item">
-																<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
-															</aura:iteration>
-														</lightning:select>
-														<lightning:helptext content="Texto de ayuda de Ejemplo"/>
-													</div>
-													<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-														
-													</div>
-													<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-														
-													</div>
-													<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-														
-													</div>
-												</div>
-											</aura:if>
-											<br/>
-											<div class="slds-grid slds-gutters">
-												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<ui:button label="Agregar criterio de busqueda" press="{!c.otherCarac}"/>
-												</div>
-												<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-													<ui:button label="Buscar Equipo" press="{!c.changeValue}"/>
-												</div>
-											</div>
-										</div> 
-									</aura:if>
-								</div> 
-							</aura:if>
-							<br/>
-							<div class="slds-grid slds-gutters">
-								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-									<!-- <lightning:input type="checkbox" label="Nombre del perfil" name="name" value="{!v.blnSelectMobile}" checked="false"/>
-									{!v.blnSelectMobile} -->
-
-								<!-- Handles the aura:valueChange event -->
-								<ui:button label="Agregar Productos, SVA’s y servicios adicionales" press="{!c.changeValue}"/>
-								</div>
-								<div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
-									<!-- <lightning:input type="checkbox" label="Nombre del perfil" name="name" value="{!v.blnSelectMobile}" checked="false"/>
-									{!v.blnSelectMobile} -->
-
-								<!-- Handles the aura:valueChange event -->
-								<ui:button label="Guardar Perfil" press="{!c.smartSave}"/>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<lightning:recordEditForm aura:id="recordEditForm" objectApiName="COT_PerfilesCotizacion__c" recordId="{!v.recordId}">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <div class="slds-box" style="width: 100%; background-color: #f3f2f2;">
+                        <lightning:messages />
+                        <div class="slds-scrollable" style="height:500px;">
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <lightning:inputField fieldName="Name" value=" "/>
+                                </div>
+                                <div class="slds-col slds-has-flexi-truncate">
+                                     <lightning:inputField fieldName="COT_Buscarpor__c" />
+                                    <!--lightning:select name="mySelect" label="Buscar por:" aura:id="mySelect"
+                                        value="{!v.selectedValueSearchFor}">
+                                        <aura:iteration items="{!v.searchFor}" var="item">
+                                            <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                        </aura:iteration>
+                                    </lightning:select-->
+                                </div>
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <!--div class="slds-grid slds-gutters">
+                                        <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                            <lightning:icon iconName="action:close" title="Eliminar perfil" class="slds-icon-action-close" />
+                                        </div>
+                                        <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                            <lightning:icon iconName="action:clone" title="Duplicar Perfil" class="slds-icon-action-clone" />
+                                        </div>
+                                    </div-->
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <lightning:inputField fieldName="COT_Tipo__c" />
+                                    <!--lightning:select name="mySelect" label="Tipo:" aura:id="mySelect"
+                                        value="{!v.selectedValueSearchType}">
+                                        <aura:iteration items="{!v.searchType}" var="item">
+                                            <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                        </aura:iteration>
+                                    </lightning:select-->
+                                </div>
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <lightning:inputField fieldName="COT_Modalidad__c" />
+                                    <!--lightning:select name="mySelect" label="Modalidad:" aura:id="mySelect"
+                                        value="{!v.selectedValueSearchMode}">
+                                        <aura:iteration items="{!v.searchMode}" var="item">
+                                            <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                        </aura:iteration>
+                                    </lightning:select-->
+                                </div>
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <lightning:inputField fieldName="COT_Consumo__c" />
+                                    <!--lightning:select name="mySelect" label="Consumo:" aura:id="mySelect"
+                                        value="{!v.selectedValueSearchConsumo}">
+                                        <aura:iteration items="{!v.searchConsumo}" var="item">
+                                            <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                        </aura:iteration>
+                                    </lightning:select-->
+                                </div>
+                            </div>
+                            <div class="slds-box slds-m-top--x-small">
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col slds-has-flexi-truncate">
+                                        <!--lightning:select name="mySelect" label="Grupo de Plan:" aura:id="mySelect"
+                                            value="{!v.selectedValueSearchGroupPlan}">
+                                            <aura:iteration items="{!v.GroupPlan}" var="item">
+                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                            </aura:iteration>
+                                        </lightning:select-->
+                                    </div>
+                                    <div class="slds-col slds-has-flexi-truncate">
+                                        <lightning:select name="mySelect" label="Plan:" aura:id="mySelect"
+                                            value="{!v.selectedValueSearchPlan}">
+                                            <aura:iteration items="{!v.Plan}" var="item">
+                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </div>
+                                    <div class="slds-col slds-has-flexi-truncate">
+                                        <lightning:input type="text" label="Cantidad:" name="name" />
+                                    </div>
+                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                        <!-- <lightning:input type="checkbox" label="Nombre del perfil" name="name" value="{!v.blnSelectMobile}" checked="false"/>
+                                        {!v.blnSelectMobile} -->
+    
+                                    <!-- Handles the aura:valueChange event -->
+                                    <ui:button label="Seleccionar equipo" press="{!c.changeValue}"/>
+                                    </div>
+                                </div>
+                                <aura:if isTrue="{!v.myBool}">
+                                    <div class="slds-box slds-m-top--x-small">
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col slds-has-flexi-truncate">
+                                                <lightning:radioGroup aura:id="mygroup"
+                                                    name="radioButtonGroup"
+                                                    label="Selecciona una opción"
+                                                    options="{! v.Equipos }"
+                                                    value="{! v.value }"
+                                                    required="true" />
+                                            </div>
+                                            <div class="slds-col slds-has-flexi-truncate">
+                                                <lightning:select name="mySelect" label="Marca" aura:id="mySelect" value="{!v.selectedValueBrand}">
+                                                    <aura:iteration items="{!v.Brand}" var="item">
+                                                        <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                            </div>
+                                            <div class="slds-col slds-has-flexi-truncate">
+                                                <lightning:select name="mySelect" label="Modelo" aura:id="mySelect" value="{!v.selectedValue}">
+                                                    <aura:iteration items="{!v.Model}" var="item">
+                                                        <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                            </div>
+                                            <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                <ui:button label="Con Financiamiento" press="{!c.blnConFinanciamientoChange}"/>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <aura:if isTrue="{!v.blnConFinanciamiento}">
+                                            <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                                                <thead>
+                                                    <tr class="slds-text-title--caps">
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Nombre">Diferencia a pagar por el equipo</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">Porcentaje de sobreprecio</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">Costo por financiamiento</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">Importe Total a Financiar</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate slds-align_absolute-center" title="Teléfono">Cargo mensual del financiamiento</div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Nombre">$9600.00</div>
+                                                        </td>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Nombre">3%</div>
+                                                        </td>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">$1920.00</div>
+                                                        </td>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">$11520.00</div>
+                                                        </td>
+                                                        <td scope="col" class="slds-align_absolute-center">
+                                                            <div class="slds-truncate" title="Teléfono">$480.00</div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </aura:if>
+                                        <br/>
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                <ui:button label="Busqueda inteligente del equipo" press="{!c.smartSearch}"/>
+                                            </div>
+                                            <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                <ui:button label="Selecciona color" press="{!c.SelectColor}"/>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <aura:if isTrue="{!v.color}">
+                                            <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                                                <thead>
+                                                    <tr class="slds-text-title--caps">
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Nombre">Color</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">Modelo especifico</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">Existencia almacen</div>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <div class="slds-truncate slds-align_absolute-center" title="Teléfono">Resurtible</div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Nombre">Blanco</div>
+                                                        </td>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">32 GB</div>
+                                                        </td>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">20</div>
+                                                        </td>
+                                                        <td scope="col" class="slds-align_absolute-center">
+                                                            <div class="slds-truncate" title="Teléfono">Si</div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Nombre">Rosa</div>
+                                                        </td>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">32 GB</div>
+                                                        </td>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">20</div>
+                                                        </td>
+                                                        <td scope="col" class="slds-align_absolute-center">
+                                                            <div class="slds-truncate" title="Teléfono">Si</div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Nombre">Azul</div>
+                                                        </td>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">32 GB</div>
+                                                        </td>
+                                                        <td scope="col">
+                                                            <div class="slds-truncate" title="Teléfono">20</div>
+                                                        </td>
+                                                        <td scope="col" class="slds-align_absolute-center">
+                                                            <div class="slds-truncate" title="Teléfono">Si</div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.smart}">
+                                            <div class="slds-box slds-m-top--x-small">
+                                                <div class="slds-grid slds-gutters">
+                                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <lightning:select name="mySelect" label="Categoria de equipos" aura:id="mySelect" value="{!v.selectedValueBrand}">
+                                                            <aura:iteration items="{!v.Categoria}" var="item">
+                                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                    </div>
+                                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <lightning:select name="mySelect" label="Rango de precios" aura:id="mySelect" value="{!v.selectedValue}">
+                                                            <aura:iteration items="{!v.Rango}" var="item">
+                                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                    </div>
+                                                    <div class="slds-align_absolute-center slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <lightning:select name="mySelect" label="Marca" aura:id="mySelect" value="{!v.value}"  >
+                                                            <aura:iteration items="{!v.Brand}" var="item">
+                                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                    </div>
+                                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <lightning:select name="mySelect" label="Tecnologia" aura:id="mySelect" value="{!v.selectedValue}">
+                                                            <aura:iteration items="{!v.Tecnologia}" var="item">
+                                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="slds-grid slds-gutters">
+                                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <lightning:select name="mySelect" label="Sistema Operativo" aura:id="mySelect" value="{!v.selectedValue}">
+                                                            <aura:iteration items="{!v.SO}" var="item">
+                                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                    </div>
+                                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <lightning:select name="mySelect" label="Memoria" aura:id="mySelect" value="{!v.selectedValue}">
+                                                            <aura:iteration items="{!v.Memoria}" var="item">
+                                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                    </div>
+                                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <lightning:select name="mySelect" label="Camara Trasera" aura:id="mySelect" value="{!v.selectedValue}">
+                                                            <aura:iteration items="{!v.CamaraPrimaria}" var="item">
+                                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                    </div>
+                                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <lightning:select name="mySelect" label="Pantalla" aura:id="mySelect" value="{!v.selectedValue}">
+                                                            <aura:iteration items="{!v.Pantalla}" var="item">
+                                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                    </div>
+                                                </div>
+                                                <aura:if isTrue="{!v.blnOtherCara}">
+                                                    <br/>
+                                                    <div class="slds-grid slds-gutters">
+                                                        <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                            <lightning:select name="mySelect" label="Criterio" aura:id="mySelect" value="{!v.selectedValue}">
+                                                                <aura:iteration items="{!v.CriterioExt}" var="item">
+                                                                    <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                                </aura:iteration>
+                                                            </lightning:select>
+                                                            <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                            <br/>
+                                                            <br/>
+                                                            <lightning:select name="mySelect" label="Valor" aura:id="mySelect" value="{!v.selectedValue}">
+                                                                <aura:iteration items="{!v.ValueCrit}" var="item">
+                                                                    <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                                                </aura:iteration>
+                                                            </lightning:select>
+                                                            <lightning:helptext content="Texto de ayuda de Ejemplo"/>
+                                                        </div>
+                                                        <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                            
+                                                        </div>
+                                                        <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                            
+                                                        </div>
+                                                        <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </aura:if>
+                                                <br/>
+                                                <div class="slds-grid slds-gutters">
+                                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <ui:button label="Agregar criterio de busqueda" press="{!c.otherCarac}"/>
+                                                    </div>
+                                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                                        <ui:button label="Buscar Equipo" press="{!c.changeValue}"/>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </aura:if>
+                                    </div> 
+                                </aura:if>
+                                <br/>
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                        <!-- <lightning:input type="checkbox" label="Nombre del perfil" name="name" value="{!v.blnSelectMobile}" checked="false"/>
+                                        {!v.blnSelectMobile} -->
+    
+                                    <!-- Handles the aura:valueChange event -->
+                                    <ui:button label="Agregar Productos, SVA’s y servicios adicionales" press="{!c.changeValue}"/>
+                                    </div>
+                                    <div class="slds-align_absolute-center slds-col slds-has-flexi-truncate">
+                                        <!-- <lightning:input type="checkbox" label="Nombre del perfil" name="name" value="{!v.blnSelectMobile}" checked="false"/>
+                                        {!v.blnSelectMobile} -->
+    
+                                    <!-- Handles the aura:valueChange event -->
+                                    <ui:button label="Guardar Perfil" press="{!c.smartSave}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </lightning:recordEditForm>
 	</aura:if>
 	<aura:if isTrue="{!v.selectedValue == 'Productos, SVA’s y servicios adicionales'}">
 		<div class="slds-grid slds-gutters">

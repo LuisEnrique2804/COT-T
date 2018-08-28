@@ -22,7 +22,7 @@
 	},
   
   // function for clear the Record Selaction 
-    clear :function(component,event,heplper){
+    clear :function(component,event,helper){
       
          var pillTarget = component.find("lookup-pill");
          var lookUpTarget = component.find("lookupField"); 
@@ -41,7 +41,7 @@
     handleComponentEvent : function(component, event, helper) {
      
     // get the selected Account record from the COMPONETN event 	 
-       var selectedAccountGetFromEvent = event.getParam("accountByEvent");
+       var selectedAccountGetFromEvent = event.getParam("DirComercialByEvent");
 	   
 	   component.set("v.selectedRecord" , selectedAccountGetFromEvent); 
        
@@ -73,5 +73,4 @@
         evt.setParams({ isVisible : true });
         evt.fire();    
     },
-    
 })

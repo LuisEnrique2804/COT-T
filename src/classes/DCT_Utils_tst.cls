@@ -153,6 +153,9 @@ private class DCT_Utils_tst {
 				//Llama a los procesos				
 				DCT_Utils_cls.ActualizaInvestigacionesEsc1Pos(sIdCliente, true);
 				
+				//Manda llamar el metodo ProcesaCompetidor
+				DCT_Utils_cls.ProcesaCompetidor(lDirCom.get(0).id);
+				
 				//Ve si se crearon los objetos para hacer el llamado
     		    System.assertNotEquals(objRespuestaTelcel, null);
     		    System.assertNotEquals(objReferenciaWSRap, null);

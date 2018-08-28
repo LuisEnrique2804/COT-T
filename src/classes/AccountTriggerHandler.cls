@@ -32,17 +32,17 @@ public class AccountTriggerHandler extends TriggerHandler{
     public override void beforeInsert(){
 		System.debug('EN AccountTriggerHandler.beforeInsert...');
 
-        String strIdCurrent = [SELECT DCTCustomerID__c FROM Account Order By CreatedDate DESC Limit 1].DCTCustomerID__c;
-        System.debug(loggingLevel.Error, '*** strIdCurrent: ' + strIdCurrent);  
-        Integer newValue = Integer.valueOf(strIdCurrent);
+        String strIdCurrent = [SELECT DCTCustomerID__c FROM Account Where DCTCustomerID__c != null Order By CreatedDate DESC Limit 1].DCTCustomerID__c;
+        System.debug(loggingLevel.Error, '*** EN AccountTriggerHandler.beforeInsert strIdCurrent: ' + strIdCurrent);  
+        Integer newValue = strIdCurrent != null ? Integer.valueOf(strIdCurrent) : 1;
         if(!String.isBlank(strIdCurrent)|| strIdCurrent != null) {
            for(Account iterator: newList) {
-                iterator.DCTCustomerID__c = String.valueOf(newValue+1); 
+                iterator.DCTCustomerID__c = String.valueOf(newValue + 1); 
                 //newValue = newValue+1;
             }       
         }      
 
-        /*for(Account pct : newList) {
+        /*for(Account pct : newList) { 
         	//Ve si el canpo de Name esta vacio y concatena el resto de los campos
         	if (pct.Name ==  NULL)
         		pct.Name = pct.DCTName__c + ' ' + (pct.DCTLastName__c == null ? '' : pct.DCTLastName__c) + '' + (pct.DCTMotherLastName__c == null ? '' : pct.DCTMotherLastName__c);

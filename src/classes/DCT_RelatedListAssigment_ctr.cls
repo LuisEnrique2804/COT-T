@@ -215,9 +215,9 @@ public class DCT_RelatedListAssigment_ctr {
 	}
 
  	public PageReference regresar() {
- 		System.debug('EN regresar...' + 'https://telcel-dev--dc.lightning.force.com/lightning/r/DCTAssignment__c/'  + idAssigment + '/view');
+ 		System.debug('EN regresar...' + System.Label.DCT_UrlLightForce + '/r/DCTAssignment__c/'  + idAssigment + '/view');
 		//'https://telcel-dev--dc.lightning.force.com/lightning/r/DCTAssignment__c'  https://telcel-dev--dc.lightning.force.com/				
-        PageReference pr = new PageReference(System.Label.DCT_URLBack_lbl + idAssigment+'/view');
+        PageReference pr = new PageReference(System.Label.DCT_URLBack_lbl + '/r/DCTAssignment__c/view'); //System.Label.DCT_URLBack_lbl + idAssigment + '/view'
 		System.debug('EN DCT_AccountAprovedRejectedCtrl.regresar... '+pr);
         pr.setRedirect(true);
         return pr;
